@@ -6,38 +6,54 @@
 
 <!-- load section source -->
 {{- $renders := printf "module/bloger/default/model/page/meta.html" -}}
-{{- $section := printf "module/%s/default/model/page/meta.html" .Section  | printf "%s" -}}
+{{- $default := printf "themes/default/%s/meta.html" ( trim .Page.RelPermalink "/" ) }}
+{{- $theming := printf "themes/%s/%s/meta.html" .Site.Params.Themes ( trim .Page.RelPermalink "/" ) }}
 
-{{- if and ( .Page.Params.Paged ) ( .Page.Params.Model ) ( .IsSection ) -}}
 
-    {{- $parteds := printf "module/%s/%s/model/%s/meta.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
-    {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
-    {{- with fileExists $checker -}}{{- $renders = $parteds -}}{{- end -}}
+{{ if .Section }}
 
-{{- else if and ( .Page.Params.Model ) ( .IsSection ) -}}
+    {{- $section := printf "module/%s/default/model/page/meta.html" .Section | printf "%s" -}}
 
-    {{- $parteds := printf "module/%s/%s/model/page/meta.html" .Section .Page.Params.Model | printf "%s" -}}
-    {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
-    {{- with fileExists $checker -}}{{- $renders = $parteds -}}{{- end -}}
+    {{- if and ( .Page.Params.Paged ) ( .Page.Params.Model ) -}}
 
-{{- else if and ( .Page.Params.Paged ) ( .IsSection ) -}}
+        {{- $parteds := printf "module/%s/%s/model/%s/meta.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+        {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
+        {{- with fileExists $checker }}{{ $renders = $parteds }}{{- end -}}
 
-    {{- $parteds := printf "module/%s/default/model/%s/meta.html" .Section .Page.Params.Paged | printf "%s" -}}
-    {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
-    {{- with fileExists $checker -}}{{- $renders = $parteds -}}{{- end -}}
+    {{- else if .Page.Params.Model -}}
 
-{{- else if and ( templates.Exists ( printf "partials/%s"  $section ) ) ( .IsSection )  -}}
+        {{- $parteds := printf "module/%s/%s/model/page/meta.html" .Section .Page.Params.Model | printf "%s" -}}
+        {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
+        {{- with fileExists $checker }}{{ $renders = $parteds }}{{- end -}}
 
-    {{- $renders = $section -}}
+    {{- else if .Page.Params.Paged -}}
 
-{{- else if .IsHome  -}}
+        {{- $parteds := printf "module/%s/default/model/%s/meta.html" .Section .Page.Params.Paged | printf "%s" -}}
+        {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
+        {{- with fileExists $checker }}{{ $renders = $parteds }}{{- end -}}
 
-    {{- $renders =  printf "themes/default/home/meta.html" -}}
-    
+    {{- else if templates.Exists ( printf "partials/%s"  $section )  -}}
+        
+        {{- $renders = $section -}}
+
+    {{- end -}}
+
+{{- else if and ( .IsHome ) ( .Site.Params.Themes ) -}}
+  
+    {{- $renders = printf "themes/%s/home/meta.html" .Site.Params.Themes -}}
+
+{{- else if .IsHome -}}
+
+    {{- $renders = printf "themes/default/home/meta.html" -}}
+
+{{- else if templates.Exists ( printf "partials/%s" $theming ) -}}
+
+    {{- $renders = $theming -}}
+
+{{- else if templates.Exists ( printf "partials/%s" $default ) -}}
+
+    {{- $renders = $default -}}
+
 {{- end -}}
 
 {{- partial $renders . -}}
-
-
-<!-- compile head source -->
-{{- partial "core/head/_init" . -}}
