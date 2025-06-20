@@ -1,0 +1,39 @@
+<!-- 
+    type  : list
+    block : footer   
+-->
+
+{{- $renders := printf "themes/default/parted/footer.html" -}}
+{{- $theming := printf "module/%s/%s/model/item/foot.html" .Section .Site.Params.Themes | printf "%s" -}}
+{{- $section := printf "module/%s/default/model/item/foot.html" .Section  | printf "%s" -}}
+
+
+{{- if and ( .Page.Params.Paged ) ( .Page.Params.Model ) ( .IsSection ) -}}
+
+    {{- $parteds := printf "module/%s/%s/model/%s/foot.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+    {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
+    {{- with fileExists $checker }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if and ( .Page.Params.Model ) ( .IsSection ) -}}
+
+    {{- $parteds := printf "module/%s/%s/model/item/foot.html" .Section .Page.Params.Model | printf "%s" -}}
+    {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
+    {{- with fileExists $checker }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if and ( .Page.Params.Paged ) ( .IsSection ) -}}
+
+    {{- $parteds := printf "module/%s/default/model/%s/foot.html" .Section .Page.Params.Paged | printf "%s" -}}
+    {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
+    {{- with fileExists $checker }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if and ( templates.Exists ( printf "partials/%s"  $section ) ) ( .IsSection )  -}}
+
+    {{ $renders = $section }}
+
+{{- else if templates.Exists ( printf "partials/%s"  $theming )  -}}
+
+    {{- $renders = $theming -}}
+
+{{- end -}}
+
+{{- partial $renders . -}}

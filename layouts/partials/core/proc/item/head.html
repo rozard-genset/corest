@@ -16,13 +16,13 @@
 
 {{- else if .Page.Params.Model -}}
 
-    {{- $parteds = printf "module/%s/%s/model/item/head.html" .Section .Page.Params.Model | printf "%s" -}}
+    {{- $parteds := printf "module/%s/%s/model/item/head.html" .Section .Page.Params.Model | printf "%s" -}}
     {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
     {{- with fileExists $checker -}}{{- $renders = $parteds -}}{{- end -}}
 
 {{- else if .Page.Params.Paged -}}
 
-    {{- $parteds = printf "module/%s/default/model/%s/head.html" .Section .Page.Params.Paged | printf "%s" -}}
+    {{- $parteds := printf "module/%s/default/model/%s/head.html" .Section .Page.Params.Paged | printf "%s" -}}
     {{- $checker := printf "%s/%s" "layouts/_partials" $parteds -}}
     {{- with fileExists $checker -}}{{- $renders = $parteds -}}{{- end -}}
 
