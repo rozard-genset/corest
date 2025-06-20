@@ -1,0 +1,1 @@
+console.log('critical theme javascript module loaded');

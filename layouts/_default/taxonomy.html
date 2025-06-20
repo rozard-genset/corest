@@ -1,0 +1,150 @@
+{{- define "hooks_init" -}}
+
+    {{- if .Store.Get "render_init" -}}
+
+    {{- else if .Page.Params.Blocks.Init -}}
+
+    {{- else -}}
+         {{- partial "core/proc/term/init.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_meta" -}}
+
+    {{- if .Store.Get "render_meta"  -}}
+
+    {{- else if .Page.Params.Blocks.Meta -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/meta.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_grap" -}}
+
+    {{- if .Store.Get "render_grap"  -}}
+
+    {{- else if .Page.Params.Blocks.Grap -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/grap.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_head" -}}
+
+    {{- if .Store.Get "render_head"  -}}
+
+    {{- else if .Page.Params.Blocks.Head -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/head.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+{{- define "hooks_json" -}}
+
+    {{- if .Store.Get "render_json"  -}}
+
+    {{- else if .Page.Params.Blocks.Json -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/json.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_feed" -}}
+
+    {{- if .Store.Get "render_feed"  -}}
+
+    {{- else if .Page.Params.Blocks.Feed -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/feed.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_heed" -}}
+
+    {{- if .Store.Get "render_heed"  -}}
+
+    {{- else if .Page.Params.Blocks.Heed -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/heed.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_navs" -}}
+
+    {{- if .Store.Get "render_navs"  -}}
+
+    {{- else if .Page.Params.Blocks.Navs -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/navs.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_main" -}}
+
+    {{- if .Store.Get "render_main"  -}}
+
+    {{- else if .Page.Params.Blocks.Main -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/main.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_foot" -}}
+
+    {{- if .Store.Get "render_foot"  -}}
+
+    {{- else if .Page.Params.Blocks.Foot -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/foot.html" . -}}
+    {{- end -}}
+
+{{- end -}}
+
+
+
+{{- define "hooks_pack" -}}
+
+    {{- if .Store.Get "render_pack"  -}}
+
+    {{- else if .Page.Params.Blocks.Pack -}}
+
+    {{- else -}}
+        {{- partial "core/proc/term/pack.html" . -}}
+    {{- end -}}
+
+{{- end -}}

@@ -1,0 +1,1 @@
+console.log('critical based javascript engine loaded');

@@ -1,0 +1,68 @@
+{{- $section := .Section -}}
+{{- $formats := .Page.Params.Format -}}
+{{- $destination := printf "assets/scripts/" -}}
+
+{{- if .IsHome -}}
+    {{- $destination = printf "assets/scripts/home" -}}
+{{- end -}}
+
+{{- if .IsSection -}}
+    {{- $destination = printf "assets/scripts/%s" .Section -}}
+{{ end }}
+
+{{- if .IsPage -}}
+    {{- if .Section -}}
+        {{- $destination = printf "assets/scripts/%s" .Section -}}
+    {{- else -}}
+        {{- $destination = printf "assets/scripts/page" -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- $master_css := resources.Get "scripts/based/css/head.scss" | toCSS -}}
+{{- $themes_css := resources.Get "scripts/based/css/main.scss" | toCSS -}}
+{{- $extras_css := resources.Get "scripts/based/css/over.scss" | toCSS -}}
+{{- $module_css := resources.Get "scripts/based/css/over.scss" | toCSS -}}
+{{- $format_css := resources.Get "scripts/based/css/over.scss" | toCSS -}}
+
+
+{{- with .Store.Get "module_head_css" -}}
+    {{- $module_css = resources.Get . | toCSS -}}
+{{- end -}}
+
+{{- with .Store.Get "format_head_css" -}}
+    {{- $format_css = resources.Get . | toCSS -}}
+{{- end -}}
+
+{{- with .Site.Params.Themes -}}
+    {{- $theme_path := printf "scripts/themes/%s/css/head.scss" . -}}
+    {{- $themes_css = resources.Get $theme_path | toCSS -}}
+{{ end }}
+
+{{- with resources.Get "scripts/styles.css" -}}
+    {{- $extras_css := resources.Get . -}}
+{{- end -}}
+
+
+{{- with and ( resources.Get $master_css ) ( resources.Get $module_css ) ( resources.Get $format_css ) ( resources.Get $themes_css ) ( resources.Get $extras_css ) -}}
+
+    {{- $dest := "" -}}
+
+    {{- if $formats -}}
+        {{- $dest = printf "%s/%s.css" $destination $formats -}}
+    {{- else -}}
+        {{- $dest = printf "%s/head-style.css" $destination -}}
+    {{- end -}}
+
+    {{- if hugo.IsDevelopment -}}
+        {{- $path := slice $master_css $module_css $format_css $themes_css $extras_css | resources.Concat $dest  -}}
+        {{- with $path -}}
+            <style id="head-styles">{{ .Content | safeCSS }}</style>
+        {{- end -}}
+    {{- else -}}
+        {{- $path := slice $master_css $themes_css $extras_css | resources.Concat $dest | minify  -}}
+        {{- with $path -}}
+            <style id="head-styles">{{ .Content | safeCSS }}</style>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
