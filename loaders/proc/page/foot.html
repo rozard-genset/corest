@@ -1,0 +1,56 @@
+<!-- 
+    type  : list
+    block : footer   
+-->
+
+{{- $renders := printf "module/default/parted/footer.html" -}}
+{{- $default := printf "themes/default/%s/parted/footer.html" ( trim .Page.RelPermalink "/" ) }}
+{{- $theming := printf "themes/%s/%s/parted/footer.html" .Site.Params.Themes ( trim .Page.RelPermalink "/" ) }}
+{{- $hthemes := printf "themes/%s/home/foot.html" .Site.Params.Themes }}
+{{- $hntheme := printf "themes/default/home/foot.html" }}
+
+{{ if .Section }}
+
+    {{- $section := printf "module/%s/default/model/page/foot.html" .Section | printf "%s" -}}
+
+    {{- if and ( .Page.Params.Paged ) ( .Page.Params.Model ) -}}
+
+        {{- $parteds := printf "module/%s/%s/model/%s/foot.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+        {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+    {{- else if .Page.Params.Model -}}
+
+        {{- $parteds := printf "module/%s/%s/model/page/foot.html" .Section .Page.Params.Model | printf "%s" -}}
+        {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+    {{- else if .Page.Params.Paged -}}
+
+        {{- $parteds := printf "module/%s/default/model/%s/foot.html" .Section .Page.Params.Paged | printf "%s" -}}
+        {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+    {{- else if templates.Exists ( printf "partials/%s"  $section )  -}}
+        
+        {{- $renders = $section -}}
+
+    {{- end -}}
+
+{{- else if and ( .IsHome ) ( templates.Exists ( printf "partials/%s" $hthemes ) ) -}}
+  
+    {{- $renders = $hthemes -}}
+
+{{- else if and ( .IsHome ) ( templates.Exists ( printf "partials/%s" $hntheme ) )  -}}
+
+    {{- $renders = $hntheme -}}
+
+{{- else if templates.Exists ( printf "partials/%s" $theming ) -}}
+
+    {{- $renders = $theming -}}
+
+{{- else if templates.Exists ( printf "partials/%s" $default ) -}}
+
+    {{- $renders = $default -}}
+
+{{- end -}}
+
+
+{{- partial $renders . -}}

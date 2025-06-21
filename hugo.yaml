@@ -1,6 +1,12 @@
 module:
     mounts:
-    - source: "layouts"
-      target: "layouts"
+    - source: "engines"
+      target: "layouts/_default"
+    - source: "loaders"
+      target: "layouts/partials/core"
+    - source: "module"
+      target: "layouts/partials/module/default"
+    - source: "formats"
+      target: "layouts/partials/formats"
     - source: "scripts"
       target: "assets/scripts"

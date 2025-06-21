@@ -1,0 +1,30 @@
+<!-- 
+    type  : list
+    block : meta
+-->
+
+{{- $renders := printf "module/default/model/item/pack.html" -}}
+{{- $section := printf "module/%s/default/model/item/pack.html" .Section  | printf "%s" -}}
+
+{{- if and ( .Page.Params.Paged ) ( .Page.Params.Model ) -}}
+
+    {{- $parteds := printf "module/%s/%s/model/%s/pack.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+    {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if .Page.Params.Model -}}
+
+    {{- $parteds := printf "module/%s/%s/model/item/pack.html" .Section .Page.Params.Model | printf "%s" -}}
+    {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if .Page.Params.Paged -}}
+
+    {{- $parteds := printf "module/%s/default/model/%s/pack.html" .Section .Page.Params.Paged | printf "%s" -}}
+    {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if templates.Exists ( printf "partials/%s"  $section ) -}}
+
+    {{ $renders = $section }}
+
+{{- end -}}
+
+{{- partial $renders . -}}

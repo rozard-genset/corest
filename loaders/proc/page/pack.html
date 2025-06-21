@@ -1,0 +1,36 @@
+<!-- 
+    type  : list
+    block : head   
+-->
+
+
+<!-- load section source -->
+{{- $renders := printf "module/default/model/page/pack.html" -}}
+{{- $section := printf "module/%s/default/model/page/pack.html" .Section  | printf "%s" -}}
+
+{{- if and ( .Page.Params.Paged ) ( .Page.Params.Model ) ( .IsSection ) -}}
+
+    {{- $parteds := printf "module/%s/%s/model/%s/pack.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+    {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if and ( .Page.Params.Model ) ( .IsSection ) -}}
+
+    {{- $parteds := printf "module/%s/%s/model/page/pack.html" .Section .Page.Params.Model | printf "%s" -}}
+    {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if and ( .Page.Params.Paged ) ( .IsSection ) -}}
+
+    {{- $parteds := printf "module/%s/default/model/%s/pack.html" .Section .Page.Params.Paged | printf "%s" -}}
+    {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+
+{{- else if and ( templates.Exists ( printf "partials/%s"  $section ) ) ( .IsSection )  -}}
+
+    {{- $renders = $section -}}
+
+{{- else if .IsHome  -}}
+
+    {{- $renders =  printf "module/default/model/home/pack.html" -}}
+    
+{{- end -}}
+
+{{- partial $renders . -}}
