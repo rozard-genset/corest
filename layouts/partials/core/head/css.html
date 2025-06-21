@@ -1,21 +1,27 @@
 {{- $section := .Section -}}
-{{- $formats := .Page.Params.Format -}}
+{{- $formats := .Page.Params.Format.Kind -}}
 {{- $destination := printf "assets/scripts/" -}}
 
-{{- if .IsHome -}}
-    {{- $destination = printf "assets/scripts/home" -}}
-{{- end -}}
 
-{{- if .IsSection -}}
-    {{- $destination = printf "assets/scripts/%s" .Section -}}
+{{- if and ( .IsSection ) ( .Page.Params.Paged ) -}}
+    {{- $destination = printf "assets/scripts/%s/%s/" .Section .Page.Params.Paged -}}
+{{ else }}
+    {{- $destination = printf "assets/scripts/%s/list/" .Section -}}
 {{ end }}
 
-{{- if .IsPage -}}
-    {{- if .Section -}}
-        {{- $destination = printf "assets/scripts/%s" .Section -}}
-    {{- else -}}
-        {{- $destination = printf "assets/scripts/page" -}}
-    {{- end -}}
+
+{{- if .IsHome -}}
+
+    {{- $destination = printf "assets/scripts/home" -}}
+
+{{- else if and ( .IsPage ) ( .Section ) -}}
+
+    {{- $destination = printf "assets/scripts/%s" .Section -}}
+
+{{- else -}}
+
+    {{- $destination = printf "assets/scripts/page" -}}
+
 {{- end -}}
 
 
@@ -26,12 +32,75 @@
 {{- $format_css := resources.Get "scripts/based/css/over.scss" | toCSS -}}
 
 
-{{- with .Store.Get "module_head_css" -}}
-    {{- $module_css = resources.Get . | toCSS -}}
+{{- if .Section -}}
+
+    {{- $get_module := ""  -}}
+
+    {{- if and ( .Page.Params.Model ) ( .Page.Params.Paged ) ( .IsPage ) -}}
+
+        {{- $get_module = printf "scripts/%s/%s/%s" .Section .Page.Params.Model .Page.Params.Paged -}}
+
+    {{- else if and ( .Page.Params.Model ) ( .Page.Params.Paged ) -}}
+
+        {{- $get_module = printf "scripts/%s/%s/%s" .Section .Page.Params.Model .Page.Params.Paged -}}
+
+    {{- else if and ( .Page.Params.Model ) ( .IsPage ) -}}
+
+        {{- $get_module = printf "scripts/%s/%s/page" .Section .Page.Params.Model -}}
+
+    {{- else if .Page.Params.Model -}}
+
+        {{- $get_module = printf "scripts/%s/%s/item" .Section .Page.Params.Model -}}
+
+    {{ else if .Page.Params.Paged }}
+
+        {{- $get_module = printf "scripts/%s/default/%s" .Section .Page.Params.Paged -}}
+
+    {{- else if .IsPage -}}
+
+        {{- $get_module = printf "scripts/%s/default/page" .Section -}}
+
+    {{- else -}}
+
+        {{- $get_module = printf "scripts/%s/default/item" .Section -}}
+
+    {{- end -}}
+
+    {{- $try_module := printf "%s/css/head.scss" $get_module -}}
+    {{- with resources.Get $try_module -}}{{- $module_css = resources.Get . | toCSS -}}{{- end -}}
+
 {{- end -}}
 
-{{- with .Store.Get "format_head_css" -}}
-    {{- $format_css = resources.Get . | toCSS -}}
+
+
+{{- if .Page.Params.Format.Kind -}}
+
+    {{- $skins := printf "format/%s/model/%s.html" .Page.Params.Format.Kind .Page.Params.Format.Skin -}}
+    {{- $modul := printf "format/%s/model/%s.html" .Page.Params.Format.Kind .Section -}}
+    {{- $forma := printf "format/%s/model/default.html" .Page.Params.Format.Kind -}}
+    {{- $gform := "" -}}
+   
+    {{- if templates.Exists ( printf "partials/%s" $skins ) -}}
+
+        {{- $gform = printf "scripts/formats/%s/%s" .Page.Params.Format.Kind .Page.Params.Format.Skin -}}
+
+    {{- else if templates.Exists ( printf "partials/%s" $modul ) -}}
+
+        {{- $gform = printf "scripts/formats/%s/%s" .Page.Params.Format.Kind .Section -}}
+    
+    {{- else if templates.Exists ( printf "partials/%s" $forma ) -}}
+
+        {{- $gform = printf "scripts/formats/%s/default" .Page.Params.Format.Kind -}}
+
+    {{- else -}}
+
+        {{- $gform = printf "scripts/formats/article/default" -}}
+
+    {{- end -}}
+
+    {{- $try_format := printf "%s/css/head.scss" $gform -}}
+    {{- with resources.Get $try_format -}}{{- $format_css = resources.Get . | toCSS -}}{{- end -}}
+
 {{- end -}}
 
 {{- with .Site.Params.Themes -}}
@@ -44,7 +113,7 @@
 {{- end -}}
 
 
-{{- with and ( resources.Get $master_css ) ( resources.Get $module_css ) ( resources.Get $format_css ) ( resources.Get $themes_css ) ( resources.Get $extras_css ) -}}
+{{- with and ( resources.Get $master_css ) ( resources.Get $format_css ) ( resources.Get $module_css ) ( resources.Get $themes_css ) ( resources.Get $extras_css ) -}}
 
     {{- $dest := "" -}}
 
@@ -55,14 +124,15 @@
     {{- end -}}
 
     {{- if hugo.IsDevelopment -}}
-        {{- $path := slice $master_css $module_css $format_css $themes_css $extras_css | resources.Concat $dest  -}}
+        {{- $path := slice $master_css $format_css $module_css $themes_css $extras_css | resources.Concat $dest  -}}
         {{- with $path -}}
             <style id="head-styles">{{ .Content | safeCSS }}</style>
         {{- end -}}
     {{- else -}}
-        {{- $path := slice $master_css $themes_css $extras_css | resources.Concat $dest | minify  -}}
+        {{- $path := slice $master_css $format_css $module_css $themes_css $extras_css | resources.Concat $dest | minify  -}}
         {{- with $path -}}
             <style id="head-styles">{{ .Content | safeCSS }}</style>
         {{- end -}}
     {{- end -}}
+
 {{- end -}}

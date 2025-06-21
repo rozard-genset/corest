@@ -1,0 +1,1 @@
+console.log('critical article format javascript module loaded');
