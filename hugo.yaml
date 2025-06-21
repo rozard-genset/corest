@@ -8,6 +8,8 @@ module:
       target: "layouts/partials/module/default"
     - source: "formats"
       target: "layouts/partials/formats"
+    - source: "iconics"
+      target: "layouts/partials/icon"
     - source: "assets"
       target: "static/assets"
     - source: "scripts"
