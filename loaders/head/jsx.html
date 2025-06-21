@@ -1,21 +1,24 @@
 {{- $section := .Section -}}
-{{- $formats := .Page.Params.Format -}}
+{{- $formats := .Page.Params.Format.Kind -}}
 {{- $destination := printf "assets/scripts/" -}}
 
-{{- if .IsHome -}}
-    {{- $destination = printf "assets/scripts/home" -}}
-{{- end -}}
 
 {{- if .IsSection -}}
-    {{- $destination = printf "assets/scripts/%s" .Section -}}
-{{ end }}
+    {{- $destination = printf "assets/scripts/%s/critical/" .Section -}}
+{{- end -}}
 
-{{- if .IsPage -}}
-    {{- if .Section -}}
-        {{- $destination = printf "assets/scripts/%s" .Section -}}
-    {{- else -}}
-        {{- $destination = printf "assets/scripts/page" -}}
-    {{- end -}}
+{{- if .IsHome -}}
+
+    {{- $destination = printf "assets/scripts/home/critical/" -}}
+
+{{- else if and ( .IsPage ) ( .Section )  -}}
+
+    {{- $destination = printf "assets/scripts/%s/critical/" .Section -}}
+
+{{- else -}}
+
+    {{- $destination = printf "assets/scripts/page/critical/" -}}
+
 {{- end -}}
 
 
@@ -30,33 +33,35 @@
 
     {{- $get_module := ""  -}}
 
-    {{- if and ( .Page.Params.Model ) ( .Page.Params.Paged ) ( .IsPage ) -}}
+    {{- if and ( .Page.Params.Model ) ( .Page.Params.Paged ) -}}
 
         {{- $get_module = printf "scripts/%s/%s/%s" .Section .Page.Params.Model .Page.Params.Paged -}}
-
-    {{- else if and ( .Page.Params.Model ) ( .Page.Params.Paged ) -}}
-
-        {{- $get_module = printf "scripts/%s/%s/%s" .Section .Page.Params.Model .Page.Params.Paged -}}
+        {{- $destination = printf "assets/scripts/%s/critical/module/%s/%s" .Section .Page.Params.Model .Page.Params.Paged  -}}
 
     {{- else if and ( .Page.Params.Model ) ( .IsPage ) -}}
 
         {{- $get_module = printf "scripts/%s/%s/page" .Section .Page.Params.Model -}}
+        {{- $destination = printf "assets/scripts/%s/critical/module/%s/page" .Section .Page.Params.Model -}}
 
     {{- else if .Page.Params.Model -}}
 
         {{- $get_module = printf "scripts/%s/%s/item" .Section .Page.Params.Model -}}
+        {{- $destination = printf "assets/scripts/%s/critical/module/%s/list" .Section .Page.Params.Model -}}
 
-    {{ else if .Page.Params.Paged }}
+    {{- else if .Page.Params.Paged -}}
 
         {{- $get_module = printf "scripts/%s/default/%s" .Section .Page.Params.Paged -}}
+        {{- $destination = printf "assets/scripts/%s/critical/module/default/%s" .Section .Page.Params.Paged -}}
 
     {{- else if .IsPage -}}
 
         {{- $get_module = printf "scripts/%s/default/page" .Section -}}
+        {{- $destination = printf "assets/scripts/%s/critical/module/default/page/" .Section -}}
 
     {{- else -}}
 
         {{- $get_module = printf "scripts/%s/default/item" .Section -}}
+        {{- $destination = printf "assets/scripts/%s/critical/module/default/list/" .Section -}}
 
     {{- end -}}
 
@@ -75,18 +80,22 @@
     {{- if templates.Exists ( printf "partials/%s" $skins ) -}}
 
         {{- $gform = printf "scripts/formats/%s/%s" .Page.Params.Format.Kind .Page.Params.Format.Skin -}}
+        {{- $formats = printf "assets/scripts/%s/critical/%s" .Section $skins  -}}
 
     {{- else if templates.Exists ( printf "partials/%s" $modul ) -}}
 
         {{- $gform = printf "scripts/formats/%s/%s" .Page.Params.Format.Kind .Section -}}
+        {{- $formats = printf "assets/scripts/%s/critical/%s" .Section $modul -}}
     
     {{- else if templates.Exists ( printf "partials/%s" $forma ) -}}
 
         {{- $gform = printf "scripts/formats/%s/default" .Page.Params.Format.Kind -}}
+        {{- $formats = printf "assets/scripts/%s/critical/%s" .Section $forma }}
 
     {{- else -}}
 
         {{- $gform = printf "scripts/formats/default/default" -}}
+        {{- $formats = printf "assets/scripts/%s/critical/format/default/main" .Section }}
 
     {{- end -}}
 
@@ -105,13 +114,13 @@
 {{- end -}}
 
 
-{{- with and ( resources.Get $master_jsx ) ( resources.Get $format_jsx ) ( resources.Get $module_jsx ) ( resources.Get $themes_jsx ) ( resources.Get $extras_jsx ) -}}
+{{- if and ( resources.Get $master_jsx ) ( resources.Get $format_jsx ) ( resources.Get $module_jsx ) ( resources.Get $themes_jsx ) ( resources.Get $extras_jsx ) -}}
 
     {{- $dest := "" -}}
-    {{- if $formats -}}
-        {{- $dest = printf "%s/%s-script.js" $destination $formats -}}
+    {{- if .Page.Params.Format.Kind -}}
+        {{- $dest = printf "%s/script.js" $formats -}}
     {{- else -}}
-        {{- $dest = printf "%s/head-script.js" $destination -}}
+        {{- $dest = printf "%s/script.js" $destination -}}
     {{- end -}}
 
     {{- $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "targetPath" $dest -}}

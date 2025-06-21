@@ -4,23 +4,23 @@
 
 
 {{- if and ( .IsSection ) ( .Page.Params.Paged ) -}}
-    {{- $destination = printf "assets/scripts/%s/%s/" .Section .Page.Params.Paged -}}
-{{ else }}
-    {{- $destination = printf "assets/scripts/%s/list/" .Section -}}
-{{ end }}
+    {{- $destination = printf "assets/scripts/%s/%s/deffers/" .Section .Page.Params.Paged -}}
+{{- else -}}
+    {{- $destination = printf "assets/scripts/%s/list/deffers/" .Section -}}
+{{- end -}}
 
 
 {{- if .IsHome -}}
 
-    {{- $destination = printf "assets/scripts/home" -}}
+    {{- $destination = printf "assets/scripts/home/deffers/" -}}
 
 {{- else if and ( .IsPage ) ( .Section ) -}}
 
-    {{- $destination = printf "assets/scripts/%s" .Section -}}
+    {{- $destination = printf "assets/scripts/%s/deffers/" .Section -}}
 
 {{- else -}}
 
-    {{- $destination = printf "assets/scripts/page" -}}
+    {{- $destination = printf "assets/scripts/page/deffers/" -}}
 
 {{- end -}}
 
@@ -34,35 +34,37 @@
 
 {{- if .Section -}}
 
-    {{- $get_module := ""  -}}
+    {{- $get_module := "" -}}
 
-    {{- if and ( .Page.Params.Model ) ( .Page.Params.Paged ) ( .IsPage ) -}}
-
-        {{- $get_module = printf "scripts/%s/%s/%s" .Section .Page.Params.Model .Page.Params.Paged -}}
-
-    {{- else if and ( .Page.Params.Model ) ( .Page.Params.Paged ) -}}
+    {{- if and ( .Page.Params.Model ) ( .Page.Params.Paged ) -}}
 
         {{- $get_module = printf "scripts/%s/%s/%s" .Section .Page.Params.Model .Page.Params.Paged -}}
+        {{- $destination = printf "assets/scripts/%s/deffers/module/%s/%s" .Section .Page.Params.Model .Page.Params.Paged  -}}
 
     {{- else if and ( .Page.Params.Model ) ( .IsPage ) -}}
 
         {{- $get_module = printf "scripts/%s/%s/page" .Section .Page.Params.Model -}}
+        {{- $destination = printf "assets/scripts/%s/deffers/module/%s/page" .Section .Page.Params.Model -}}
 
     {{- else if .Page.Params.Model -}}
 
         {{- $get_module = printf "scripts/%s/%s/item" .Section .Page.Params.Model -}}
+        {{- $destination = printf "assets/scripts/%s/deffers/module/%s/list" .Section .Page.Params.Model -}}
 
-    {{ else if .Page.Params.Paged }}
+    {{- else if .Page.Params.Paged -}}
 
         {{- $get_module = printf "scripts/%s/default/%s" .Section .Page.Params.Paged -}}
+        {{- $destination = printf "assets/scripts/%s/deffers/module/default/%s" .Section .Page.Params.Paged -}}
 
     {{- else if .IsPage -}}
 
         {{- $get_module = printf "scripts/%s/default/page" .Section -}}
+        {{- $destination = printf "assets/scripts/%s/deffers/module/default/page/" .Section -}}
 
     {{- else -}}
 
         {{- $get_module = printf "scripts/%s/default/item" .Section -}}
+        {{- $destination = printf "assets/scripts/%s/deffers/module/default/list/" .Section -}}
 
     {{- end -}}
 
@@ -82,18 +84,23 @@
     {{- if templates.Exists ( printf "partials/%s" $skins ) -}}
 
         {{- $gform = printf "scripts/formats/%s/%s" .Page.Params.Format.Kind .Page.Params.Format.Skin -}}
+        {{- $formats = printf "assets/scripts/%s/deffers/%s" .Section $skins  -}}
+        
 
     {{- else if templates.Exists ( printf "partials/%s" $modul ) -}}
 
         {{- $gform = printf "scripts/formats/%s/%s" .Page.Params.Format.Kind .Section -}}
+         {{- $formats = printf "assets/scripts/%s/deffers/%s" .Section $modul  -}}
     
     {{- else if templates.Exists ( printf "partials/%s" $forma ) -}}
 
         {{- $gform = printf "scripts/formats/%s/default" .Page.Params.Format.Kind -}}
+        {{- $formats = printf "assets/scripts/%s/deffers/%s" .Section $forma -}}
 
     {{- else -}}
 
         {{- $gform = printf "scripts/formats/default/default" -}}
+        {{- $formats = printf "assets/scripts/%s/deffers/format/default/main" .Section -}}
 
     {{- end -}}
 
@@ -106,7 +113,7 @@
 {{- with .Site.Params.Themes -}}
     {{- $theme_path := printf "scripts/themes/%s/css/pack.scss" . -}}
     {{- $themes_css = resources.Get $theme_path | toCSS -}}
-{{ end }}
+{{- end -}}
 
 
 {{- with resources.Get "scripts/deffers.css" -}}
@@ -114,30 +121,28 @@
 {{- end -}}
 
 
-{{ with and ( resources.Get $master_css ) ( resources.Get $format_css ) ( resources.Get $module_css ) ( resources.Get $themes_css )  ( resources.Get $extras_css ) }}
+{{- if and ( resources.Get $master_css ) ( resources.Get $format_css ) ( resources.Get $module_css ) ( resources.Get $themes_css ) ( resources.Get $extras_css ) -}}
     
-
-    {{ $path := "" }}
+    {{- $path := "" -}}
     {{- $dest := "" -}}
 
-    {{- if $formats -}}
-        {{- $dest = printf "%s/%s.css" $destination $formats -}}
+    {{- if .Page.Params.Format.Kind -}}
+        {{- $dest = printf "%s/foot.css" $formats -}}
     {{- else -}}
-        {{- $dest = printf "%s/deffers.css" $destination -}}
+        {{- $dest = printf "%s/foot.css" $destination -}}
     {{- end -}}
-
 
     {{- if hugo.IsDevelopment -}}
         {{- $path = slice $master_css $format_css $module_css $themes_css $extras_css | resources.Concat $dest  -}}
-        {{ with $path }}
+        {{- with $path -}}
             <link id="pack-loader" rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
             <noscript><link id="pack-styles" rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
-        {{ end }}
-    {{ else }}
+        {{- end -}}
+    {{- else -}}
         {{- $path = slice $master_css $format_css $module_css $themes_css $extras_css | resources.Concat $dest | minify | fingerprint -}}
-        {{ with $path }}
-            <link id="pack-styles" type="text/css" rel="stylesheet" href="{{.RelPermalink }}" integrity="{{ .Data.Integrity }}"/>
-        {{ end }}
-    {{ end }}
-
-{{ end }}
+        {{- with $path -}}
+            <link id="pack-loader" rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+            <noscript><link id="pack-styles" rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></noscript>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
