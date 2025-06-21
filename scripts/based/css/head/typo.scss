@@ -1,0 +1,212 @@
+
+html{
+    font-size: 13px;
+}
+
+@media only screen and (min-width: 480px) {
+    html{
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    html{
+        font-size: 13.15px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    html{
+        font-size: 14.15px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    html{
+        font-size: 14.25px;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    html{
+        font-size: 16px;
+    }
+}
+
+
+body{
+    font-family: "Figtree", Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    color: var(--colr-02);
+}
+
+
+
+h1,h2,h3,h4,h5,h6,summary {
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--colr-01);
+}
+
+h1 {
+    font-size: var(--fs-06p);
+    font-weight: 300;
+}
+
+h2 {
+    font-size: var(--fs-05p);
+}
+
+h3 {
+    font-size: var(--fs-04p);
+}
+
+h4 {
+    font-size: var(--fs-03p);
+}
+
+h5 {
+    font-size: var(--fs-02p);
+}
+
+h6 {
+    font-size: var(--fs-01p);
+}
+
+a {
+    color: var(--link-01);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--link-01-hover);
+    transition: 200ms;
+}
+
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 1.7rem;
+}
+
+@media only screen and (min-width: 1536px) {
+    p {
+        font-size: 1rem;
+    }
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.lowercase{
+    text-transform: lowercase;
+}
+
+
+// font size
+
+.text-xs{
+    font-size: 0.75rem; 
+    line-height: calc(1 / 0.75);
+}
+
+.text-sm{
+    font-size: 0.875rem; 
+    line-height: calc(1.25 / 0.875);
+}
+
+.text-md{
+    font-size: 1rem; 
+    line-height: calc(1.5 / 1);
+}
+
+.text-lg {
+    font-size: 1.125rem; 
+    line-height: calc(1.75 / 1.125);
+}
+
+.text-xl {
+    font-size: 1.25rem; 
+    line-height: calc(1.75 / 1.25);
+}
+
+.text-2xl {
+    font-size: 1.5rem; 
+    line-height: calc(2 / 1.5);
+}
+
+.text-3xl {
+    font-size: 1.875rem; 
+    line-height: calc(2.25 / 1.875);
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+    line-height: calc(2.5 / 2.25);
+}
+
+.text-5xl {
+    font-size: 3rem (48px); 
+    line-height: 1;
+}
+
+.text-6xl {
+    font-size: 3.75rem; 
+    line-height: 1;
+}
+
+.text-7xl {
+    font-size: 4.5rem; 
+    line-height: 1;
+}
+
+.text-8xl {
+    font-size: 6rem; 
+    line-height: 1;
+}
+
+.text-9xl {
+    font-size: 8rem; 
+    line-height: 1;
+}
+
+
+// font weight
+.font-thin {
+    font-weight: 200;
+}
+
+.font-extralight {
+    font-weight: 200;
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.font-normal {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-extrabold {
+    font-weight: 800;
+}

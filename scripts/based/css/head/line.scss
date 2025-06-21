@@ -1,0 +1,53 @@
+.rad-a {
+    border-radius: 200px;
+}
+
+.rad-7 {
+    border-radius: 7px;
+}
+
+.rad-12 {
+    border-radius: 12px;
+}
+
+.rad-15 {
+    border-radius: 15px;
+}
+
+.rad-20 {
+    border-radius: 20px;
+}
+
+.rad-25 {
+    border-radius: 25px;
+}
+
+.rad-30 {
+    border-radius: 30px;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid var(--ln-01);
+    margin-inline-start: 0;
+}
+
+.la-01 {
+    border: 1px solid var(--ln-01);
+}
+
+.lr-01 {
+    border-right: 1px solid var(--ln-01);
+}
+
+.ll-01 {
+    border-left: 1px solid var(--ln-01);
+}
+
+.lt-01 {
+    border-top: 1px solid var(--ln-01);
+}
+
+.lb-01 {
+    border-bottom: 1px solid var(--ln-01);
+}

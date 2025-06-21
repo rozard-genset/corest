@@ -1,0 +1,32 @@
+
+mark{
+    background-color: var(--bg-grad-01);
+    background-clip: text;
+    color: transparent;
+}
+
+.antialiased{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.subpixel-antialiased{
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+
+.text-inherit {
+    color: inherit;
+}
+
+.text-current {
+    color: currentColor;
+}
+
+.text-transparent{
+    color: transparent;
+}
+
+.text-white{
+    color: white;
+}

@@ -8,5 +8,7 @@ module:
       target: "layouts/partials/module/default"
     - source: "formats"
       target: "layouts/partials/formats"
+    - source: "assets"
+      target: "static/assets"
     - source: "scripts"
       target: "assets/scripts"

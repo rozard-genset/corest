@@ -72,7 +72,6 @@
 {{- end -}}
 
 
-
 {{- if .Page.Params.Format.Kind -}}
 
     {{- $skins := printf "format/%s/model/%s.html" .Page.Params.Format.Kind .Page.Params.Format.Skin -}}
@@ -103,14 +102,17 @@
 
 {{- end -}}
 
+
 {{- with .Site.Params.Themes -}}
     {{- $theme_path := printf "scripts/themes/%s/css/head.scss" . -}}
     {{- $themes_css = resources.Get $theme_path | toCSS -}}
 {{ end }}
 
+
 {{- with resources.Get "scripts/styles.css" -}}
     {{- $extras_css := resources.Get . -}}
 {{- end -}}
+
 
 
 {{- with and ( resources.Get $master_css ) ( resources.Get $format_css ) ( resources.Get $module_css ) ( resources.Get $themes_css ) ( resources.Get $extras_css ) -}}
@@ -120,7 +122,7 @@
     {{- if $formats -}}
         {{- $dest = printf "%s/%s.css" $destination $formats -}}
     {{- else -}}
-        {{- $dest = printf "%s/head-style.css" $destination -}}
+        {{- $dest = printf "%s/critical.css" $destination -}}
     {{- end -}}
 
     {{- if hugo.IsDevelopment -}}

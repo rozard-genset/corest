@@ -1,18 +1,6 @@
-{{- define "hooks_init" -}}
-
-    {{- if .Store.Get "render_init" -}}
-
-    {{- else if .Page.Params.Blocks.Init -}}
-
-    {{- else -}}
-        {{- partial "core/proc/item/init.html" . -}}
-    {{- end -}}
-
-{{- end -}}
-
-
-
 {{- define "hooks_meta" -}}
+
+    {{- partial "core/help/meta.html" . -}}
 
     {{- if .Store.Get "render_meta"  -}}
 

@@ -1,0 +1,61 @@
+:root {
+
+	color-scheme: light dark;
+
+	--light-base-color-01: ghostwhite;
+	--light-base-color-02: #9eabc5;
+	--light-base-color-03: #7b8495;
+	--light-base-color-04: ghostwhite;
+
+	--dark-base-color-01: rgb(12 16 22);
+	--dark-base-color-02: rgb(15 19 28);
+	--dark-base-color-03: ghostwhite;
+	--dark-base-color-04: ghostwhite;
+
+	--coln-01: light-dark(var(--light-base-color-01), var(--dark-base-color-01));
+	--coln-02: light-dark(var(--light-base-color-02), var(--dark-base-color-02));
+	--coln-03: light-dark(var(--light-base-color-03), var(--dark-base-color-03));
+	--coln-03: light-dark(var(--light-base-color-04), var(--dark-base-color-04));
+
+	--colr-01: light-dark(var(--dark-base-color-01), var(--light-base-color-01));
+	--colr-02: light-dark(var(--dark-base-color-02), var(--light-base-color-02));
+	--colr-03: light-dark(var(--dark-base-color-03), var(--light-base-color-03));
+	--colr-04: light-dark(var(--dark-base-color-04), var(--light-base-color-04));
+
+	--dark-link-color-01: rgb(0 147 255);
+	--light-link-color-01: rgb(255, 102, 0);
+
+	--link-01: light-dark(var(--light-link-color-01), var(--dark-link-color-01)); 
+	--link-01-hover: light-dark(var(--dark-link-color-01), rgb(0 217 255)); 
+
+
+	--fs-06n: 70%;
+	--fs-05n: 75%;
+	--fs-04n: 80%;
+	--fs-03n: 85%;
+	--fs-02n: 90%;
+	--fs-01n: 95%;
+	--fs-01p: 110%;
+	--fs-02p: 120%;
+	--fs-03p: 130%;
+	--fs-04p: 140%;
+	--fs-05p: 150%;
+	--fs-06p: 160%;
+
+
+	--ico-01: 16px;
+	--ico-02: 18px;
+	--ico-03: 22px;
+	--ico-04: 22px;
+	--ico-05: 32px;
+	--ico-06: 36px;
+	--ico-07: 42px;
+	--ico-08: 48px;
+	--ico-09: 64px;
+	--ico-09: 128px;
+
+	--ln-01: light-dark(#1c2536, #1c2536);
+
+	--ln-grad-01: linear-gradient( 0deg,transparent 33%,rgb(74.2, 20.8, 68.4),rgb(58.5, 32.5, 85.75),rgb(45, 36.6, 100.9),rgb(26.4, 42.9, 106.7));
+	--bg-grad-01: linear-gradient(to right, rgb(215.4, 140.8, 210.2), rgb(184.5, 153, 237.75), rgb(156.6, 165.3, 232.6), rgb(142.75, 168.95, 240.05));
+}

@@ -1,0 +1,42 @@
+.button{
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--link-01);
+    padding: 7px 18px;
+    color: var(--colr-01);
+    border-radius: 7px;
+    font-size: 87%;
+
+    svg{
+        height: 22px;
+        width: 22px;
+        margin-right: 10px;
+    }
+}
+
+.button.outline{
+    background-color: transparent;
+    color: var(--link-01);
+    border: 1px solid var(--link-01);
+}
+
+// TAB ACTION 1
+
+.tab-action h2,
+.tab-action{
+    color: var(--colr-02);
+    transition: 100ms;
+}
+
+.tab-action:hover .icon,
+.tab-action.open .icon{
+    background-color: var(--color-blue-500);
+    color: var(--colr-01);
+    transition: 100ms;
+}
+
+.tab-action.open h2,
+.tab-action:hover h2{
+    color: var(--colr-01);
+    transition: 100ms;
+}

@@ -1,0 +1,149 @@
+.flex{
+	display: flex;
+}
+
+.flex-inline{
+	display: inline-flex;
+}
+
+.block {
+	display: block;
+}
+
+.grid {
+	display: grid;
+}
+
+.center-a{
+	align-items: center;
+	justify-content: center;
+}
+
+.center-x{
+ 	align-items: center;
+}
+
+.center-y{
+ 	justify-content: center;
+}
+
+.content-between {
+	align-content: space-between;
+}
+
+.float-right{
+	float: right;
+}
+
+.float-left{
+	float: left;
+}
+
+.float-none{
+	float: none;
+}
+
+.clear-right{
+	clear: left;
+}
+
+.clear-left{
+	clear: right;
+}
+
+.clear-both{
+	clear: both;
+}
+
+.static{
+	position: static;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.relative{
+	position: relative;
+}
+
+.sticky{
+	position: sticky;
+}
+
+.object-contain{
+	object-fit: contain;
+}
+
+.object-cover{
+	object-fit: cover;
+}
+
+.object-fill{
+	object-fit: fill;
+}
+
+.object-scale-down{
+	object-fit: scale-down;
+}
+
+
+
+/** LISTING **/
+ul {
+	margin-block-start: 0;
+    padding-inline-start: 0;
+}
+
+li {
+	line-height: 1.3;
+}
+
+
+/**  NAVIGATION **/
+
+nav ul li,
+nav ul li{
+	list-style: none;
+}
+
+
+
+/** RATION **/
+
+.ratio-square{
+	aspect-ratio: 1 / 1;
+}
+
+.ratio-wide{
+	aspect-ratio: 16 / 9;
+}
+
+.ratio-main{
+	aspect-ratio: 4 / 3;
+}
+
+.ratio-auto{
+	aspect-ratio: auto;
+}
+
+
+// IFRAME
+
+.framebox {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.framebox iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

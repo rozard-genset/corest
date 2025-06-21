@@ -1,5 +1,11 @@
-// webi styles framework
+@import "head/vars.scss";
+@import "head/typo.scss";
+@import "head/line.scss";
+@import "head/flex.scss";
+@import "head/wrap.scss";
 
-.based-head{
-    font-size: medium;
+body{
+	padding: 0;
+	margin: 0;
+    background-color: var(--coln-01);
 }
