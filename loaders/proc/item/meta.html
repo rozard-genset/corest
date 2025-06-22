@@ -14,7 +14,7 @@
 {{- else if .Page.Params.Model -}}
 
     {{- $parteds := printf "module/%s/%s/model/item/meta.html" .Section .Page.Params.Model | printf "%s" -}}
-   {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
+    {{- with templates.Exists ( printf "partials/%s"  $parteds ) }}{{ $renders = $parteds }}{{- end -}}
 
 {{- else if .Page.Params.Paged -}}
 
