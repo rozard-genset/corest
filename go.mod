@@ -1,10 +1,5 @@
 module github.com/rozard-framework/corest
 
-replace (
-	github.com/rozard-framework/article => /home/devel/project/rozard/format/article
-	github.com/rozard-framework/course => /home/devel/project/rozard/course
-	github.com/rozard-framework/profile => /home/devel/project/rozard/profile
-)
 
 go 1.24.4
 
