@@ -56,7 +56,6 @@
 {{- end -}}
 
 
-
 {{- range ( slice $falen_path $prime_path $theme_path $prime_page $theme_page ) -}}
 
     {{- $css := printf "%s/css/pack.scss" . -}}
@@ -65,6 +64,7 @@
     {{- with resources.Get $jsx -}}{{- $primer_jsx = $jsx -}}{{- end -}}
 
 {{- end -}}{{- .Store.Set "primer_css" $primer_css -}}{{- .Store.Set "primer_jsx" $primer_jsx -}}
+
 
 
 
@@ -85,7 +85,14 @@
 
 
 
+<!-- block scripts processing block -->
+{{- if .Page.Params.Block -}}
+    {{- partial "lib/blocks/pack-css.html" . -}}
+    {{- partial "lib/blocks/pack-jsx.html" . -}}
+{{- end -}}
 
-<!-- compiler scripts processing block -->
-{{- partial "lib/script/pack-css.html" . -}}
-{{- partial "lib/script/pack-jsx.html" . -}}
+
+
+<!-- modul scripts processing block -->
+{{- partial "lib/modul/pack-css.html" . -}}
+{{- partial "lib/modul/pack-jsx.html" . -}}

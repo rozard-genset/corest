@@ -70,6 +70,14 @@
 
 
 
-<!-- compiler scripts processing block -->
-{{- partial "lib/script/pack-css.html" . -}}
-{{- partial "lib/script/pack-jsx.html" . -}}
+<!-- block scripts processing block -->
+{{- if .Page.Params.Block -}}
+    {{- partial "lib/blocks/pack-css.html" . -}}
+    {{- partial "lib/blocks/pack-jsx.html" . -}}
+{{- end -}}
+
+
+
+<!-- modul scripts processing block -->
+{{- partial "lib/modul/pack-css.html" . -}}
+{{- partial "lib/modul/pack-jsx.html" . -}}

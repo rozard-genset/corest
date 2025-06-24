@@ -1,0 +1,22 @@
+{{- $block_path := "" -}}
+{{- $pages_vars := slice -}}
+{{- $block_type := slice "hero" -}}
+{{- $destinates := printf "%s/blocks.js" ( partial "lib/bases/dest.html" . ) -}}
+
+
+{{- range ( index .Page.Params.Block ) -}}
+    {{- $block_vars := .type -}}{{- $block_page := .data -}}
+    {{- range $block_type -}}{{- $block_path = printf "scripts/blocks/%s/%s/pack.js" . $block_vars -}}
+        {{ if resources.Get $block_path }}
+            {{ $pages_vars =  $pages_vars | append ( resources.Get $block_path ) }}
+        {{ end }}
+    {{- end -}}
+{{- end -}}
+
+
+{{- $path := $pages_vars | resources.Concat $destinates -}}
+{{- $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "targetPath" $destinates -}}
+
+{{- with $path | js.Build $opts -}}
+    <script id="rozard-blocks-script" src="{{ .RelPermalink }}" crossorigin="anonymous" defer></script>
+{{- end -}}

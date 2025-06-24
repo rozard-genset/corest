@@ -3,7 +3,7 @@
 {{- $primer_src := resources.Get "scripts/themes/default/basics/none.css" -}}
 {{- $footer_src := resources.Get "scripts/themes/default/basics/none.css" -}}
 {{- $format_src := resources.Get "scripts/themes/default/basics/none.css" -}}
-{{- $destinates := printf "%s/styles.css" ( partial "lib/script/destinate.html" . ) -}}
+{{- $destinates := printf "%s/styles.css" ( partial "lib/bases/dest.html" . ) -}}
 
 
 {{- with .Store.Get "engine_css" -}}
@@ -28,7 +28,7 @@
     {{- end -}}
 
     {{- with $path -}}
-        <link id="rozard-styles" rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link id="rozard-primus-styles" rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link id="pack-styles" rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
     {{- end -}}
 {{- end -}}

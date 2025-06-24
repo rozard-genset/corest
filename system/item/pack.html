@@ -73,8 +73,13 @@
 {{- end -}}{{- .Store.Set "footer_css" $footer_css -}}{{- .Store.Set "footer_jsx" $footer_jsx -}}
 
 
+<!-- block scripts processing block -->
+{{- if .Page.Params.Block -}}
+    {{- partial "lib/blocks/pack-css.html" . -}}
+    {{- partial "lib/blocks/pack-jsx.html" . -}}
+{{- end -}}
 
 
-<!-- compiler scripts processing block -->
-{{- partial "lib/script/pack-css.html" . -}}
-{{- partial "lib/script/pack-jsx.html" . -}}
+<!-- modul scripts processing block -->
+{{- partial "lib/modul/pack-css.html" . -}}
+{{- partial "lib/modul/pack-jsx.html" . -}}

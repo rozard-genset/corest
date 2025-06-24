@@ -2,7 +2,7 @@
 {{- $primer_src := resources.Get "scripts/themes/default/basics/none.js" -}}
 {{- $footer_src := resources.Get "scripts/themes/default/basics/none.js" -}}
 {{- $format_src := resources.Get "scripts/themes/default/basics/none.js" -}}
-{{- $destinates := printf "%s/script.js" ( partial "lib/script/destinate.html" . ) -}}
+{{- $destinates := printf "%s/script.js" ( partial "lib/bases/dest.html" . ) -}}
 
 
 {{- with .Store.Get "engine_jsx" -}}
@@ -24,7 +24,7 @@
     {{- $path := slice $engine_src $footer_src $primer_src | resources.Concat $destinates -}}
 
     {{- with $path | js.Build $opts -}}
-        <script id="rozard-script" src="{{ .RelPermalink }}" crossorigin="anonymous" defer></script>
+        <script id="rozard-primus-script" src="{{ .RelPermalink }}" crossorigin="anonymous" defer></script>
     {{- end -}}
 
 {{- end -}}
