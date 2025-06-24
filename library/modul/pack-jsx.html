@@ -26,10 +26,8 @@
 {{- end -}}
 
 
-
 {{- if and ( resources.Get $engine_src ) ( resources.Get $format_src ) ( resources.Get $footer_src ) ( resources.Get $primer_src )  -}}
     
-
     {{- $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "targetPath" $destinates -}}
     {{- $path := slice $engine_src $format_src $footer_src $primer_src | resources.Concat $destinates -}}
 
