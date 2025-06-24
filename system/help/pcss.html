@@ -1,8 +1,8 @@
 <!-- model type model -->
-{{- $engine_src := resources.Get "scripts/themes/default/basics/none.css" -}}
-{{- $primer_src := resources.Get "scripts/themes/default/basics/none.css" -}}
-{{- $footer_src := resources.Get "scripts/themes/default/basics/none.css" -}}
-{{- $format_src := resources.Get "scripts/themes/default/basics/none.css" -}}
+{{- $engine_src := resources.Get "scripts/themes/default/core/none.css" -}}
+{{- $primer_src := resources.Get "scripts/themes/default/core/none.css" -}}
+{{- $footer_src := resources.Get "scripts/themes/default/core/none.css" -}}
+{{- $format_src := resources.Get "scripts/themes/default/core/none.css" -}}
 {{- $destinates := printf "%s/deffered/styles.css" ( partial "bin/help/dest.html" . ) -}}
 
 
@@ -19,6 +19,8 @@
     {{- $footer_src = resources.Get . | toCSS -}}
 {{- end -}}
 
+
+
 {{- if .Page.Params.Format.Kind -}}
 
     {{- $var_format := "default" -}}{{- with .Page.Params.Format.Kind -}}{{- $var_format = . -}}{{- end -}}
@@ -26,11 +28,15 @@
     {{- $var_render := printf "scripts/format/%s/%s/css/pack.scss" $var_format $var_models -}}
     {{- $format_src = resources.Get $var_render | toCSS -}}
 
+
 {{- end -}}
 
 
+    {{  $format_src }}
+
+
 {{- if and ( resources.Get $format_src ) ( resources.Get $engine_src ) ( resources.Get $primer_src ) ( resources.Get $footer_src ) -}}
-    
+  
     {{- $path := "" -}}{{- if hugo.IsDevelopment -}}
         {{- $path = slice $format_src $engine_src $primer_src $footer_src | resources.Concat $destinates  -}}
     {{- else -}}

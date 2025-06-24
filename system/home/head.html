@@ -40,8 +40,8 @@
 
 <!-- home scripts processing block -->
 {{- $primer_css := "" -}}{{- $primer_jsx := "" -}}
-{{- $theme_path := printf "scripts/themes/%s/model/home/%s" $vars_themes $vars_models -}}
-{{- $falen_path := printf "scripts/themes/default/model/home/main" -}}
+{{- $theme_path := printf "scripts/themes/%s/home/%s" $vars_themes $vars_models -}}
+{{- $falen_path := printf "scripts/themes/default/home/main" -}}
 
 {{- range ( slice $falen_path $theme_path ) -}}
     
