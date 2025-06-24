@@ -1,1 +1,0 @@
-console.log('critical based javascript module loaded');

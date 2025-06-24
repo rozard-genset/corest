@@ -1,1 +1,0 @@
-console.log('deffers theme javascript module loaded');
