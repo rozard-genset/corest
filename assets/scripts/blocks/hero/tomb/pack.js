@@ -1,1 +1,1 @@
-console.log('block karim loaded')
+console.log('deffer tomb block loaded')

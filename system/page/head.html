@@ -86,6 +86,11 @@
 {{- end -}}{{- .Store.Set "header_css" $header_css -}}{{- .Store.Set "header_jsx" $header_jsx -}}
 
 
+<!-- block scripts processing block -->
+{{- if .Page.Params.Block -}}
+    {{- partial "lib/blocks/head-css.html" . -}}
+    {{- partial "lib/blocks/head-jsx.html" . -}}
+{{- end -}}
 
 
 <!-- compiler scripts processing block -->

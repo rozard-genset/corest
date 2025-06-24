@@ -13,7 +13,11 @@
 {{- end -}}
 
 
-{{ $path := $pages_vars | resources.Concat $destinates }}
+{{- $path := "" -}}{{- if hugo.IsDevelopment -}}
+    {{- $path = $pages_vars  | resources.Concat $destinates  -}}
+{{- else -}}
+    {{- $path = $pages_vars  | resources.Concat $destinates | minify | fingerprint -}}
+{{- end -}}
 
 {{- with $path -}}
     <link id="rozard-blocks-styles" rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
