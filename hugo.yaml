@@ -8,8 +8,6 @@ module:
       target: "layouts/partials/themes"
     - source: "module"
       target: "layouts/partials/module"
-    - source: "format"
-      target: "layouts/partials/format"
     - source: "blocks"
       target: "layouts/partials/blocks"
     - source: "widgets"

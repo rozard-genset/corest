@@ -1,1 +1,0 @@
-console.log('deffers article format javascript module loaded');

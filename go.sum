@@ -1,0 +1,6 @@
+github.com/rozard-framework/article v0.0.0-20250621110525-54d33cd91231 h1:37KgZnijzfNO9MzKOM6UJFTb076N+IxmGIbhM/B3kZ4=
+github.com/rozard-framework/article v0.0.0-20250621110525-54d33cd91231/go.mod h1:OyWFfq2fwN3L/cUZKFEON3fAsQZgOrXTbrXApFF4DnU=
+github.com/rozard-framework/course v0.0.0-20250621105212-2ff6e8ffd741 h1:aQ4ox09z9hlSlhq3px2s4rCo0bdFSGYsil56p3Q8l6Y=
+github.com/rozard-framework/course v0.0.0-20250621105212-2ff6e8ffd741/go.mod h1:OBTYDi3og+q1kvdMdPDgH5xqTkCzRuuRgRIK04g+WEE=
+github.com/rozard-framework/profile v0.0.0-20250621105224-6b41d44b1dba h1:xpyVM3zb/2AEm3ax3imZxsqk+xW1YfAJJnkmoIruDD0=
+github.com/rozard-framework/profile v0.0.0-20250621105224-6b41d44b1dba/go.mod h1:1hgPHaudMAYJC5GyLhCSFgiR3pW+UZMspQI931sSzxs=
