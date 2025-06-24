@@ -1,1 +1,0 @@
-console.log('deffer tomb block loaded')
