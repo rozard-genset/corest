@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+	{{- block "hooks_meta" . -}}{{- end -}}
+	{{- block "hooks_grap" . -}}{{- end -}}
+	{{- block "hooks_head" . -}}{{- end -}}
+	{{- block "hooks_json" . -}}{{- end -}}
+	{{- block "hooks_feed" . -}}{{- end -}}
+</head>
+<body id='{{- partial "lib/bases/uniq.html" . -}}'>
+	{{- block "hooks_heed" . -}}{{- end -}}
+	{{- block "hooks_navs" . -}}{{- end -}}
+	{{- block "hooks_main" . -}}{{- end -}}
+	{{- block "hooks_foot" . -}}{{- end -}}
+    {{- block "hooks_pack" . -}}{{- end -}}
+</body>
+</html>

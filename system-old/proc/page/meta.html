@@ -1,0 +1,164 @@
+<!-- 
+    type  : page
+    block : meta   
+-->
+
+<!-- global render path -->
+{{- $renders := printf "module/default/model/page/meta.html"  -}}
+
+
+<!-- model type vars -->
+{{- $vars_model := "default" -}}
+{{- with .Page.Params.View.Model -}}{{- $vars_model = . -}}{{- end -}}
+
+
+<!-- paged type vars -->
+{{- $vars_paged := "page" -}} 
+{{- with .Page.Params.View.Paged -}}{{- $vars_paged = . -}}{{- end -}}
+
+
+<!-- format kind vars -->
+{{- $vars_kinds := "default" -}} 
+{{- with .Page.Params.Format.Kind -}}{{- $vars_kinds = . -}}{{- end -}}
+
+
+<!-- format skin vars -->
+{{- $vars_skins := "core" -}} 
+{{- with .Page.Params.Format.Skin -}}{{- $vars_skins = . -}}{{- end -}}
+
+
+
+<!-- section page filter  -->
+{{- $section_theming := printf "themes/%s/module/%s/%s/%s/meta.html" .Site.Params.Themes .Section $vars_model $vars_paged | printf "%s"  -}}
+{{- $section_modules := printf "module/%s/%s/model/%s/meta.html" .Section $vars_model $vars_paged | printf "%s"  -}}
+{{- $section_formats := printf "format/%s/%s/meta.html" $vars_kinds $vars_skins  | printf "%s"  -}}
+{{- $section_default := printf "module/default/model/page/meta.html" | printf "%s"  -}}
+
+{{- if and ( .Section ) ( .Page.Params.Format ) ( templates.Exists ( printf "partials/%s" $section_formats ) ) -}}
+
+    {{- $renders = $section_formats -}}
+
+{{- else if and ( .Section ) ( .Site.Params.Themes ) ( templates.Exists ( printf "partials/%s" $section_theming ) ) -}}
+    
+    {{- $renders = $section_theming -}}
+
+{{- else if and ( .Section ) ( templates.Exists ( printf "partials/%s" $section_modules ) ) -}}
+
+    {{- $renders = $section_modules -}}
+
+{{- else if and ( .Section ) ( templates.Exists ( printf "partials/%s" $section_default ) ) -}}
+
+    {{- $renders = $section_default -}}
+
+{{- end -}}
+
+
+<!-- landing page filter -->
+{{- $landing_theming := "" -}}
+{{- $landing_default := "" -}}
+
+{{- if and ( eq .Section "" ) ( .IsHome ) ( .Site.Params.Themes ) ( templates.Exists ( printf "partials/%s" $landing_theming ) )  -}}
+
+    <h1>JUST PAGE WITH THEMES</h1>
+
+{{- else if and ( eq .Section "" ) ( .IsHome ) ( templates.Exists ( printf "partials/%s" $landing_default ) )  -}}
+
+    <h1>JUST PAGE</h1>
+
+{{- end -}}
+
+
+
+<!-- single page filter -->
+{{- $single_theming := "" -}}
+{{- $single_default := "" -}}
+
+{{ if and ( eq .Section "" ) ( eq .IsHome false ) ( templates.Exists ( printf "partials/%s" $single_theming ) ) }}
+
+    <h1> Ordinary Page With Theming  </h1>
+
+{{- else if and ( eq .Section "" ) ( eq .IsHome false ) ( templates.Exists ( printf "partials/%s" $single_default ) )  -}}
+
+    <h1> Ordinary Page Default  </h1>
+
+{{- end -}}
+
+
+{{  $renders }}
+
+
+<!-- page landing default -->
+
+
+
+<!-- page section themes -->
+
+
+
+<!-- page singles themes -->
+
+
+
+<!-- page landing themes -->
+
+
+
+<!-- theming -->
+
+
+<!-- load section source -->
+{{- $renders := printf "module/default/model/page/meta.html" -}}
+{{- $default := printf "themes/default/%s/meta.html" ( trim .Page.RelPermalink "/" ) }}
+{{- $theming := printf "themes/%s/%s/meta.html" .Site.Params.Themes ( trim .Page.RelPermalink "/" ) }}
+
+
+<!-- default section path parameter -->
+{{- $section_default := printf "module/%s/default/model/page/meta.html" .Section | printf "%s"  -}}
+{{- $section_path_01 := printf "module/%s/%s/model/%s/meta.html"        .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+{{- $section_path_02 := printf "module/%s/%s/model/page/meta.html"      .Section .Page.Params.Model | printf "%s"  -}}
+{{- $section_path_03 := printf "module/%s/default/model/%s/meta.html"   .Section .Page.Params.Paged | printf "%s" -}}
+
+{{- if and ( .Section ) ( .Page.Params.Paged ) ( .Page.Params.Model ) ( templates.Exists ( printf "partials/%s" $section_path_01 ) ) -}}
+    {{- $renders = $section_path_01 -}}
+{{- end -}}
+
+{{- if and ( .Section ) ( .Page.Params.Model ) ( templates.Exists ( printf "partials/%s" $section_path_02 ) ) -}}
+    {{- $renders = $section_path_02 -}}
+{{- end -}}
+
+{{- if and ( .Section ) ( .Page.Params.Paged ) ( templates.Exists ( printf "partials/%s" $section_path_03 ) ) -}}
+    {{- $renders = $section_path_03 -}}
+{{- end -}}
+
+{{- if and ( .Section ) ( templates.Exists ( printf "partials/%s" $section_default ) ) -}}
+    {{- $renders = $section_default -}}
+{{- end -}}
+
+
+
+<!-- home path parameter -->
+{{- $home_default := printf "module/default/model/home/meta.html" -}}
+{{- $home_theming := printf "themes/%s/home/meta.html" .Site.Params.Themes -}}
+
+{{- if and ( .IsHome ) ( eq .IsPage false ) ( templates.Exists ( printf "partials/%s" $home_theming ) ) -}}
+    {{- $renders = $home_default -}}
+{{- end -}}
+
+{{- if and ( .IsHome ) ( eq .IsPage false ) ( templates.Exists ( printf "partials/%s" $home_default ) ) -}}
+    {{- $renders = $home_default -}}
+{{- end -}}
+
+
+
+<!-- page theming path parameter -->
+{{- $theme_default := printf "module/%s/%s/model/%s/meta.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+{{- $theme_replace := printf "themes/default/%s/meta.html" ( trim .Page.RelPermalink "/" ) }}
+
+
+
+<!-- page theming path parameter -->
+{{- $page_default := printf "module/%s/%s/model/%s/meta.html" .Section .Page.Params.Model .Page.Params.Paged  | printf "%s" -}}
+
+
+
+<h1>{{- $renders -}}</h1>

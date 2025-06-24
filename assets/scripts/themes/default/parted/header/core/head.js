@@ -1,0 +1,1 @@
+console.log('critical header core model script loaded');

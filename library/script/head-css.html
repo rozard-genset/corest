@@ -1,0 +1,33 @@
+
+{{- $engine_src := resources.Get "scripts/themes/default/basics/none.css" -}}
+{{- $primer_src := resources.Get "scripts/themes/default/basics/none.css" -}}
+{{- $header_src := resources.Get "scripts/themes/default/basics/none.css" -}}
+{{- $format_src := resources.Get "scripts/themes/default/basics/none.css" -}}
+{{- $destinates := printf "%s/sytle.css" ( partial "lib/script/destinate.html" . ) -}}
+
+
+{{- with .Store.Get "engine_css" -}}
+    {{- $engine_src = resources.Get . | toCSS -}}
+{{- end -}}
+
+{{- with .Store.Get "primer_css" -}}
+    {{- $primer_src = resources.Get . | toCSS -}}
+{{- end -}}
+
+{{- with .Store.Get "header_css" -}}
+    {{- $header_src = resources.Get . | toCSS -}}
+{{- end -}}
+
+
+
+{{- if and ( resources.Get $engine_src ) ( resources.Get $primer_src ) ( resources.Get $header_src )  -}}
+
+    {{- $path := "" -}}{{- if hugo.IsDevelopment -}}
+        {{- $path = slice $engine_src $primer_src $header_src | resources.Concat $destinates -}}
+    {{- else -}}
+        {{- $path = slice $engine_src $primer_src $header_src | resources.Concat $destinates | minify  -}}
+    {{- end -}}
+
+    {{- with $path -}}<style>{{ .Content | safeCSS }}</style>{{- end -}}
+
+{{- end -}}

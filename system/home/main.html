@@ -1,0 +1,46 @@
+
+<!-- render path vars -->
+{{- $renders := "" -}}
+
+<!-- model type themes -->
+{{- $vars_themes := "default" -}}
+{{- with .Site.Params.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+
+
+<!-- model type vars -->
+{{- $vars_model := "main" -}}
+{{- with .Page.Params.Views.Model -}}{{- $vars_model = . -}}{{- end -}}
+
+
+<!-- landing page filter -->
+{{- $block_loaders := printf "lib/blocks.html" -}}
+{{- $theme_modeler := printf "themes/%s/model/home/%s/main.html" $vars_themes $vars_model  -}}
+{{- $theme_default := printf "themes/%s/model/home/main/main.html" $vars_themes  -}}
+{{- $based_modeler := printf "themes/default/model/home/%s/main.html" $vars_model -}}
+{{- $based_default := printf "themes/default/model/home/main/main.html" -}}
+
+
+{{- if and ( eq .Page.Params.Views.Model "block" ) ( templates.Exists ( printf "partials/%s" $theme_modeler ) ) -}}
+
+    {{- $renders = $block_loaders -}}
+
+{{- else if and ( eq .Section "" ) ( .IsHome ) ( .Site.Params.Themes ) ( templates.Exists ( printf "partials/%s" $theme_modeler ) )  -}}
+
+    {{- $renders = $theme_modeler -}}
+
+{{- else if and ( eq .Section "" ) ( .IsHome ) ( .Site.Params.Themes ) ( templates.Exists ( printf "partials/%s" $theme_default ) )  -}}
+
+    {{- $renders = $theme_default -}}
+
+{{- else if and ( eq .Section "" ) ( .IsHome ) ( templates.Exists ( printf "partials/%s" $based_modeler ) )  -}}
+
+    {{- $renders = $based_modeler -}}
+
+{{- else if and ( eq .Section "" ) ( .IsHome )  -}}
+
+    {{- $renders = $based_default -}}
+
+{{- end -}}
+
+
+{{ partial $renders . }}

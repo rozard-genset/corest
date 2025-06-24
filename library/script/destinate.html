@@ -1,0 +1,30 @@
+
+<!-- render -->
+{{- $render := "" -}}
+
+<!-- model -->
+{{- $vars_models := "main" -}}
+{{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
+
+{{- if .IsSection -}}
+    
+    {{- $render = printf "assets/scripts/%s/item/%s" .Section $vars_models -}}
+
+{{ else if and ( .IsPage ) ( .Section ) }}
+
+    {{- $vars_format := "default" -}}
+    {{- with .Page.Params.Format.Kind -}}{{- $vars_format = . -}}{{- end -}}
+    {{- $render = printf "assets/scripts/%s/page/%s" .Section $vars_format -}}
+
+{{ else if .IsHome }}
+
+    {{- $render = printf "assets/scripts/homes/" -}}
+
+{{ else }}
+
+    {{- $vars_proto := ( trim .Page.RelPermalink "/" ) -}}
+    {{- $render = printf "assets/scripts/singles/%s" $vars_proto -}}
+
+{{- end -}}
+
+{{ return $render }}
