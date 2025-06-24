@@ -1,7 +1,7 @@
 {{- $block_path := "" -}}
 {{- $pages_vars := slice -}}
 {{- $block_type := slice "hero" -}}
-{{- $destinates := printf "%s/head-blocks.css" ( partial "lib/bases/dest.html" . ) -}}
+{{- $destinates := printf "%s/critical/blocks.css" ( partial "lib/bases/dest.html" . ) -}}
 
 {{- range ( index .Page.Params.Block ) -}}
     {{- $block_vars := .type -}}{{- $block_page := .data -}}
