@@ -1,1 +1,0 @@
-console.log('deffers footer core themes script loaded');

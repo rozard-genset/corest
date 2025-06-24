@@ -1,1 +1,0 @@
-console.log('deffers footer lite themes script loaded');

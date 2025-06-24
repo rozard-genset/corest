@@ -56,8 +56,8 @@
 
 <!-- parted scripts processing block -->
 {{- $header_css := "" -}}{{- $header_jsx := "" -}}
-{{- $theme_header := printf "scripts/themes/%s/parted/header/%s" $vars_themes $vars_header -}}
-{{- $falen_header := printf "scripts/themes/default/parted/header/core" -}}
+{{- $theme_header := printf "scripts/parted/header/%s" $vars_header -}}
+{{- $falen_header := printf "scripts/parted/header/core" -}}
 
 {{- range ( slice $falen_header $theme_header ) -}}
 

@@ -1,1 +1,0 @@
-console.log('deffers header core model script loaded');

@@ -60,8 +60,8 @@
 
 <!-- parted scripts processing block -->
 {{- $footer_css := "" -}}{{- $footer_jsx := "" -}}
-{{- $theme_footer := printf "scripts/themes/%s/parted/footer/%s" $vars_themes $vars_footer -}}
-{{- $falen_footer := printf "scripts/themes/default/parted/footer/core" -}}
+{{- $theme_footer := printf "scripts/parted/footer/%s" $vars_footer -}}
+{{- $falen_footer := printf "scripts/parted/footer/core" -}}
 
 {{- range ( slice $falen_footer $theme_footer ) -}}
 

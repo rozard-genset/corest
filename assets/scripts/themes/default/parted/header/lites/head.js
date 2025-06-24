@@ -1,1 +1,0 @@
-console.log('critical header lite model script loaded');

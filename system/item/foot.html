@@ -14,8 +14,8 @@
 {{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
 
 <!-- filter -->
-{{- $based_core := printf "themes/default/parted/footer/core/main.html" -}}
-{{- $based_skin := printf "themes/default/parted/footer/%s/main.html" $vars_footer -}}
+{{- $based_core := printf "parted/footer/core/main.html" -}}
+{{- $based_skin := printf "parted/footer/%s/main.html" $vars_footer -}}
 
 {{- $theme_core := printf "themes/%s/parted/footer/core/main.html" $vars_themes $vars_footer -}}
 {{- $theme_skin := printf "themes/%s/parted/footer/%s/main.html"   $vars_themes $vars_footer -}}

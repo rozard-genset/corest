@@ -1,1 +1,0 @@
-console.log('critical footer core themes script loaded');

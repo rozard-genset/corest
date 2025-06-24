@@ -16,8 +16,8 @@
 
 
 <!-- filter -->
-{{- $based_core := printf "themes/default/parted/header/core/main.html" -}}
-{{- $based_skin := printf "themes/default/parted/header/%s/main.html" $vars_header -}}
+{{- $based_core := printf "parted/header/core/main.html" -}}
+{{- $based_skin := printf "parted/header/%s/main.html" $vars_header -}}
 
 {{- $theme_core := printf "themes/%s/parted/header/core/main.html" $vars_themes -}}
 {{- $theme_skin := printf "themes/%s/parted/header/%s/main.html" $vars_themes $vars_header -}}
