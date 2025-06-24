@@ -1,0 +1,43 @@
+<!-- render -->
+{{- $render := "" -}}
+
+
+<!-- themes -->
+{{- $vars_themes := "default" -}}
+{{- with .Site.Params.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+
+
+<!-- model -->
+{{- $vars_models := "main" -}}
+{{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
+
+
+<!-- module -->
+{{- $based_core := printf "themes/default/model/page/main/main.html" -}}
+{{- $based_skin := printf "themes/default/model/page/%s/main.html" $vars_models -}}
+
+{{- $theme_core := printf "themes/%s/model/page/main/main.html" $vars_themes  -}}
+{{- $theme_skin := printf "themes/%s/model/page/%s/main.html" $vars_themes $vars_models  -}}
+
+{{- $point_core := printf "themes/default/model/item/main/main.html" -}}
+{{- $point_skin := printf "themes/%s/model/item/%s/main.html" $vars_themes $vars_models -}}
+
+{{- $modul_core := printf "module/%s/item/%s/main.html" .Section  $vars_models -}}
+{{- $modul_skin := printf "themes/module/%s/item/%s/main.html" .Section  $vars_models -}}
+
+
+{{- range ( slice $based_core $based_skin $theme_core $theme_skin $point_core $point_skin $modul_core $modul_skin ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{- end -}}
+
+
+<!-- blocks -->
+{{- with .Page.Params.Block  -}}
+    {{- $render = printf "lib/blocks/render.html" -}}
+{{- end -}}
+
+
+<!-- process -->
+{{ partial $render . }}
