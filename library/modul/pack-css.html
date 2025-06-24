@@ -19,6 +19,15 @@
     {{- $footer_src = resources.Get . | toCSS -}}
 {{- end -}}
 
+{{- if .Page.Params.Format.Kind -}}
+
+    {{- $var_format := "default" -}}{{- with .Page.Params.Format.Kind -}}{{- $var_format = . -}}{{- end -}}
+    {{- $var_models := "main" -}}{{- with .Page.Params.Format.Skin -}}{{- $var_models = . -}}{{- end -}}
+    {{- $var_render := printf "scripts/format/%s/%s/css/pack.scss" $var_format $var_models -}}
+    {{- $format_src = resources.Get $var_render | toCSS -}}
+
+{{- end -}}
+
 
 {{- if and ( resources.Get $format_src ) ( resources.Get $engine_src ) ( resources.Get $primer_src ) ( resources.Get $footer_src ) -}}
     

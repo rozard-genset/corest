@@ -92,6 +92,11 @@
 {{- end -}}
 
 
+<!-- block formats processing block -->
+{{- if templates.Exists "partials/lib/format/pack-jsm.html"  -}}
+    {{- partial "lib/format/pack-jsm.html" . -}}
+{{- end -}}
+
 
 <!-- modul scripts processing block -->
 {{- partial "lib/modul/pack-css.html" . -}}
