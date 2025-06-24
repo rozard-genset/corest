@@ -23,8 +23,8 @@
 {{- $theme_core := printf "themes/%s/parted/header/core/main.html" $vars_themes -}}
 {{- $theme_skin := printf "themes/%s/parted/header/%s/main.html" $vars_themes $vars_header -}}
 
-{{- $point_core := printf "themes/default/model/home/main/navs.html" -}}
-{{- $point_skin := printf "themes/%s/model/home/%s/navs.html" $vars_themes $vars_models -}}
+{{- $point_core := printf "themes/default/home/main/navs.html" -}}
+{{- $point_skin := printf "themes/%s/home/%s/navs.html" $vars_themes $vars_models -}}
 
 {{- range ( slice $based_core $based_skin $theme_core $theme_skin $point_core $point_skin ) -}}
     {{- if templates.Exists ( printf "partials/%s" . )  -}}{{- $renders = . -}}{{- end -}}

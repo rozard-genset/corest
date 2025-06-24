@@ -21,8 +21,8 @@
 {{- $theme_core := printf "themes/%s/parted/footer/core/main.html" $vars_themes $vars_footer -}}
 {{- $theme_skin := printf "themes/%s/parted/footer/%s/main.html"   $vars_themes $vars_footer -}}
 
-{{- $point_core := printf "themes/default/model/page/main/foot.html" -}}
-{{- $point_skin := printf "themes/%s/model/page/%s/foot.html" $vars_themes $vars_models -}}
+{{- $point_core := printf "themes/default/page/main/foot.html" -}}
+{{- $point_skin := printf "themes/%s/page/%s/foot.html" $vars_themes $vars_models -}}
 
 {{- $modul_core := printf "module/%s/page/%s/foot.html" .Section  $vars_models -}}
 {{- $modul_skin := printf "themes/module/%s/page/%s/foot.html" .Section  $vars_models -}}

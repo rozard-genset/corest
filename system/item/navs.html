@@ -22,8 +22,8 @@
 {{- $theme_core := printf "themes/%s/parted/header/core/main.html" $vars_themes -}}
 {{- $theme_skin := printf "themes/%s/parted/header/%s/main.html" $vars_themes $vars_header -}}
 
-{{- $point_core := printf "themes/default/model/item/main/navs.html" $vars_models -}}
-{{- $point_skin := printf "themes/%s/model/item/%s/navs.html" $vars_themes $vars_models -}}
+{{- $point_core := printf "themes/default/item/main/navs.html" $vars_models -}}
+{{- $point_skin := printf "themes/%s/item/%s/navs.html" $vars_themes $vars_models -}}
 
 {{- $modul_core := printf "module/%s/item/%s/navs.html" .Section  $vars_models -}}
 {{- $modul_skin := printf "themes/module/%s/item/%s/navs.html" .Section  $vars_models -}}
