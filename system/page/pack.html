@@ -26,7 +26,7 @@
 <!-- main scripts processing block -->
 {{- $engine_css := "" -}}{{- $engine_jsx := "" -}}
 {{- $theme_engine := printf "scripts/themes/%s/core" $vars_themes -}}
-{{- $falen_engine := printf "scripts/themes/default/core" $vars_themes -}}
+{{- $falen_engine := printf "scripts/themes/minang/core" $vars_themes -}}
 
 {{- range ( slice $falen_engine $theme_engine ) -}}
 
@@ -43,10 +43,10 @@
 <!-- module scripts processing block -->
 {{- $primer_css := "" -}}{{-  $primer_jsx := "" -}}
 {{- $skin_paths := ( trim .Page.RelPermalink "/" ) -}}
-{{- $falen_path := printf "scripts/themes/default/page/%s" $vars_models -}}
-{{- $prime_path := printf "scripts/themes/default/page/%s" $vars_models -}}
+{{- $falen_path := printf "scripts/themes/minang/page/%s" $vars_models -}}
+{{- $prime_path := printf "scripts/themes/minang/page/%s" $vars_models -}}
 {{- $theme_path := printf "scripts/themes/%s/page/%s" $vars_themes $vars_models -}}
-{{- $prime_page := printf "scripts/themes/default/page/%s"  $skin_paths -}}
+{{- $prime_page := printf "scripts/themes/minang/page/%s"  $skin_paths -}}
 {{- $theme_page := printf "scripts/themes/%s/page/%s" $vars_themes $skin_paths -}}
 
 
