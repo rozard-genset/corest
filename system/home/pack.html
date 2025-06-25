@@ -35,7 +35,6 @@
 {{- end -}}{{- .Store.Set "engine_css" $engine_css -}}{{- .Store.Set "engine_jsx" $engine_jsx -}}
 
 
-
 <!-- home scripts processing block -->
 {{- $primer_css := "" -}}
 {{- $primer_jsx := "" -}}
@@ -51,7 +50,7 @@
 
 {{- end -}}{{- .Store.Set "primer_css" $primer_css -}}{{- .Store.Set "primer_jsx" $primer_jsx -}}
 
-
+{{  $primer_css }}
 
 <!-- parted scripts processing block -->
 {{- $footer_css := "" -}}

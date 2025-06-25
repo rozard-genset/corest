@@ -20,7 +20,7 @@
 {{- end -}}
 
 
-{{- if and ( ne .Page.Params.Format.Kind "" ) ( .IsPage ) -}}
+{{- if and ( .Page.Params.Format.Kind ) ( .IsPage ) -}}
 
     {{- $var_format := "default" -}}{{- with .Page.Params.Format.Kind -}}{{- $var_format = . -}}{{- end -}}
     {{- $var_models := "main" -}}{{- with .Page.Params.Format.Skin -}}{{- $var_models = . -}}{{- end -}}
