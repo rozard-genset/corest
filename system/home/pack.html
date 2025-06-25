@@ -8,11 +8,11 @@
 
 <!-- themes vars -->
 {{- $vars_themes := "default" -}}
-{{- with .Site.Params.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+{{- with .Site.Params.System.Themes -}}{{- $vars_themes = . -}}{{- end -}}
 
 <!-- footer vars -->
 {{- $vars_footer := "core" -}}
-{{- with .Site.Params.Render.footer -}}{{- $vars_footer = . -}}{{- end -}}
+{{- with .Site.Params.System.Render.Footer -}}{{- $vars_footer = . -}}{{- end -}}
 
 <!-- model vars -->
 {{- $vars_models := "main" -}}

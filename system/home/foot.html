@@ -3,7 +3,8 @@
 
 <!-- themes -->
 {{- $vars_themes := "default" -}}
-{{- with .Site.Params.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+{{- with .Site.Params.System.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+
 
 <!-- footer -->
 {{- $vars_footer := "main" -}}
