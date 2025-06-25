@@ -23,8 +23,8 @@
 
 <!-- main scripts processing block -->
 {{- $engine_css := "" -}}{{- $engine_jsx := "" -}}
-{{- $theme_engine := printf "scripts/themes/%s/basics" $vars_themes -}}
-{{- $falen_engine := printf "scripts/themes/default/basics" $vars_themes -}}
+{{- $theme_engine := printf "scripts/themes/%s/core" $vars_themes -}}
+{{- $falen_engine := printf "scripts/themes/default/core"  -}}
 
 {{- range ( slice $falen_engine $theme_engine ) -}}
 
@@ -35,7 +35,7 @@
 
 {{- end -}}{{- .Store.Set "engine_css" $engine_css -}}{{- .Store.Set "engine_jsx" $engine_jsx -}}
 
-
+{{ $engine_css }}
 
 
 <!-- home scripts processing block -->
