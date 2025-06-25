@@ -1,5 +1,2 @@
-{{ if and ( eq .Section "page" ) ( .IsSection ) }}
-    <meta http-equiv="refresh" content="0; url=/" />
-{{ end }}
-
+{{- partial "bin/help/rout.html" . -}}
 {{- partial "bin/help/meta.html" . -}}
