@@ -65,9 +65,14 @@
 {{- $prime_page := printf "scripts/themes/minang/page/%s" $skin_paths -}}
 {{- $theme_page := printf "scripts/themes/%s/%s" $vars_themes $skin_paths -}}
 
-{{- if and ( .Section ) ( .IsPage ) -}}
-    {{- $prime_path = printf "scripts/module/%s/page/%s" .Section $vars_models -}}
-    {{- $theme_path = printf "scripts/themes/%s/module/%s/page/%s" $vars_themes .Section $vars_models -}}    
+{{- if .IsPage -}}
+
+    {{ if and ( .Section ) ( ne .Section "page" ) }}
+        {{- $prime_path = printf "scripts/module/%s/page/%s" .Section $vars_models -}}
+        {{- $theme_path = printf "scripts/themes/%s/module/%s/page/%s" $vars_themes .Section $vars_models -}}    
+  
+    {{- end -}}
+
 {{- end -}}
 
 
@@ -79,6 +84,9 @@
     {{- with resources.Get $jsx -}}{{- $primer_jsx = $jsx -}}{{- end -}}
 
 {{- end -}}{{- .Store.Set "primer_css" $primer_css -}}{{- .Store.Set "primer_jsx" $primer_jsx -}}
+
+
+
 
 
 <!-- parted scripts processing block -->
