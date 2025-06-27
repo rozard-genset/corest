@@ -46,9 +46,9 @@
 {{- $falen_path := printf "scripts/themes/minang/page/%s" $vars_models -}}
 {{- $prime_path := printf "scripts/themes/minang/page/%s" $vars_models -}}
 {{- $theme_path := printf "scripts/themes/%s/page/%s" $vars_themes $vars_models -}}
-{{- $prime_page := printf "scripts/themes/minang/page/%s"  $skin_paths -}}
-{{- $theme_page := printf "scripts/themes/%s/page/%s" $vars_themes $skin_paths -}}
 
+{{- $prime_page := printf "scripts/themes/minang/page/%s" $skin_paths -}}
+{{- $theme_page := printf "scripts/themes/%s/%s" $vars_themes $skin_paths -}}
 
 {{- if and ( .Section ) ( .IsPage ) -}}
     {{- $prime_path = printf "scripts/module/%s/page/%s" .Section $vars_models -}}
@@ -66,9 +66,7 @@
 
 {{- end -}}{{- .Store.Set "primer_css" $primer_css -}}{{- .Store.Set "primer_jsx" $primer_jsx -}}
 
-
-
-
+{{$primer_css   }}
 
 <!-- parted scripts processing block -->
 {{- $header_css := "" -}}
