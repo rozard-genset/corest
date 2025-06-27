@@ -41,7 +41,6 @@
     {{- end -}}
 
     {{- with $path -}}
-        <link id="rozard-primus-styles" rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link id="pack-styles" rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
+        <link id="pack-styles" rel="stylesheet" href="{{ .RelPermalink }}">
     {{- end -}}
 {{- end -}}
