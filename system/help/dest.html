@@ -2,29 +2,34 @@
 <!-- render -->
 {{- $render := "" -}}
 
+
 <!-- model -->
 {{- $vars_models := "main" -}}
 {{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
 
-{{- if .IsSection -}}
-    
-    {{- $render = printf "assets/scripts/%s/item/%s" .Section $vars_models -}}
-
-{{ else if and ( .IsPage ) ( .Section ) }}
-
-    {{- $vars_format := "default" -}}
-    {{- with .Page.Params.Format.Kind -}}{{- $vars_format = . -}}{{- end -}}
-    {{- $render = printf "assets/scripts/%s/page/%s" .Section $vars_format -}}
-
-{{ else if .IsHome }}
+{{-  if .IsHome -}}
 
     {{- $render = printf "assets/scripts/homes/" -}}
 
-{{ else }}
+{{- else if .IsSection -}}
+    
+    {{- $render = printf "assets/scripts/%s/item/%s" .Section $vars_models -}}
 
-    {{- $vars_proto := ( trim .Page.RelPermalink "/" ) -}}
-    {{- $render = printf "assets/scripts/singles/%s" $vars_proto -}}
+{{ else if .IsPage }}
+    
+    {{- if and ( .Section  ) ( ne .Section "page" ) -}}
+
+        {{- $vars_format := "default" -}}
+        {{- with .Page.Params.Format.Kind -}}{{- $vars_format = . -}}{{- end -}}
+        {{- $render = printf "assets/scripts/%s/page/%s" .Section $vars_format -}}
+
+    {{- else -}}
+
+        {{- $vars_proto := ( trim .Page.RelPermalink "/" ) -}}
+        {{- $render = printf "assets/scripts/singles/%s" $vars_proto -}}
+
+    {{ end }}
 
 {{- end -}}
 
-{{ return $render }}
+{{- return $render -}}

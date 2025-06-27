@@ -40,6 +40,21 @@
 
 
 
+{{- $skin_paths := ( trim .Page.RelPermalink "/" ) -}}
+
+{{- $based_core := printf "themes/minang/page/main/main.html" -}}
+{{- $based_skin := printf "themes/minang/page/%s/main.html" $vars_models -}}
+
+{{- $theme_core := printf "themes/%s/page/main/main.html" $vars_themes  -}}
+{{- $theme_skin := printf "themes/%s/page/%s/main.html" $vars_themes $vars_models  -}}
+
+{{- $modul_core := printf "module/%s/page/%s/main.html" .Section  $vars_models -}}
+{{- $modul_skin := printf "themes/module/%s/page/%s/main.html" .Section  $vars_models -}}
+
+{{- $prime_page := printf "themes/minang/%s/main.html" $skin_paths -}}
+{{- $theme_page := printf "themes/%s/%s/main.html" $vars_themes $skin_paths -}}
+
+
 <!-- module scripts processing block -->
 {{- $primer_css := "" -}}{{-  $primer_jsx := "" -}}
 {{- $skin_paths := ( trim .Page.RelPermalink "/" ) -}}
@@ -56,7 +71,6 @@
 {{- end -}}
 
 
-
 {{- range ( slice $falen_path $prime_path $theme_path $prime_page $theme_page ) -}}
 
     {{- $css := printf "%s/css/head.scss" . -}}
@@ -66,7 +80,6 @@
 
 {{- end -}}{{- .Store.Set "primer_css" $primer_css -}}{{- .Store.Set "primer_jsx" $primer_jsx -}}
 
-{{$primer_css   }}
 
 <!-- parted scripts processing block -->
 {{- $header_css := "" -}}
