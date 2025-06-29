@@ -9,24 +9,28 @@
 
 {{-  if .IsHome -}}
 
+
     {{- $render = printf "assets/scripts/homes/" -}}
+
 
 {{- else if .IsSection -}}
     
-    {{- $render = printf "assets/scripts/%s/item/%s" .Section $vars_models -}}
+    {{ if ne .Section "page"  }}
+        {{- $render = printf "/assets/scripts/%s/item/%s" .Section $vars_models -}}
+    {{ end }}
+
 
 {{ else if .IsPage }}
     
-    {{- if and ( .Section  ) ( ne .Section "page" ) -}}
+    {{- if and ( ne .Section "" ) ( ne .Section "page" ) -}}
 
         {{- $vars_format := "default" -}}
         {{- with .Page.Params.Format.Kind -}}{{- $vars_format = . -}}{{- end -}}
-        {{- $render = printf "assets/scripts/%s/page/%s" .Section $vars_format -}}
+        {{- $render = printf "/assets/scripts/%s/page/%s" .Section $vars_format -}}
 
     {{- else -}}
-
-        {{- $vars_proto := ( trim .Page.RelPermalink "/" ) -}}
-        {{- $render = printf "assets/scripts/singles/%s" $vars_proto -}}
+        
+        {{- $render = printf "/assets/scripts/singles/%s" ( .Title | urlize )  -}}
 
     {{ end }}
 
