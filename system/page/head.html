@@ -40,21 +40,40 @@
 
 
 
+{{- $skin_paths := ( trim .Page.RelPermalink "/" ) -}}
+
+{{- $based_core := printf "themes/minang/page/main/main.html" -}}
+{{- $based_skin := printf "themes/minang/page/%s/main.html" $vars_models -}}
+
+{{- $theme_core := printf "themes/%s/page/main/main.html" $vars_themes  -}}
+{{- $theme_skin := printf "themes/%s/page/%s/main.html" $vars_themes $vars_models  -}}
+
+{{- $modul_core := printf "module/%s/page/%s/main.html" .Section  $vars_models -}}
+{{- $modul_skin := printf "themes/module/%s/page/%s/main.html" .Section  $vars_models -}}
+
+{{- $prime_page := printf "themes/minang/%s/main.html" $skin_paths -}}
+{{- $theme_page := printf "themes/%s/%s/main.html" $vars_themes $skin_paths -}}
+
+
 <!-- module scripts processing block -->
 {{- $primer_css := "" -}}{{-  $primer_jsx := "" -}}
 {{- $skin_paths := ( trim .Page.RelPermalink "/" ) -}}
 {{- $falen_path := printf "scripts/themes/minang/page/%s" $vars_models -}}
 {{- $prime_path := printf "scripts/themes/minang/page/%s" $vars_models -}}
 {{- $theme_path := printf "scripts/themes/%s/page/%s" $vars_themes $vars_models -}}
-{{- $prime_page := printf "scripts/themes/minang/page/%s"  $skin_paths -}}
-{{- $theme_page := printf "scripts/themes/%s/page/%s" $vars_themes $skin_paths -}}
 
+{{- $prime_page := printf "scripts/themes/minang/page/%s" $skin_paths -}}
+{{- $theme_page := printf "scripts/themes/%s/%s" $vars_themes $skin_paths -}}
 
-{{- if and ( .Section ) ( .IsPage ) -}}
-    {{- $prime_path = printf "scripts/module/%s/page/%s" .Section $vars_models -}}
-    {{- $theme_path = printf "scripts/themes/%s/module/%s/page/%s" $vars_themes .Section $vars_models -}}    
+{{- if .IsPage -}}
+
+    {{ if and ( .Section ) ( ne .Section "page" ) }}
+        {{- $prime_path = printf "scripts/module/%s/page/%s" .Section $vars_models -}}
+        {{- $theme_path = printf "scripts/themes/%s/module/%s/page/%s" $vars_themes .Section $vars_models -}}    
+  
+    {{- end -}}
+
 {{- end -}}
-
 
 
 {{- range ( slice $falen_path $prime_path $theme_path $prime_page $theme_page ) -}}

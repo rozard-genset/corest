@@ -9,10 +9,12 @@
 
 <!-- model -->
 {{- $vars_models := "main" -}}
-{{- with .Page.Params.Model -}}{{- $vars_model = . -}}{{- end -}}
+{{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
 
 
 <!-- module -->
+{{- $skin_paths := ( trim .Page.RelPermalink "/" ) -}}
+
 {{- $based_core := printf "themes/minang/page/main/main.html" -}}
 {{- $based_skin := printf "themes/minang/page/%s/main.html" $vars_models -}}
 
@@ -22,8 +24,12 @@
 {{- $modul_core := printf "module/%s/page/%s/main.html" .Section  $vars_models -}}
 {{- $modul_skin := printf "themes/module/%s/page/%s/main.html" .Section  $vars_models -}}
 
-{{- range ( slice $based_core $based_skin $theme_core $theme_skin $modul_core $modul_skin ) -}}
+{{- $prime_page := printf "themes/minang/%s/main.html" $skin_paths -}}
+{{- $theme_page := printf "themes/%s/%s/main.html" $vars_themes $skin_paths -}}
+
+{{- range ( slice $based_core $based_skin $theme_core $theme_skin $modul_core $modul_skin $prime_page  $theme_page ) -}}
     {{- if templates.Exists ( printf "partials/%s" . )  -}}
+       
         {{- $render = . -}}
     {{- end -}}
 {{- end -}}

@@ -1,0 +1,46 @@
+<!-- render -->
+{{- $render := "" -}}
+
+
+<!-- themes -->
+{{- $vars_themes := "minang" -}}
+{{- with .Site.Params.System.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+
+
+<!-- model -->
+{{- $vars_models := "main" -}}
+{{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
+
+
+<!-- module -->
+{{- $skin_paths := ( trim .Page.RelPermalink "/" ) -}}
+
+{{- $based_core := printf "themes/minang/page/main/heed.html" -}}
+{{- $based_skin := printf "themes/minang/page/%s/heed.html" $vars_models -}}
+
+{{- $theme_core := printf "themes/%s/page/main/heed.html" $vars_themes  -}}
+{{- $theme_skin := printf "themes/%s/page/%s/heed.html" $vars_themes $vars_models  -}}
+
+{{- $modul_core := printf "module/%s/page/%s/heed.html" .Section  $vars_models -}}
+{{- $modul_skin := printf "themes/module/%s/page/%s/heed.html" .Section  $vars_models -}}
+
+{{- $prime_page := printf "themes/minang/%s/heed.html" $skin_paths -}}
+{{- $theme_page := printf "themes/%s/%s/heed.html" $vars_themes $skin_paths -}}
+
+
+
+{{- range ( slice $based_core $based_skin $theme_core $theme_skin $modul_core $modul_skin $prime_page $theme_page ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{- end -}}
+
+
+<!-- blocks -->
+{{- with .Page.Params.Block  -}}
+    {{- $render = printf "lib/blocks/render.html" -}}
+{{- end -}}
+
+
+<!-- process -->
+{{ partial $render . }}
