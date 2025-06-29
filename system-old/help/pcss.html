@@ -1,0 +1,46 @@
+<!-- model type model -->
+{{- $engine_src := resources.Get "scripts/themes/minang/core/none.css" -}}
+{{- $primer_src := resources.Get "scripts/themes/minang/core/none.css" -}}
+{{- $footer_src := resources.Get "scripts/themes/minang/core/none.css" -}}
+{{- $format_src := resources.Get "scripts/themes/minang/core/none.css" -}}
+{{- $destinates := printf "%s/deffered/styles.css" ( partial "bin/help/dest.html" . ) -}}
+
+
+
+{{- with .Store.Get "engine_css" -}}
+    {{- $engine_src = resources.Get . | toCSS -}}
+{{- end -}}
+
+{{- with .Store.Get "primer_css" -}}
+    {{- $primer_src = resources.Get . | toCSS -}}
+{{- end -}}
+
+{{- with .Store.Get "footer_css" -}}
+    {{- $footer_src = resources.Get . | toCSS -}}
+{{- end -}}
+
+
+{{- if and ( ne .Page.Params.Format.Kind "" ) ( .IsPage ) -}}
+
+    {{- $var_format := "default" -}}{{- with .Page.Params.Format.Kind -}}{{- $var_format = . -}}{{- end -}}
+    {{- $var_models := "main" -}}{{- with .Page.Params.Format.Skin -}}{{- $var_models = . -}}{{- end -}}
+    {{- $var_render := printf "scripts/format/%s/%s/css/pack.scss" $var_format $var_models -}}
+    {{ with resources.Get $var_render }}
+        {{- $format_src = resources.Get . | toCSS -}}
+    {{ end }}
+
+{{- end -}}
+
+
+ {{- if and ( resources.Get $format_src ) ( resources.Get $engine_src ) ( resources.Get $primer_src ) ( resources.Get $footer_src ) -}}
+  
+    {{- $path := "" -}}{{- if hugo.IsDevelopment -}}
+        {{- $path = slice $format_src $engine_src $primer_src $footer_src | resources.Concat $destinates  -}}
+    {{- else -}}
+        {{- $path = slice $format_src $engine_src $primer_src $footer_src | resources.Concat $destinates | minify | fingerprint -}}
+    {{- end -}}
+
+    {{- with $path -}}
+        <link id="pack-styles" rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- end -}}
+{{- end -}}

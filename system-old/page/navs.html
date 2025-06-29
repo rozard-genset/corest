@@ -1,0 +1,38 @@
+<!-- render -->
+{{- $renders := "" -}}
+
+<!-- themes -->
+{{- $vars_themes := "minang" -}}
+{{- with .Site.Params.System.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+
+
+<!-- header -->
+{{- $vars_header := "main" -}}
+{{- with .Site.Params.Renders.Header -}}{{- $vars_header = . -}}{{- end -}}
+
+<!-- models -->
+{{- $vars_models := "main" -}}
+{{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
+
+
+<!-- filter -->
+{{- $based_core := printf "parted/header/core/main.html" -}}
+{{- $based_skin := printf "parted/header/%s/main.html" $vars_header -}}
+
+{{- $theme_core := printf "themes/%s/parted/header/core/main.html" $vars_themes -}}
+{{- $theme_skin := printf "themes/%s/parted/header/%s/main.html" $vars_themes $vars_header -}}
+
+{{- $point_core := printf "themes/minang/page/main/navs.html" -}}
+{{- $point_skin := printf "themes/%s/page/%s/navs.html" $vars_themes $vars_models -}}
+
+{{- $modul_core := printf "module/%s/page/%s/navs.html" .Section  $vars_models -}}
+{{- $modul_skin := printf "themes/module/%s/page/%s/navs.html" .Section  $vars_models -}}
+
+{{- range ( slice $based_core $based_skin $theme_core $theme_skin $point_core $point_skin $modul_core $modul_skin ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}
+        {{- $renders = . -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- partial $renders . -}}

@@ -3,7 +3,7 @@ module:
     - source: "engine/model"
       target: "layouts/_default"
     - source: "engine/scripts"
-      target: "assets/scripts/default"
+      target: "assets/scripts/core"
     - source: "system"
       target: "layouts/partials/bin"
     - source: "library"

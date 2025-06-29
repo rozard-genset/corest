@@ -1,0 +1,38 @@
+{{- $engine_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $primer_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $footer_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $format_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $destinates := printf "%s/deffered/script.js" ( partial "bin/help/dest.html" . ) -}}
+
+
+{{- with .Store.Get "engine_jsx" -}}
+    {{- $engine_src = resources.Get . -}}
+{{- end -}}
+
+{{- with .Store.Get "primer_jsx" -}}
+    {{- $primer_src = resources.Get . -}}
+{{- end -}}
+
+{{- with .Store.Get "footer_jsx" -}}
+    {{- $footer_src = resources.Get . -}}
+{{- end -}}
+
+
+{{- if .Page.Params.Format.Kind -}}
+    {{- $var_format := "default" -}}{{- with .Page.Params.Format.Kind -}}{{- $var_format = . -}}{{- end -}}
+    {{- $var_models := "main" -}}{{- with .Page.Params.Format.Skin -}}{{- $var_models = . -}}{{- end -}}
+    {{- $var_render := printf "scripts/format/%s/%s/jsx/pack.js" $var_format $var_models -}}
+    {{- $format_src = resources.Get $var_render -}}
+{{- end -}}
+
+
+{{- if and ( resources.Get $engine_src ) ( resources.Get $format_src ) ( resources.Get $footer_src ) ( resources.Get $primer_src )  -}}
+    
+    {{- $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "targetPath" $destinates -}}
+    {{- $path := slice $engine_src $format_src $footer_src $primer_src | resources.Concat $destinates -}}
+
+    {{- with $path | js.Build $opts -}}
+        <script id="rozard-primus-script" src="{{ .RelPermalink }}" crossorigin="anonymous" defer></script>
+    {{- end -}}
+
+{{- end -}}

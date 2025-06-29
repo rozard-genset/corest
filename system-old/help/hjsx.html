@@ -1,0 +1,36 @@
+{{- $engine_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $primer_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $header_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $format_src := resources.Get "scripts/themes/minang/core/none.js" -}}
+{{- $destinates := printf "%s/critical/script.js" ( partial "bin/help/dest.html" . ) -}}
+
+
+{{- with .Store.Get "engine_jsx" -}}
+    {{- $engine_src = resources.Get . -}}
+{{- end -}}
+
+{{- with .Store.Get "primer_jsx" -}}
+    {{- $primer_src = resources.Get .  -}}
+{{- end -}}
+
+{{- with .Store.Get "header_jsx" -}}
+    {{- $header_src = resources.Get . -}}
+{{- end -}}
+
+
+
+{{- if and ( resources.Get $engine_src ) ( resources.Get $primer_src ) ( resources.Get $header_src )  -}}
+
+    {{- $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "targetPath" $destinates -}}
+
+    {{- $path := "" -}}{{- if hugo.IsDevelopment -}}
+        {{- $path = slice $engine_src $primer_src $header_src | resources.Concat $destinates -}}
+    {{- else -}}
+        {{- $path = slice $engine_src $primer_src $header_src | resources.Concat $destinates | minify  -}}
+    {{- end -}}
+
+    {{- with $path | js.Build $opts -}}
+        <script>{{- .Content | safeJS -}}</script>
+    {{- end -}}
+
+{{- end -}}

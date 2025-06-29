@@ -1,0 +1,36 @@
+<!-- render -->
+{{- $renders := "" -}}
+
+<!-- themes -->
+{{- $vars_themes := "minang" -}}
+{{- with .Site.Params.System.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+
+
+<!-- footer -->
+{{- $vars_footer := "main" -}}
+{{- with .Site.Params.Renders.footers -}}{{- $vars_footer = . -}}{{- end -}}
+ 
+<!-- models -->
+{{- $vars_models := "main" -}}
+{{- with .Page.Params.Model -}}{{- $vars_models = . -}}{{- end -}}
+
+
+<!-- filter -->
+{{- $based_core := printf "parted/footer/core/main.html" -}}
+{{- $based_skin := printf "parted/footer/%s/main.html" $vars_footer -}}
+
+{{- $theme_core := printf "themes/%s/parted/footer/core/main.html" $vars_themes -}}
+{{- $theme_skin := printf "themes/%s/parted/footer/%s/main.html" $vars_themes $vars_footer -}}
+
+{{- $point_core := printf "themes/minang/home/main/foot.html" -}}
+{{- $point_skin := printf "themes/%s/home/%s/foot.html" $vars_themes $vars_models -}}
+
+
+{{- range ( slice $based_core $based_skin $theme_core $theme_skin $point_core $point_skin ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . ) -}}
+        {{- $renders = . -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{- partial $renders . -}}

@@ -1,0 +1,35 @@
+<!-- render -->
+{{- $render := "" -}}
+
+
+<!-- themes -->
+{{- $vars_themes := "minang" -}}
+{{- with .Site.Params.System.Themes -}}{{- $vars_themes = . -}}{{- end -}}
+
+
+<!-- model -->
+{{- $vars_model := "main" -}}
+{{- with .Page.Params.Model -}}{{- $vars_model = . -}}{{- end -}}
+
+
+<!-- module -->
+{{- $based_core := printf "themes/minang/home/main/main.html" -}}
+{{- $based_skin := printf "themes/minang/home/%s/main.html" $vars_model -}}
+{{- $theme_core := printf "themes/%s/home/main/main.html" $vars_themes  -}}
+{{- $theme_skin := printf "themes/%s/home/%s/main.html" $vars_themes $vars_model  -}}
+
+{{- range ( slice $based_core $based_skin $theme_core $theme_skin ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{- end -}}
+
+
+<!-- blocks -->
+{{- if .Page.Params.Block -}}
+    {{- $render = printf "lib/blocks/render.html" -}}
+{{- end -}}
+
+
+<!-- process -->
+{{ partial $render . }}
