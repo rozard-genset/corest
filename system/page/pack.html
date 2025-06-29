@@ -1,0 +1,51 @@
+<!-- stores -->
+{{- .Store.Set "pack_css" (slice ) -}}
+{{- .Store.Set "pack_jsx" (slice ) -}}
+
+
+<!-- typhos -->
+{{- partial "lib/typhos/pack.html" . -}}
+
+
+<!-- format -->
+{{- partial "lib/format/pack.html" . -}}
+
+
+<!-- parted -->
+{{- partial "lib/parted/pack.html" . -}}
+
+
+
+<!-- widget -->
+{{- partial "lib/widget/pack.html" . -}}
+
+
+
+<!-- module -->
+{{- partial "lib/module/pack.html" . -}}
+
+
+
+<!-- themes -->
+{{- partial "lib/themes/page-pack.html" . -}}
+
+
+
+<!-- blocks -->
+{{- partial "lib/blocks/pack.html" . -}}
+
+
+<!-- target -->
+{{- $var_format := "article" -}}
+{{- with .Page.Params.Format.Kind -}}{{- $var_format = ( . | urlize ) -}}{{- end -}}
+
+{{- if and ( ne .Section "page" ) ( ne .Section "" ) ( .Section ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/module/%s/%s/pack/styles.css" .Section  $var_format ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/module/%s/%s/pack/script.js"  .Section  $var_format ) -}}
+{{- else -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/page/%s/pack/styles.css" ( .Title | urlize ) ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/page/%s/pack/script.js"  ( .Title | urlize ) ) -}}
+{{- end -}}
+
+
+<!-- compile -->

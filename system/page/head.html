@@ -4,32 +4,49 @@
 
 
 <!-- typhos -->
-{{- partial "lib/typhos/head.html" -}}
+{{- partial "lib/typhos/head.html" . -}}
 
 
 <!-- format -->
-{{- partial "lib/format/head.html" -}}
+{{- partial "lib/format/head.html" . -}}
 
 
 <!-- parted -->
-{{- partial "lib/parted/head.html" -}}
+{{- partial "lib/parted/head.html" . -}}
 
 
 
 <!-- widget -->
-{{- partial "lib/widget/head.html" -}}
+{{- partial "lib/widget/head.html" . -}}
 
 
 
 <!-- module -->
-{{- partial "lib/module/head.html" -}}
+{{- partial "lib/module/head.html" . -}}
 
 
 
 <!-- themes -->
-{{- partial "lib/themes/page-head.html" -}}
+{{- partial "lib/themes/page-head.html" . -}}
 
 
 
 <!-- blocks -->
-{{- partial "lib/blocks/head.html" -}}
+{{- partial "lib/blocks/head.html" . -}}
+
+
+
+<!-- target -->
+{{- $var_format := "article" -}}
+{{- with .Page.Params.Format.Kind -}}{{- $var_format = ( . | urlize ) -}}{{- end -}}
+
+{{- if and ( ne .Section "page" ) ( ne .Section "" ) ( .Section ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/module/%s/%s/head/styles.css" .Section  $var_format ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/module/%s/%s/head/script.js"  .Section  $var_format ) -}}
+{{- else -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/page/%s/head/styles.css" ( .Title | urlize ) ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/page/%s/head/script.js"  ( .Title | urlize ) ) -}}
+{{- end -}}
+
+
+<!-- compile -->
