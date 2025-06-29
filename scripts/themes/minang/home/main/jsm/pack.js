@@ -1,1 +1,0 @@
-console.log('defers home script loaded');

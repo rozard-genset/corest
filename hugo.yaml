@@ -1,14 +1,12 @@
 module:
     mounts:
+    - source: "engine/model"
+      target: "layouts/_default"
+    - source: "engine/scripts"
+      target: "assets/scripts/default"
     - source: "system"
       target: "layouts/partials/bin"
     - source: "library"
       target: "layouts/partials/lib"
-    - source: "themes"
-      target: "layouts/partials/themes"
-    - source: "engine"
-      target: "layouts"
-    - source: "scripts"
-      target: "assets/scripts"
     - source: "assets"
       target: "static/assets/default"

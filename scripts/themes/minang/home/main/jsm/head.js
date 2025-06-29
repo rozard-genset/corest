@@ -1,1 +1,0 @@
-console.log('critical home script loaded');
