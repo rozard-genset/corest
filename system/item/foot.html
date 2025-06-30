@@ -1,0 +1,23 @@
+<!-- stores -->
+{{- .Store.Set "render_footer" "" -}}
+
+
+<!-- parted -->
+{{- partial "lib/parted/foot.html" . -}}
+
+
+<!-- themes -->
+{{- partial "lib/themes/item-foot.html" . -}}
+
+
+<!-- module -->
+{{- partial "lib/module/foot.html" . -}}
+
+
+<!-- render -->
+{{ $footer := .Store.Get "render_footer" }}
+
+
+{{- if templates.Exists ( printf "partials/%s" $footer )  -}}
+    {{- partial $footer . -}}
+{{- end -}}

@@ -1,0 +1,24 @@
+<!-- stores -->
+{{- .Store.Set "render_header" "" -}}
+
+
+<!-- parted -->
+{{- partial "lib/parted/navs.html" . -}}
+
+
+<!-- themes -->
+{{- partial "lib/themes/home-navs.html" . -}}
+
+
+<!-- module -->
+{{- partial "lib/module/navs.html" . -}}
+
+
+<!-- render -->
+{{ $header := .Store.Get "render_header" }}
+
+
+
+{{- if templates.Exists ( printf "partials/%s" $header )  -}}
+    {{- partial $header . -}}
+{{- end -}}
