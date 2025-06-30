@@ -17,6 +17,8 @@
 <!-- render -->
 {{ $header := .Store.Get "render_header" }}
 
+
+
 {{- if templates.Exists ( printf "partials/%s" $header )  -}}
     {{- partial $header . -}}
 {{- end -}}
