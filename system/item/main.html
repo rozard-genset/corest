@@ -1,0 +1,14 @@
+<!-- themes -->
+{{- partial "lib/themes/item-main.html" . -}}
+
+
+<!-- module -->
+{{- partial "lib/module/main.html" . -}}
+
+
+<!-- render -->
+{{ $content := .Store.Get "render_content" }}
+
+{{- if templates.Exists ( printf "partials/%s" $content )  -}}
+    {{- partial $content . -}}
+{{- end -}}
