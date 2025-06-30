@@ -7,8 +7,10 @@
 {{- partial "lib/typhos/head.html" . -}}
 
 
+
 <!-- format -->
 {{- partial "lib/format/head.html" . -}}
+
 
 
 <!-- parted -->
@@ -31,4 +33,11 @@
 
 
 
+<!-- target -->
+{{- .Store.Set "dest_css" ( printf "assets/scripts/term/head/styles.css" ) -}}
+{{- .Store.Set "dest_jsx" ( printf "assets/scripts/term/head/script.js"  ) -}}
+
+
+
 <!-- compile -->
+{{- partial "bin/help/head.html" . -}}
