@@ -4,10 +4,8 @@
 {{- $style_dest := .Store.Get "dest_css" -}}
 
 {{- range ( sort ( .Store.Get "head_css" ) | uniq ) -}}
-
-     {{ . }}
+    {{ . }}
     {{- with resources.Get . -}}
-       
         {{- $style_data = $style_data | append ( resources.Get . | toCSS ) -}}
     {{- end -}}
 {{- end -}}
