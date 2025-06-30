@@ -19,11 +19,6 @@
 
 
 
-<!-- widget -->
-{{- partial "lib/widget/head.html" . -}}
-
-
-
 <!-- module -->
 {{- partial "lib/module/head.html" . -}}
 
@@ -47,3 +42,6 @@
     {{- .Store.Set "dest_css" ( printf "assets/scripts/module/%s/%s/head/styles.css" .Section  $var_models ) -}}
     {{- .Store.Set "dest_jsx" ( printf "assets/scripts/module/%s/%s/head/script.js"  .Section  $var_models ) -}}
 {{- end -}}
+
+
+{{ .Store.Get "head_css" }}

@@ -19,11 +19,6 @@
 
 
 
-<!-- widget -->
-{{- partial "lib/widget/head.html" . -}}
-
-
-
 <!-- module -->
 {{- partial "lib/module/head.html" . -}}
 
@@ -43,7 +38,7 @@
 {{- $var_format := "article" -}}
 {{- with .Page.Params.Format.Kind -}}{{- $var_format = ( . | urlize ) -}}{{- end -}}
 
-{{- if and ( ne .Section "page" ) ( ne .Section "" ) ( .Section ) -}}
+{{- if and ( ne .Section "page" ) ( ne .Section "" ) ( .Section )  -}}
     {{- .Store.Set "dest_css" ( printf "assets/scripts/module/%s/%s/head/styles.css" .Section  $var_format ) -}}
     {{- .Store.Set "dest_jsx" ( printf "assets/scripts/module/%s/%s/head/script.js"  .Section  $var_format ) -}}
 {{- else -}}
@@ -53,3 +48,4 @@
 
 
 <!-- compile -->
+{{ .Store.Get "head_css" }}

@@ -2,7 +2,7 @@ module:
     mounts:
     - source: "engine/model"
       target: "layouts/_default"
-    - source: "engine/scripts"
+    - source: "engine/script"
       target: "assets/scripts/core"
     - source: "system"
       target: "layouts/partials/bin"
