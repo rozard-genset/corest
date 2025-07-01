@@ -1,19 +1,71 @@
-<!-- themes -->
-{{- partial "lib/themes/term/main.html" . -}}
+<!-- variable -->
+{{- $render := "" -}}
+
+{{- $theme := "default" -}}
+{{- with .Site.Params.System.Theme -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+
+{{- $model := "main" -}}
+{{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+
+{{- $modul := "default" -}}
+{{- with .Section -}}{{- $modul = ( . | urlize ) -}}{{- end -}}
 
 
-<!-- module -->
-{{- partial "lib/module/main.html" . -}}
+<!-- conditional -->
+{{- $term_based_block := printf "lib/blocks.html" -}}
+
+{{- $term_based_theme := printf "themes/default/term/main/render.html" -}}
+{{- $term_based_modul := printf "module/default/term/main/render.html" -}}
+
+{{- $term_theme_cores := printf "themes/%s/term/main/render.html" $theme  -}}
+{{- $term_theme_model := printf "themes/%s/term/%s/render.html"   $theme $model -}}
+
+{{- $term_modul_cores := printf "module/%s/term/main/render.html" $modul  -}}
+{{- $term_modul_model := printf "module/%s/term/%s/render.html"   $modul $model -}}
+
+{{- $term_theme_modul := printf "themes/%s/module/%s/term/main/render.html" $theme $modul  -}}
+{{- $term_theme_skins := printf "themes/%s/module/%s/term/%s/render.html"   $theme $modul $model -}}
 
 
-<!-- blocks -->
-{{- partial "lib/blocks/main.html" . -}}
+<!-- validation -->
+{{- if templates.Exists ( printf "partials/%s" $term_based_theme )  -}}
+    {{- $render = $term_based_theme -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $term_based_modul )  -}}
+    {{- $render = $term_based_modul -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $term_theme_cores )  -}}
+    {{- $render = $term_theme_cores -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $term_theme_model )  -}}
+    {{- $render = $term_theme_model -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $term_modul_cores )  -}}
+    {{- $render = $term_modul_cores -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $term_modul_model )  -}}
+    {{- $render = $term_modul_model -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $term_theme_modul )  -}}
+    {{- $render = $term_theme_modul -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $term_theme_skins )  -}}
+    {{- $render = $term_theme_skins -}}
+{{- end -}}
+
+{{- if .Page.Params.Block -}}
+    {{- $render = $term_based_block -}}
+{{- end -}}
 
 
-<!-- render -->
-{{ $content := .Store.Get "render_content" }}
-
-
-{{- if templates.Exists ( printf "partials/%s" $content )  -}}
-    {{- partial $content . -}}
+<!-- execution -->
+{{- if templates.Exists ( printf "partials/%s" $render )  -}}
+    {{- partial $render . -}}
 {{- end -}}

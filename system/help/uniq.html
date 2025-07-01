@@ -10,16 +10,10 @@
 
         {{- .Section | urlize | safe.HTMLAttr -}}
 
-    {{ else }}
+    {{- else -}}
 
-        {{- $slug := replace .Page.RelPermalink  "/page/" "" -}}
-        {{- $slug = replace $slug  "/" ""  -}}
-        {{- $slug | urlize | safe.HTMLAttr -}}
+      {{- partial "lib/slug.html" . -}}
 
     {{- end -}}
 
-{{- else -}}
-
-    {{- .Title | urlize | safe.HTMLAttr -}}
-    
 {{- end -}}

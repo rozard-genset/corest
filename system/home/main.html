@@ -1,19 +1,40 @@
-<!-- themes -->
-{{- partial "lib/themes/home/main.html" . -}}
+<!-- variable -->
+{{- $render := "" -}}
+
+{{- $theme := "default" -}}
+{{- with .Site.Params.System.Theme -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+
+{{- $model := "main" -}}
+{{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
 
 
-<!-- module -->
-{{- partial "lib/module/main.html" . -}}
+<!-- conditional -->
+{{- $home_based_block := printf "lib/blocks.html" -}}
+
+{{- $home_based_basic := printf "themes/default/home/main/render.html" -}}
+{{- $home_based_theme := printf "themes/%s/home/main/render.html" $theme -}}
+{{- $home_based_model := printf "themes/%s/home/%s/render.html"   $theme $model -}}
 
 
-<!-- blocks -->
-{{- partial "lib/blocks/main.html" . -}}
+<!-- validation -->
+{{- if templates.Exists ( printf "partials/%s" $home_based_basic )  -}}
+    {{- $render = $home_based_basic -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $home_based_theme )  -}}
+    {{- $render = $home_based_theme -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $home_based_model )  -}}
+    {{- $render = $home_based_model -}}
+{{- end -}}
+
+{{- if .Page.Params.Block -}}
+    {{- $render = $home_based_block -}}
+{{- end -}}
 
 
-<!-- render -->
-{{ $content := .Store.Get "render_content" }}
-
-
-{{- if templates.Exists ( printf "partials/%s" $content )  -}}
-    {{- partial $content . -}}
+<!-- execution -->
+{{- if templates.Exists ( printf "partials/%s" $render )  -}}
+    {{- partial $render . -}}
 {{- end -}}

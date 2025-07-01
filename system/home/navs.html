@@ -1,22 +1,40 @@
-<!-- stores -->
-{{- .Store.Set "render_header" "" -}}
+<!-- variable -->
+{{- $render := "" -}}
+
+{{- $theme := "default" -}}
+{{- with .Site.Params.System.Theme -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+
+{{- $model := "main" -}}
+{{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+
+{{- $modul := "default" -}}
+{{- with .Section -}}{{- $modul = ( . | urlize ) -}}{{- end -}}
 
 
-<!-- parted -->
-{{- partial "lib/parted/navs.html" . -}}
+
+<!-- conditional -->
+{{- $navs_parted_basic := printf "parted/header/main/render.html" -}}
+{{- $navs_parted_model := printf "parted/header/%s/render.html" $model -}}
+
+{{- $navs_theme_basic := printf "themes/default/parted/header/main/render.html" -}}
+{{- $navs_theme_theme := printf "themes/%s/parted/header/main/render.html" $theme -}}
+{{- $navs_theme_model := printf "themes/%s/parted/header/main/render.html" $theme $model -}}
+
+{{- $navs_modul_basic := printf "module/default/parted/header/main/render.html" -}}
+{{- $navs_modul_modul := printf "module/%s/parted/header/main/render.html" $modul -}}
+{{- $navs_theme_model := printf "module/%s/parted/header/%s/render.html" $modul $model -}}
+
+{{- $navs_homer_model := printf "themes/%s/home/%s/navs.html" $theme $model -}} 
 
 
-<!-- themes -->
-{{- partial "lib/themes/home/navs.html" . -}}
+<!-- validation -->
+{{ range ( slice $navs_parted_basic $navs_parted_model $navs_theme_basic $navs_theme_theme $navs_theme_model $navs_modul_basic $navs_modul_modul $navs_theme_model $navs_homer_model ) }}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{ end }}
 
 
-<!-- module -->
-{{- partial "lib/module/navs.html" . -}}
-
-
-<!-- render -->
-{{ $header := .Store.Get "render_header" }}
-
-{{- if templates.Exists ( printf "partials/%s" $header )  -}}
-    {{- partial $header . -}}
+{{- if templates.Exists ( printf "partials/%s" $render )  -}}
+    {{- partial $render . -}}
 {{- end -}}
