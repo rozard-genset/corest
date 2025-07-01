@@ -27,7 +27,6 @@
 {{- $item_theme_skins := printf "themes/%s/module/%s/item/%s/render.html"   $theme $modul $model -}}
 
 
-{{ $item_modul_cores }}
 
 <!-- validation -->
 {{- if templates.Exists ( printf "partials/%s" $item_based_theme )  -}}

@@ -1,13 +1,11 @@
 {{- define "hooks_meta" -}}
-    {{- partial "bin/term/meta.html" . -}}
+    {{- partial "meta/base/load.html" . -}}
 {{- end -}}
 
 
-
-{{- define "hooks_grap" -}}
-    {{- partial "bin/term/grap.html" . -}}
+{{- define "hooks_head" -}}
+    {{- partial "lib/script/term/head.html" . -}}
 {{- end -}}
-
 
 
 {{- define "hooks_data" -}}
