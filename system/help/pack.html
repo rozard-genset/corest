@@ -15,7 +15,6 @@
     {{- $path = $style_data | resources.Concat $style_dest | minify  -}}
 {{- end -}}
 
-
 {{- with $path -}}<link id="styles" rel="stylesheet" href="{{ .RelPermalink }}">{{- end -}}
 
 
