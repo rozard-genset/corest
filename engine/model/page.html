@@ -1,70 +1,39 @@
 {{- define "hooks_meta" -}}
-
-    {{- partial "bin/page/meta.html" . -}}
-
+    {{- partial "meta/base/load.html" . -}}
 {{- end -}}
-
-
-
-{{- define "hooks_grap" -}}
-
-    {{- partial "bin/page/grap.html" . -}}
-
-{{- end -}}
-
 
 
 {{- define "hooks_head" -}}
-
     {{- partial "lib/script/page/head.html" . -}}
-
 {{- end -}}
 
 
-{{- define "hooks_json" -}}
-
-    {{- partial "bin/page/json.html" . -}}
-
-{{- end -}}
-
-
-
-{{- define "hooks_feed" -}}
-
-    {{- partial "bin/page/feed.html" . -}}
-
+{{- define "hooks_data" -}}
+    {{- partial "meta/data/load.html" . -}}
 {{- end -}}
 
 
 
 {{- define "hooks_heed" -}}
-
     {{- partial "bin/page/heed.html" . -}}
-
 {{- end -}}
 
 
 
 {{- define "hooks_navs" -}}
-
     {{- partial "bin/page/navs.html" . -}}
-
 {{- end -}}
 
 
 
 {{- define "hooks_main" -}}
-
     {{- partial "bin/page/main.html" . -}}
-
 {{- end -}}
 
 
 
 {{- define "hooks_foot" -}}
-
     {{- partial "bin/page/foot.html" . -}}
-
 {{- end -}}
 
 

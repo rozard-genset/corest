@@ -4,25 +4,14 @@
 
 
 
-{{- define "hooks_grap" -}}
-    {{- partial "bin/item/grap.html" . -}}
-{{- end -}}
-
-
-
 {{- define "hooks_head" -}}
     {{- partial "lib/script/item/head.html" . -}}
 {{- end -}}
 
 
-{{- define "hooks_json" -}}
-    {{- partial "bin/item/json.html" . -}}
-{{- end -}}
 
-
-
-{{- define "hooks_feed" -}}
-    {{- partial "bin/item/feed.html" . -}}
+{{- define "hooks_data" -}}
+    {{- partial "meta/data/load.html" . -}}
 {{- end -}}
 
 
@@ -34,7 +23,6 @@
 
 
 {{- define "hooks_navs" -}}
-
     {{- partial "bin/item/navs.html" . -}}
 {{- end -}}
 

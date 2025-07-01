@@ -1,10 +1,5 @@
 {{- define "hooks_meta" -}}
-    {{- partial "bin/home/meta.html" . -}}
-{{- end -}}
-
-
-{{- define "hooks_grap" -}}
-    {{- partial "bin/home/grap.html" . -}}
+    {{- partial "meta/base/load.html" . -}}
 {{- end -}}
 
 
@@ -13,13 +8,8 @@
 {{- end -}}
 
 
-{{- define "hooks_json" -}}
-    {{- partial "bin/home/json.html" . -}}
-{{- end -}}
-
-
-{{- define "hooks_feed" -}}
-    {{- partial "bin/home/feed.html" . -}}
+{{- define "hooks_data" -}}
+    {{- partial "meta/data/load.html" . -}}
 {{- end -}}
 
 

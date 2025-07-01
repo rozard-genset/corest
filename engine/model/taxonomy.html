@@ -10,19 +10,8 @@
 
 
 
-{{- define "hooks_head" -}}
-    {{- partial "lib/script/term/head.html" . -}}
-{{- end -}}
-
-
-{{- define "hooks_json" -}}
-    {{- partial "bin/term/json.html" . -}}
-{{- end -}}
-
-
-
-{{- define "hooks_feed" -}}
-    {{- partial "bin/term/feed.html" . -}}
+{{- define "hooks_data" -}}
+    {{- partial "meta/data/load.html" . -}}
 {{- end -}}
 
 
