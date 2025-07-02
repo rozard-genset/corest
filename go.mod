@@ -1,4 +1,4 @@
-module github.com/rozard-framework/corest
+module github.com/rozard-gensite/corest
 
 
 
