@@ -23,8 +23,8 @@
 {{- $page_modul_cores := printf "module/%s/page/main/render.html" $modul  -}}
 {{- $page_modul_model := printf "module/%s/page/%s/render.html"   $modul $model -}}
 
-{{- $page_theme_modul := printf "themes/%s/module/%s/engine/page/main/render.html" $theme $modul  -}}
-{{- $page_theme_skins := printf "themes/%s/module/%s/engine/page/%s/render.html"   $theme $modul $model -}}
+{{- $page_theme_modul := printf "themes/%s/module/%s/layout/page/main/render.html" $theme $modul  -}}
+{{- $page_theme_skins := printf "themes/%s/module/%s/layout/page/%s/render.html"   $theme $modul $model -}}
 
 
 <!-- validation -->
