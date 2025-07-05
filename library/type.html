@@ -1,0 +1,9 @@
+{{- if .IsHome -}}
+    home
+{{- else if .IsSection -}}
+    item
+{{- else if .IsNode -}}
+    term
+{{- else if .IsPage -}}
+    page
+{{- end -}}
