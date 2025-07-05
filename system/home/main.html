@@ -33,6 +33,7 @@
     {{- $render = $home_based_block -}}
 {{- end -}}
 
+{{ $render }}
 
 <!-- execution -->
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
