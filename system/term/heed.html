@@ -1,0 +1,65 @@
+<!-- variable -->
+{{- $render := "" -}}
+
+{{- $theme := "default" -}}
+{{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+
+{{- $model := "main" -}}
+{{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+
+{{- $modul := "default" -}}
+{{- with .Section -}}{{- $modul = ( . | urlize ) -}}{{- end -}}
+
+
+<!-- conditional -->
+{{- $page_based_theme := printf "themes/default/term/main/layers.html" -}}
+{{- $page_based_modul := printf "module/default/term/main/layers.html" -}}
+
+{{- $page_theme_cores := printf "themes/%s/term/main/layers.html" $theme  -}}
+{{- $page_theme_model := printf "themes/%s/term/%s/layers.html"   $theme $model -}}
+
+{{- $page_modul_cores := printf "module/%s/term/main/layers.html" $modul  -}}
+{{- $page_modul_model := printf "module/%s/term/%s/layers.html"   $modul $model -}}
+
+{{- $page_theme_modul := printf "themes/%s/module/%s/layout/term/main/layers.html" $theme $modul  -}}
+{{- $page_theme_skins := printf "themes/%s/module/%s/layout/term/%s/layers.html"   $theme $modul $model -}}
+
+
+<!-- validation -->
+{{- if templates.Exists ( printf "partials/%s" $page_based_theme )  -}}
+    {{- $render = $page_based_theme -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $page_based_modul )  -}}
+    {{- $render = $page_based_modul -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $page_theme_cores )  -}}
+    {{- $render = $page_theme_cores -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $page_theme_model )  -}}
+    {{- $render = $page_theme_model -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $page_modul_cores )  -}}
+    {{- $render = $page_modul_cores -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $page_modul_model )  -}}
+    {{- $render = $page_modul_model -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $page_theme_modul )  -}}
+    {{- $render = $page_theme_modul -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $page_theme_skins )  -}}
+    {{- $render = $page_theme_skins -}}
+{{- end -}}
+
+
+<!-- execution -->
+{{- if templates.Exists ( printf "partials/%s" $render )  -}}
+    {{- partial $render . -}}
+{{- end -}}

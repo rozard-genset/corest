@@ -1,0 +1,34 @@
+<!-- variable -->
+{{- $render := "" -}}
+
+{{- $theme := "default" -}}
+{{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+
+{{- $model := "main" -}}
+{{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+
+
+<!-- conditional -->
+{{- $home_based_basic := printf "themes/default/home/main/layers.html" -}}
+{{- $home_based_theme := printf "themes/%s/home/main/layers.html" $theme -}}
+{{- $home_based_model := printf "themes/%s/home/%s/layers.html"   $theme $model -}}
+
+
+<!-- validation -->
+{{- if templates.Exists ( printf "partials/%s" $home_based_basic )  -}}
+    {{- $render = $home_based_basic -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $home_based_theme )  -}}
+    {{- $render = $home_based_theme -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $home_based_model )  -}}
+    {{- $render = $home_based_model -}}
+{{- end -}}
+
+
+<!-- execution -->
+{{- if templates.Exists ( printf "partials/%s" $render )  -}}
+    {{- partial $render . -}}
+{{- end -}}
