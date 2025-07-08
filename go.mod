@@ -1,4 +1,4 @@
-module github.com/rozard-invito/genset
+module github.com/rozard-genset/corest
 
 replace (
 	github.com/rozard-invito/boiler => /home/devel/project/rozard/service/invito/boiler
