@@ -1,4 +1,6 @@
-{{- if .IsHome -}}
+{{- if .Site.Params.System.Models }}
+    {{- .Site.Params.System.Models -}}
+{{- else if .IsHome -}}
     home
 {{- else if .IsSection -}}
 
