@@ -4,6 +4,7 @@
 {{- $theme := "default" -}}
 {{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
 
+
 {{- $model := "main" -}}
 {{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
 
@@ -32,6 +33,7 @@
 {{- if .Page.Params.Block -}}
     {{- $render = $home_based_block -}}
 {{- end -}}
+
 
 <!-- execution -->
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
