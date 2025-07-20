@@ -5,7 +5,7 @@
 {{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
 
 {{- $model := "main" -}}
-{{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+{{- with .Page.Params.Module.Layout -}}{{- $model = ( . | urlize ) -}}{{- end -}}
 
 {{- $modul := "default" -}}
 {{- with .Section -}}{{- $modul = ( . | urlize ) -}}{{- end -}}
