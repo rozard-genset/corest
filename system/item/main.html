@@ -15,7 +15,7 @@
 {{- $item_based_block := printf "lib/blocks.html" -}}
 
 {{- $item_based_theme := printf "themes/default/item/main/render.html" -}}
-{{- $item_based_modul := printf "module/default/item/main/render.html" -}}
+{{- $item_based_modul := printf "module/default/item/%s/render.html" $model -}}
 
 {{- $item_theme_cores := printf "themes/%s/item/main/render.html" $theme  -}}
 {{- $item_theme_model := printf "themes/%s/item/%s/render.html"   $theme $model -}}
@@ -25,7 +25,6 @@
 
 {{- $item_theme_modul := printf "themes/%s/module/%s/layout/item/main/render.html" $theme $modul  -}}
 {{- $item_theme_skins := printf "themes/%s/module/%s/layout/item/%s/render.html"   $theme $modul $model -}}
-
 
 
 <!-- validation -->
