@@ -15,11 +15,10 @@
 {{- $page_based_block := printf "lib/blocks.html" -}}
 
 {{- $page_based_theme := printf "themes/default/page/main/render.html" -}}
-{{- $page_based_modul := printf "module/default/page/main/render.html" -}}
-
 {{- $page_theme_cores := printf "themes/%s/page/main/render.html" $theme  -}}
 {{- $page_theme_model := printf "themes/%s/page/%s/render.html"   $theme $model -}}
 
+{{- $page_based_modul := printf "module/default/page/main/render.html" -}}
 {{- $page_modul_cores := printf "module/%s/page/main/render.html" $modul  -}}
 {{- $page_modul_model := printf "module/%s/page/%s/render.html"   $modul $model -}}
 
@@ -32,9 +31,6 @@
     {{- $render = $page_based_theme -}}
 {{- end -}}
 
-{{- if templates.Exists ( printf "partials/%s" $page_based_modul )  -}}
-    {{- $render = $page_based_modul -}}
-{{- end -}}
 
 {{- if templates.Exists ( printf "partials/%s" $page_theme_cores )  -}}
     {{- $render = $page_theme_cores -}}
@@ -43,6 +39,12 @@
 {{- if templates.Exists ( printf "partials/%s" $page_theme_model )  -}}
     {{- $render = $page_theme_model -}}
 {{- end -}}
+
+
+{{- if templates.Exists ( printf "partials/%s" $page_based_modul )  -}}
+    {{- $render = $page_based_modul -}}
+{{- end -}}
+
 
 {{- if templates.Exists ( printf "partials/%s" $page_modul_cores )  -}}
     {{- $render = $page_modul_cores -}}
