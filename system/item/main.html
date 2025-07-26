@@ -18,7 +18,8 @@
 {{- $item_theme_cores := printf "themes/%s/item/main/render.html" $theme  -}}
 {{- $item_theme_model := printf "themes/%s/item/%s/render.html"   $theme $model -}}
 
-{{- $item_based_modul := printf "module/default/item/main/render.html" -}}
+{{- $item_modul_based := printf "module/default/item/main/render.html" -}}
+{{- $item_model_based := printf "module/default/item/%s/render.html" $model -}}
 {{- $item_modul_cores := printf "module/%s/item/main/render.html" $modul  -}}
 {{- $item_modul_model := printf "module/%s/item/%s/render.html"   $modul $model -}}
 
@@ -39,8 +40,12 @@
     {{- $render = $item_theme_model -}}
 {{- end -}}
 
-{{- if templates.Exists ( printf "partials/%s" $item_based_modul )  -}}
-    {{- $render = $item_based_modul -}}
+{{- if templates.Exists ( printf "partials/%s" $item_modul_based )  -}}
+    {{- $render = $item_modul_based -}}
+{{- end -}}
+
+{{- if templates.Exists ( printf "partials/%s" $item_model_based )  -}}
+    {{- $render = $item_model_based -}}
 {{- end -}}
 
 {{- if templates.Exists ( printf "partials/%s" $item_modul_cores )  -}}
