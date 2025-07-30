@@ -1,76 +1,45 @@
-<!-- variable -->
+<!-- globvar -->
 {{- $render := "" -}}
 
-{{- $theme := "default" -}}
-{{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+{{- $themes := "default" -}}
+{{- with .Site.Params.System.Themes -}}{{- $themes  = ( . | urlize ) -}}{{- end -}}
 
-{{- $model := "main" -}}
-{{- with .Page.Params.Module.Layout -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+{{- $layout := "main" -}}
+{{- with .Page.Params.Module.Layout -}}{{- $layout = ( . | urlize ) -}}{{- end -}}
 
-{{- $modul := "default" -}}
-{{- with .Section -}}{{- $modul = ( . | urlize ) -}}{{- end -}}
-
-
-<!-- conditional -->
-{{- $item_based_block := printf "lib/blocks.html" -}}
-
-{{- $item_based_theme := printf "themes/default/item/main/render.html" -}}
-{{- $item_theme_cores := printf "themes/%s/item/main/render.html" $theme  -}}
-{{- $item_theme_model := printf "themes/%s/item/%s/render.html"   $theme $model -}}
-
-{{- $item_modul_based := printf "module/default/item/main/render.html" -}}
-{{- $item_model_based := printf "module/default/item/%s/render.html" $model -}}
-{{- $item_modul_cores := printf "module/%s/item/main/render.html" $modul  -}}
-{{- $item_modul_model := printf "module/%s/item/%s/render.html"   $modul $model -}}
-
-{{- $item_theme_modul := printf "themes/%s/module/%s/layout/item/main/render.html" $theme $modul  -}}
-{{- $item_theme_skins := printf "themes/%s/module/%s/layout/item/%s/render.html"   $theme $modul $model -}}
+{{- $module := "default" -}}
+{{- with .Section -}}{{- $module  = ( . | urlize ) -}}{{- end -}}
 
 
-<!-- validation -->
-{{- if templates.Exists ( printf "partials/%s" $item_based_theme )  -}}
-    {{- $render = $item_based_theme -}}
-{{- end -}}
+<!-- models -->
+{{- $based_theme := printf "themes/default/item/main/render.html" -}}
+{{- $theme_cores := printf "themes/%s/item/main/render.html" $themes   -}}
+{{- $theme_model := printf "themes/%s/item/%s/render.html"   $themes  $layout -}}
 
-{{- if templates.Exists ( printf "partials/%s" $item_theme_cores )  -}}
-    {{- $render = $item_theme_cores -}}
-{{- end -}}
+{{- $modul_based := printf "module/default/item/main/render.html" -}}
+{{- $model_based := printf "module/default/item/%s/render.html" $layout -}}
+{{- $modul_cores := printf "module/%s/item/main/render.html" $module   -}}
+{{- $modul_model := printf "module/%s/item/%s/render.html"   $module  $layout -}}
 
-{{- if templates.Exists ( printf "partials/%s" $item_theme_model )  -}}
-    {{- $render = $item_theme_model -}}
-{{- end -}}
+{{- $theme_modul := printf "themes/%s/module/%s/layout/item/main/render.html" $themes  $module  -}}
+{{- $theme_skins := printf "themes/%s/module/%s/layout/item/%s/render.html"   $themes  $module  $layout -}}
 
-{{- if templates.Exists ( printf "partials/%s" $item_modul_based )  -}}
-    {{- $render = $item_modul_based -}}
-{{- end -}}
 
-{{- if templates.Exists ( printf "partials/%s" $item_model_based )  -}}
-    {{- $render = $item_model_based -}}
-{{- end -}}
+<!-- module -->
+{{ range $based_theme $theme_cores $theme_model $modul_based $modul_cores $modul_model $theme_modul $theme_skins }}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{ end }}
 
-{{- if templates.Exists ( printf "partials/%s" $item_modul_cores )  -}}
-    {{- $render = $item_modul_cores -}}
-{{- end -}}
 
-{{- if templates.Exists ( printf "partials/%s" $item_modul_model )  -}}
-    {{- $render = $item_modul_model -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $item_theme_modul )  -}}
-    {{- $render = $item_theme_modul -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $item_theme_skins )  -}}
-    {{- $render = $item_theme_skins -}}
-{{- end -}}
-
-{{- if .Page.Params.Block -}}
-    {{- $render = $item_based_block -}}
+<!-- blocks -->
+{{- if .Page.Params.Blocks -}}
+    {{- $render = printf "lib/blocks.html" -}}
 {{- end -}}
 
 
-
-<!-- execution -->
+<!-- render -->
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
     {{- partial $render . -}}
 {{- end -}}

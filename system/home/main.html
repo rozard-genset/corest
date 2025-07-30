@@ -1,41 +1,34 @@
-<!-- variable -->
+<!-- globvar -->
 {{- $render := "" -}}
 
-{{- $theme := "default" -}}
-{{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+{{- $themes := "default" -}}
+{{- with .Site.Params.System.Themes -}}{{- $themes = ( . | urlize ) -}}{{- end -}}
+
+{{- $layout := "main" -}}
+{{- with .Page.Params.Module.Layout -}}{{- $layout = ( . | urlize ) -}}{{- end -}}
 
 
-{{- $model := "main" -}}
-{{- with .Page.Params.Model -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+<!-- models -->
+{{- $based_basic := printf "themes/default/home/main/render.html" -}}
+{{- $based_theme := printf "themes/%s/home/main/render.html" $themes -}}
+{{- $based_model := printf "themes/%s/home/%s/render.html"   $themes $layout -}}
 
 
-<!-- conditional -->
-{{- $home_based_block := printf "lib/blocks.html" -}}
+<!-- module -->
+{{ range $based_basic $based_theme $based_model  }}
+    {{- if templates.Exists ( printf "partials/%s" . ) -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{ end }}
 
-{{- $home_based_basic := printf "themes/default/home/main/render.html" -}}
-{{- $home_based_theme := printf "themes/%s/home/main/render.html" $theme -}}
-{{- $home_based_model := printf "themes/%s/home/%s/render.html"   $theme $model -}}
 
-
-<!-- validation -->
-{{- if templates.Exists ( printf "partials/%s" $home_based_basic )  -}}
-    {{- $render = $home_based_basic -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $home_based_theme )  -}}
-    {{- $render = $home_based_theme -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $home_based_model )  -}}
-    {{- $render = $home_based_model -}}
-{{- end -}}
-
-{{- if .Page.Params.Block -}}
-    {{- $render = $home_based_block -}}
+<!-- blocks -->
+{{- if .Page.Params.Blocks -}}
+    {{- $render = printf "lib/blocks.html" -}}
 {{- end -}}
 
 
-<!-- execution -->
-{{- if templates.Exists ( printf "partials/%s" $render )  -}}
+<!-- render -->
+{{- if templates.Exists ( printf "partials/%s" $render ) -}}
     {{- partial $render . -}}
 {{- end -}}

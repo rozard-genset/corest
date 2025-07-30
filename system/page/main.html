@@ -1,74 +1,45 @@
-<!-- variable -->
+<!-- globvar -->
 {{- $render := "" -}}
 
-{{- $theme := "default" -}}
-{{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
+{{- $themes := "default" -}}
+{{- with .Site.Params.System.Themes -}}{{- $themes  = ( . | urlize ) -}}{{- end -}}
 
-{{- $model := "main" -}}
-{{- with .Page.Params.Module.Layout -}}{{- $model = ( . | urlize ) -}}{{- end -}}
+{{- $layout := "main" -}}
+{{- with .Page.Params.Module.Layout -}}{{- $layout = ( . | urlize ) -}}{{- end -}}
 
-{{- $modul := "default" -}}
-{{- with .Section -}}{{- $modul = ( . | urlize ) -}}{{- end -}}
-
-
-<!-- conditional -->
-{{- $page_based_block := printf "lib/blocks.html" -}}
-
-{{- $page_based_theme := printf "themes/default/page/main/render.html" -}}
-{{- $page_theme_cores := printf "themes/%s/page/main/render.html" $theme  -}}
-{{- $page_theme_model := printf "themes/%s/page/%s/render.html"   $theme $model -}}
-
-{{- $page_based_modul := printf "module/default/page/main/render.html" -}}
-{{- $page_modul_cores := printf "module/%s/page/main/render.html" $modul  -}}
-{{- $page_modul_model := printf "module/%s/page/%s/render.html"   $modul $model -}}
-
-{{- $page_theme_modul := printf "themes/%s/module/%s/layout/page/main/render.html" $theme $modul  -}}
-{{- $page_theme_skins := printf "themes/%s/module/%s/layout/page/%s/render.html"   $theme $modul $model -}}
+{{- $module := "default" -}}
+{{- with .Section -}}{{- $module  = ( . | urlize ) -}}{{- end -}}
 
 
-<!-- validation -->
-{{- if templates.Exists ( printf "partials/%s" $page_based_theme )  -}}
-    {{- $render = $page_based_theme -}}
+<!-- models -->
+{{- $based_theme := printf "themes/default/page/main/render.html" -}}
+{{- $theme_cores := printf "themes/%s/page/main/render.html" $themes   -}}
+{{- $theme_model := printf "themes/%s/page/%s/render.html"   $themes  $layout -}}
+
+{{- $modul_based := printf "module/default/page/main/render.html" -}}
+{{- $model_based := printf "module/default/page/%s/render.html" $layout -}}
+{{- $modul_cores := printf "module/%s/page/main/render.html" $module   -}}
+{{- $modul_model := printf "module/%s/page/%s/render.html"   $module  $layout -}}
+
+{{- $theme_modul := printf "themes/%s/module/%s/layout/page/main/render.html" $themes  $module  -}}
+{{- $theme_skins := printf "themes/%s/module/%s/layout/page/%s/render.html"   $themes  $module  $layout -}}
+
+
+<!-- module -->
+{{ range $based_theme $theme_cores $theme_model $modul_based $modul_cores $modul_model $theme_modul $theme_skins }}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{ end }}
+
+
+<!-- blocks -->
+{{- if .Page.Params.Blocks -}}
+    {{- $render = printf "lib/blocks.html" -}}
 {{- end -}}
 
 
-{{- if templates.Exists ( printf "partials/%s" $page_theme_cores )  -}}
-    {{- $render = $page_theme_cores -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $page_theme_model )  -}}
-    {{- $render = $page_theme_model -}}
-{{- end -}}
-
-
-{{- if templates.Exists ( printf "partials/%s" $page_based_modul )  -}}
-    {{- $render = $page_based_modul -}}
-{{- end -}}
-
-
-{{- if templates.Exists ( printf "partials/%s" $page_modul_cores )  -}}
-    {{- $render = $page_modul_cores -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $page_modul_model )  -}}
-    {{- $render = $page_modul_model -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $page_theme_modul )  -}}
-    {{- $render = $page_theme_modul -}}
-{{- end -}}
-
-{{- if templates.Exists ( printf "partials/%s" $page_theme_skins )  -}}
-    {{- $render = $page_theme_skins -}}
-{{- end -}}
-
-{{- if .Page.Params.Block -}}
-    {{- $render = $page_based_block -}}
-{{- end -}}
-
-
-
-<!-- execution -->
+<!-- render -->
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
     {{- partial $render . -}}
 {{- end -}}
