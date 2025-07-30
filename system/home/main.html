@@ -15,11 +15,11 @@
 
 
 <!-- module -->
-{{ range $based_basic $based_theme $based_model  }}
+{{- range ( slice $based_basic $based_theme $based_model ) -}}
     {{- if templates.Exists ( printf "partials/%s" . ) -}}
         {{- $render = . -}}
     {{- end -}}
-{{ end }}
+{{- end -}}
 
 
 <!-- blocks -->
