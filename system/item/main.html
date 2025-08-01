@@ -25,12 +25,14 @@
 {{- $theme_skins := printf "themes/%s/module/%s/layout/item/%s/render.html"   $themes  $module  $layout -}}
 
 
+
 <!-- module -->
-{{- range (slice $based_theme $theme_cores $theme_model $modul_based $modul_cores $modul_model $theme_modul $theme_skins ) -}}
+{{- range (slice $based_theme $theme_cores $theme_model $modul_based $model_based $modul_cores $modul_model $theme_modul $theme_skins ) -}}
     {{- if templates.Exists ( printf "partials/%s" . )  -}}
         {{- $render = . -}}
     {{- end -}}
 {{- end -}}
+
 
 
 <!-- blocks -->
