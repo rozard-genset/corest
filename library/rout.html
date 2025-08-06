@@ -1,3 +1,4 @@
-{{ if and ( eq .Section "pages" ) ( .IsSection ) }}
+
+{{ if eq .Page.Params.Module.Layout "none" }}
     <meta http-equiv="refresh" content="0; url=/" />
 {{ end }}
