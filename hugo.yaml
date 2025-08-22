@@ -1,7 +1,7 @@
 module:
     mounts:
     - source: "engine/model"
-      target: "layouts/_default"
+      target: "layouts/"
     - source: "engine/script"
       target: "assets/scripts/core"
     - source: "library"
