@@ -1,12 +1,68 @@
 module:
     mounts:
-    - source: "engine/model"
-      target: "layouts/"
-    - source: "engine/script"
-      target: "assets/scripts/core"
+
     - source: "library"
-      target: "layouts/partials/lib/core"
-    - source: "system"
-      target: "layouts/partials/lib/core/sys"
+      target: "layouts/partials/lib"
+
+    - source: "engine/model"
+      target: "layouts"
+
+    - source: "engine/render"
+      target: "layouts/partials/corest/render"
+
+    - source: "engine/metas"
+      target: "layouts/partials/corest/metas"
+
+    - source: "engine/script"
+      target: "layouts/partials/corest/script"
+
     - source: "assets"
-      target: "static/assets/default"
+      target: "assets"
+
+    - source: "parted/model"
+      target: "layouts/partials/parted"
+
+    - source: "parted/script"
+      target: "assets/scripts/parted"
+
+    - source: "theme/model"
+      target: "layouts/partials/themes/default"
+
+    - source: "theme/script"
+      target: "assets/scripts/themes/default"
+
+    - source: "widget/model"
+      target: "layouts/partials/widget"
+
+    - source: "widget/script"
+      target: "assets/scripts/widget"
+
+    - source: "iconia/model"
+      target: "layouts/partials/icon"
+
+    - source: "iconia/script"
+      target: "assets/scripts/icon"
+
+    - source: "typhos/script"
+      target: "assets/typho"
+
+    - source: "typhos/model"
+      target: "static/assets/typho"
+
+    - source: "stories/blocks/model"
+      target: "layouts/partials/stories/blocks"
+
+    - source: "stories/blocks/script"
+      target: "assets/scripts/stories/blocks"
+
+    - source: "stories/library"
+      target: "layouts/partials/stories/library"
+
+    - source: "stories/engine/model"
+      target: "layouts/partials/stories/module"
+
+    - source: "stories/engine/script"
+      target: "assets/scripts/stories/module"
+
+    - source: "stories/render"
+      target: "layouts/stories/_markup"

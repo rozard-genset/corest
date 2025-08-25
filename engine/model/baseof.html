@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 <head>
-	{{- block "hooks_meta" . -}}{{- end -}}
 	{{- block "hooks_head" . -}}{{- end -}}
-	{{- block "hooks_data" . -}}{{- end -}}
 </head>
-<body id='{{- partial "lib/core/uniq.html" . -}}'>
-	{{- block "hooks_heed" . -}}{{- end -}}
+<body id='{{- partial "lib/uniq.html" . -}}'>
 	{{- block "hooks_navs" . -}}{{- end -}}
 	{{- block "hooks_main" . -}}{{- end -}}
 	{{- block "hooks_foot" . -}}{{- end -}}
-    {{- block "hooks_pack" . -}}{{- end -}}
 </body>
 </html>

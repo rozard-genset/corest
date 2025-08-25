@@ -1,0 +1,18 @@
+#format-youtube .action .icon{
+    min-width:  5rem;
+    min-height: 4rem;
+    background-color: black;
+}
+
+#format-youtube .overlay:hover .action .icon{
+    background-color: rgb(235, 37, 37);
+    border: 1px solid transparent;
+    color: white;
+    z-index: 15;
+    transition: 150ms;
+}
+
+#format-youtube .action .icon svg {
+    min-width:  2rem;
+    min-height: 2rem;
+}

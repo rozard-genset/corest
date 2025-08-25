@@ -1,0 +1,36 @@
+<!-- variable -->
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $module := partial "lib/get-module.html" . -}}
+{{- $layout := partial "lib/get-layout.html" . -}}
+
+
+
+<!-- storing -->
+{{- $link_css := resources.Get "scripts/stories/module/page/main/css/head.scss" -}}
+{{- $link_jsx := resources.Get "scripts/stories/module/page/main/jsx/head.js" -}}
+
+
+<!-- modeling -->
+{{- $based_css := printf "scripts/%s/module/page/%s/css/head.scss" $module $layout -}}
+{{- $based_jsx := printf "scripts/%s/module/page/%s/jsx/head.js"   $module $layout -}}
+
+{{- $theme_css := printf "scripts/theme/%s/module/%s/page/main/css/head.scss" $themes $module -}}
+{{- $theme_jsx := printf "scripts/theme/%s/module/%s/page/main/jsx/head.js"   $themes $module -}}
+
+{{- $model_css := printf "scripts/theme/%s/module/%s/layout/page/%s/css/head.scss" $themes $module $layout -}}
+{{- $model_jsx := printf "scripts/theme/%s/module/%s/layout/page/%s/jsx/head.js"   $themes $module $layout -}}
+
+
+<!-- apending -->
+{{- range ( slice  $based_css $theme_css $model_css ) -}}
+    {{- with resources.Get . -}}{{- $link_css = . -}}{{- end -}}
+{{- end -}}
+
+{{- range ( slice $based_jsx $theme_jsx $model_jsx ) -}}
+    {{- with resources.Get . -}}{{- $link_jsx = . -}}{{- end  -}}
+{{- end -}}
+
+
+<!-- storing -->
+{{- .Store.Add "head_css" $link_css -}}
+{{- .Store.Add "head_jsx" $link_jsx -}}

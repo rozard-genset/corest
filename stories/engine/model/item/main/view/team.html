@@ -1,0 +1,21 @@
+{{- $ctx  := . -}}{{- $site := $ -}}
+<div id="team" class="mb-60">
+    <div class="">
+        <div class="top flex center-x mb-15">
+            <div class="icon md border-all rounded-full">
+                {{ partial "icon/line/arrow-right.svg" }}
+            </div>
+            <h2 class="text-sm uppercase font-bold">Rockstar Author</h2>
+        </div>
+        <div class="bot mb-10">
+            <div class="box border-all rounded-xl flex center-x">
+            {{ range .Pages }}
+                {{- with .Page.Params.Metadata.Author -}}
+                    {{- $cover := partial "stories/library/author.html" (dict  "ctx" $ctx "site" $site "name" . )  -}}
+                    <div class="author flex center-x mr-15">{{ $cover }}</div>
+                {{- end -}}
+            {{ end }}
+            </div>
+        </div>
+    </div>
+</div>

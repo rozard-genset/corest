@@ -1,0 +1,16 @@
+<!-- format for youtube embed page -->
+<div id="format-youtube" class="rounded-2xl" data-format="youtube">
+    <div id="covers">
+        <div class="overlay flex center-a">
+            <div class="image flex center-a">
+                <img class="cover" src="{{ .RelPermalink }}{{ .Page.Params.Thumb }}" height="640" width="480" alt="video image cover">
+            </div>
+            <div class="action flex center-a">
+                <div class="icon rounded-xl border-all mr-10">{{ partial "icon/line/play.svg" }}</div>
+            </div>
+        </div>
+    </div>
+    <div id="player" class="hide" data-uri="https://www.youtube.com/embed/{{ .Page.Params.Format.Uniq }}?autoplay=1&rel=0">
+        <iframe id="iframe" width="" height="" src="" title="{{ .Page.Params.Title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</div>

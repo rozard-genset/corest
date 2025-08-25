@@ -1,46 +1,26 @@
-{{- define "hooks_meta" -}}
-    {{- partial "meta/base/load.html" . -}}
-    {{- partial "lib/core/rout.html" . -}}
-{{- end -}}
-
-
-
 {{- define "hooks_head" -}}
-    {{- partial "lib/script/item/head.html" . -}}
-{{- end -}}
-
-
-
-{{- define "hooks_data" -}}
-    {{- partial "meta/data/load.html" . -}}
-{{- end -}}
-
-
-
-{{- define "hooks_heed" -}}
-    {{- partial "lib/core/sys/item/heed.html" . -}}
+    {{- partial "corest/metas/based.html" . -}}
+    {{- partial "corest/metas/graph.html" . -}}
+    {{- partial "corest/script/kind/item-head.html" . -}}
+    {{- partial "corest/metas/jsonld.html" . -}}
 {{- end -}}
 
 
 
 {{- define "hooks_navs" -}}
-    {{- partial "lib/parted/header.html" . -}}
+    {{- partial "corest/render/item/heed.html" . -}}
+    {{- partial "corest/render/part/navs.html" . -}}
 {{- end -}}
 
 
 
 {{- define "hooks_main" -}}
-    {{- partial "lib/core/sys/item/main.html" . -}}
+    {{- partial "corest/render/item/main.html" . -}}
 {{- end -}}
 
 
 
 {{- define "hooks_foot" -}}
-    {{- partial "lib/parted/footer.html" . -}}
-{{- end -}}
-
-
-
-{{- define "hooks_pack" -}}
-    {{- partial "lib/script/item/pack.html" . -}}
+    {{- partial "corest/render/part/foot.html" . -}}
+    {{- partial "corest/script/kind/item-pack.html" . -}}
 {{- end -}}

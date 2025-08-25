@@ -1,0 +1,4 @@
+<!-- get format -->
+{{- $format := "article" }}
+{{- with .Page.Params.Format.Model -}}{{- $format = .  -}}{{- end -}}
+{{- return $format -}}

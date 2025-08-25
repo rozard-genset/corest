@@ -1,0 +1,27 @@
+<!-- variable -->
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $module := partial "lib/get-module.html" . -}}
+{{- $layout := partial "lib/get-layout.html" . -}}
+{{- $format := partial "lib/get-format.html" . -}}
+
+<!-- general -->
+{{- partial "corest/script/help/load-head.html" . -}}
+{{- partial "corest/script/kind/page/themes-head.html" . -}}
+{{- partial "corest/script/kind/page/module-head.html" . -}}
+
+
+<!-- targets -->
+{{- if and ( ne $format "" ) ( .Section ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/page/%s/head.css" $module $format ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/page/%s/head.js"  $module $format ) -}}
+{{- else if .Section -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/page/%s/head.css" $module $layout ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/page/%s/head.js"  $module $layout ) -}}
+{{- else -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/page/%s/head.css" $layout ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/page/%s/head.js"  $layout ) -}}
+{{- end -}}
+
+
+<!-- compile -->
+{{- partial "corest/script/help/make-head.html" . -}}

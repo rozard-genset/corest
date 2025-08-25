@@ -1,0 +1,50 @@
+#format-youtube {
+    overflow: hidden;
+
+    #covers.hide,
+    #player.hide{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+    }
+
+    .overlay{
+        position: relative;
+
+        .image{
+            width: 100%;
+        }
+
+        img{
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .action{
+            position: absolute;
+        }
+    }
+
+    #player{
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+        iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

@@ -1,0 +1,4 @@
+<!-- get layout -->
+{{- $layout := "main" -}}
+{{- with .Page.Params.Module.Layout -}}{{- $layout = ( . | urlize ) -}}{{- end -}}
+{{- return $layout -}}

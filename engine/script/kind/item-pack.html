@@ -1,0 +1,18 @@
+<!-- variable -->
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $module := partial "lib/get-module.html" . -}}
+{{- $layout := partial "lib/get-layout.html" . -}}
+
+<!-- general -->
+{{- partial "corest/script/help/load-pack.html" . -}}
+{{- partial "corest/script/kind/item/themes-pack.html" . -}}
+{{- partial "corest/script/kind/item/module-pack.html" . -}}
+
+
+<!-- targets -->
+{{- .Store.Set "dest_css" ( printf "assets/scripts/%s/item/%s/main.css" $module $layout ) -}}
+{{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/item/%s/main.js"  $module $layout ) -}}
+
+
+<!-- compile -->
+{{- partial "corest/script/help/make-pack.html" . -}}

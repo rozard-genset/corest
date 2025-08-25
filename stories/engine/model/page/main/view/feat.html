@@ -1,0 +1,18 @@
+{{- $part := "stories/module/page/main/view/" -}}
+{{- $meta := printf "%s/meta.html" $part -}}
+<div class="wrap">
+    <div class="row">
+        <div class="popon col">
+            <div class="bread">
+                {{- partial "stories/library/breadcumb.html" . -}}
+            </div>
+            <div class="title">
+                <h1 class="text-4xl">{{ .Title }}</h1>
+            </div>
+            <div class="metabox">{{- partial $meta . -}}</div>
+        </div>
+        <div class="image col ml-a">
+            {{- partial "stories/library/featureimg.html" . -}}
+        </div>
+    </div>
+</div>

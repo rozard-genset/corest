@@ -1,0 +1,1 @@
+console.log('Script : core | shift : deffered | scope : all  | source : default | type : script | status : loaded');

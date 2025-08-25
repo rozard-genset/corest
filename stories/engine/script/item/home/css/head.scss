@@ -1,0 +1,120 @@
+@import "../../../../../css/flexs/_init.scss";
+@import "../../../../../css/flexs/col-12.scss";
+@import "../../../../../css/flexs/col-03.scss";
+@import "../../../../../css/flexs/col-04.scss";
+@import "../../../../../css/flexs/col-08.scss";
+@import "../../../../../css/flexs/col-06.scss";
+
+
+#item[data-page="1"] {
+    main{ margin-top: 10rem; }
+    #hero .regs{ text-align: center; margin: 4rem 0; }
+    #hero .regs a { justify-content: center;}
+}
+
+main{
+    margin-top: 5rem;
+}
+
+#hero{
+    display: block;
+    .regs{
+        margin: 0rem 0 4rem 0;
+        .icon{
+            color: orangered;
+            border-color: orangered;
+        }
+    }
+    .term {
+
+        .box {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            a{
+                margin: 10px;
+                padding: 10px 20px;
+                background-color: var(--background-02);
+            }
+        }
+    }
+}
+
+.subhead{
+    h2 {
+        color: var(--color-02);
+        text-wrap: nowrap;
+        padding: 0 1.5rem 0 0;
+    }
+    hr{ width: 100%; }
+}
+
+.paginate ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    li{ margin: 0 10px; }
+}
+
+#late{
+    img{
+        width: 100%;
+        height: auto;
+    }
+    .author img{
+        width: 32px;
+        height: 32px;
+    }
+}
+
+#list {
+    .thumb{
+        width: 100px;
+        height: 100px;
+    }
+    .author img{
+        width: 28px;
+        height: 28px;
+    }
+}
+
+#subs{
+    .content{
+        .icon{
+            padding: 10px;
+            transform: rotate(-7deg);
+            background-color: orangered;
+            border-radius: 7px;
+            .overlay{
+                transform:rotate(7deg);
+                color: var(--color-01);
+                svg{
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and( min-width: 1080px ) {
+
+    #item[data-page="1"] {
+        #hero .regs{ text-align: left; margin: 8rem 0; }
+        #hero .regs a { justify-content: left;}
+    }
+
+    #hero{
+        display: flex;
+        align-items: center;
+        .regs{
+            h1 {margin-top: 0;}
+        }
+        .term {
+            margin-left: 5%;
+            width: 39%;
+            flex-wrap: wrap;
+        }
+    }
+}

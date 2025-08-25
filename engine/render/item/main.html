@@ -1,0 +1,35 @@
+<!-- variable -->
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $module := partial "lib/get-module.html" . -}}
+{{- $layout := partial "lib/get-layout.html" . -}}
+{{- $models := partial "lib/get-models.html" . -}}
+
+
+<!-- render -->
+{{- $render := printf "stories/module/item/main/render.html" -}}
+
+
+<!-- model -->
+{{- $based := printf "themes/%s/item/%s/render.html"  $themes $layout -}}
+{{- $modul := printf "%s/module/item/%s/render.html" $module $layout -}}
+{{- $model := printf "themes/%s/module/%s/layout/item/%s/render.html" $themes $module $layout -}}
+
+
+
+<!-- module -->
+{{- range (slice $based $modul $model ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . )  -}}{{- $render = . -}}{{- end -}}
+{{- end -}}
+
+
+
+<!-- blocks -->
+{{- if .Page.Params.Blocks -}}
+    {{- $render = printf "lib/blocks.html" -}}
+{{- end -}}
+
+
+<!-- render -->
+{{- if templates.Exists ( printf "partials/%s" $render )  -}}
+    {{- partial $render . -}}
+{{- end -}}
