@@ -1,0 +1,5 @@
+{{- if eq ( partial "themes/default/base/main/data/get-paginate.html" . ).PageNumber 1 -}}
+    {{- partial "themes/default/base/main/view/page.html" . -}}
+{{ else }}
+    {{- partial "themes/default/base/main/view/item.html" . -}}
+{{ end }}

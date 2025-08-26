@@ -5,27 +5,32 @@
 {{- $models := partial "lib/get-models.html" . -}}
 
 
-<!-- render -->
-{{- $render := printf "stories/module/item/main/render.html" -}}
+
+<!-- store -->
+{{- $render := printf "themes/default/item/main/render.html" -}}
 
 
 <!-- model -->
-{{- $based := printf "themes/%s/item/%s/render.html"  $themes $layout -}}
+{{- $based := printf "themes/%s/item/%s/render.html" $themes $layout -}}
 {{- $modul := printf "%s/module/item/%s/render.html" $module $layout -}}
 {{- $model := printf "themes/%s/module/%s/layout/item/%s/render.html" $themes $module $layout -}}
 
 
-
-<!-- module -->
-{{- range (slice $based $modul $model ) -}}
-    {{- if templates.Exists ( printf "partials/%s" . )  -}}{{- $render = . -}}{{- end -}}
+<!-- homer -->
+{{- if eq .Parent.Kind "home" -}}
+    {{- $based = printf "themes/%s/base/main/render.html" $themes -}}
+    {{- $modul = printf "%s/module/base/%s/render.html" $module $layout -}}
+    {{- $model = printf "themes/%s/module/%s/base/%s/render.html" $themes $module $layout -}}
 {{- end -}}
 
 
+<!-- block -->
+{{- if .Page.Params.Blocks -}}{{- $render = printf "lib/blocks.html" -}}{{- end -}}
 
-<!-- blocks -->
-{{- if .Page.Params.Blocks -}}
-    {{- $render = printf "lib/blocks.html" -}}
+
+<!-- module -->
+{{- range (slice $based $modul $model ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . ) -}}{{- $render = . -}}{{- end -}}
 {{- end -}}
 
 

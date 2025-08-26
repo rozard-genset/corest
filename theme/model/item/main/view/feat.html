@@ -1,0 +1,19 @@
+<div id="feat" class="mb-60">
+    <div class="top flex center-x mb-15">
+        <div class="icon md border-all rounded-full">
+            {{ partial "icon/line/arrow-right.svg" }}
+        </div>
+        <h2 class="text-sm uppercase font-bold">Stories Arround</h2>
+    </div>
+    <div class="bot">
+        <hr>
+        {{ range .Pages }}
+        <a href="{{ .RelPermalink }}">
+            <div class="article">
+                <h2 class="font-bold text-xl">{{ .Title }}</h2>
+                <p> {{ .Page.Params.Description }}</p>
+            </div>
+        </a> <hr>
+        {{ end }}
+    </div>
+</div>

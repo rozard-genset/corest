@@ -1,0 +1,20 @@
+<!-- variable -->
+{{- $part := "themes/default/item/main/view/" -}}
+{{- $card := printf "%s/card.html" $part -}}
+{{- $lead := printf "%s/lead.html" $part -}}
+{{- $team := printf "%s/team.html" $part -}}
+{{- $menu := printf "%s/menu.html" $part -}}
+{{- $feat := printf "%s/feat.html" $part -}}
+{{- $join := printf "%s/join.html" $part -}}
+
+
+<main id="item" class="story">
+    <div class="wrap row">
+        <div id="side" class="asside col col-xs-12 col-lg-3">
+            {{- partial $team . -}}{{- partial $menu . -}}{{- partial $feat . -}}{{- partial $join . -}}
+        </div>
+        <div id="plan" class="content col col-xs-12 col-lg-8 ml-a">
+            {{- partial $lead . -}}{{- partial $card . -}}
+        </div>
+    </div>
+</main> 

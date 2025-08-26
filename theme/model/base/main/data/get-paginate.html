@@ -1,0 +1,3 @@
+{{- $page := where site.RegularPages "Type" .Section -}}
+{{- $navi := .Paginate $page.ByDate 10 -}}
+{{- return $navi -}}

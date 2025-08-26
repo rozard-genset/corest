@@ -1,3 +1,18 @@
 <!-- get module -->
 {{- $module := ( .Section | urlize ) -}}
+
+
+<!-- default -->
+{{ if or ( in .Site.Params.Module.Default.Section .Section ) ( in ( slice "stories" "blogs" ) .Section ) }}
+    {{- $module = "default" -}}
+{{ end }}
+
+
+<!-- courses -->
+{{ if or ( in .Site.Params.Module.Courses.Section .Section ) ( in ( slice "courses" "course" "classroom" ) .Section  ) }}
+    {{- $module = "course" -}}
+{{ end }}
+
+
+
 {{- return $module -}}

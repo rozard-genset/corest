@@ -1,0 +1,22 @@
+<div id="hero" class="mb-60 main">
+    <div class="regs">
+        <h1 class="text-6xl font-bold"> Tell Stories, Share Ideas </h1>
+        <a href="/blogs/register" class="flex center-x">
+            <h2 class="text-xl mr-20">Share My Stories</h2>
+            <div class="icon md border-all rounded-full">
+                {{ partial "icon/line/arrow-right" }}
+            </div>
+        </a>
+    </div>
+    <div class="term">
+        <div class="box">
+            {{- range .Pages -}}
+                {{- if ne .IsPage true -}}
+                <a href="{{ .RelPermalink }}" class="text-md font-bold border-all rounded-full">
+                    {{- .Title -}}
+                </a>
+                {{- end -}}
+            {{- end -}}
+        </div>
+    </div>
+</div>
