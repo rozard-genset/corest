@@ -16,6 +16,45 @@ a:hover{
     text-transform: lowercase;
 }
 
+
+// font weight
+.font-thin {
+    font-weight: 200;
+}
+.font-extralight {
+    font-weight: 200;
+}
+.font-light {
+    font-weight: 300;
+}
+.font-normal {
+    font-weight: 400;
+}
+.font-medium {
+    font-weight: 500;
+}
+.font-semibold {
+    font-weight: 600;
+}
+.font-bold {
+    font-weight: 700;
+}
+.font-extrabold {
+    font-weight: 800;
+}
+
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+
+
+
 // font size
 .text-xs{
     font-size: 0.75rem; 
@@ -54,7 +93,7 @@ a:hover{
     line-height: 1;
 }
 .text-6xl {
-    font-size: 3.75rem; 
+    font-size: 2.95rem; 
     line-height: 1;
 }
 .text-7xl {
@@ -71,38 +110,29 @@ a:hover{
 }
 
 
-// font weight
-.font-thin {
-    font-weight: 200;
-}
-.font-extralight {
-    font-weight: 200;
-}
-.font-light {
-    font-weight: 300;
-}
-.font-normal {
-    font-weight: 400;
-}
-.font-medium {
-    font-weight: 500;
-}
-.font-semibold {
-    font-weight: 600;
-}
-.font-bold {
-    font-weight: 700;
-}
-.font-extrabold {
-    font-weight: 800;
+
+@media only screen and (min-width: 480px) {
+
 }
 
-.text-center{
-    text-align: center;
+
+@media only screen and (min-width: 768px) {
+
 }
-.text-left{
-    text-align: left;
+
+
+@media only screen and (min-width: 1024px) {
+
 }
-.text-right{
-    text-align: right;
+
+
+@media only screen and (min-width: 1280px) {
+    .text-6xl {
+        font-size: 3.75rem; 
+    }
+}
+
+
+@media only screen and (min-width: 1536px) {
+
 }

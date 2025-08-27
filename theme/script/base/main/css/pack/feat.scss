@@ -1,5 +1,13 @@
 
 #feat{
+
+    .leaf{
+        .main {
+            .thumb{
+                margin-bottom: 2rem;
+            }
+        }
+    }
     .card .space{
         flex-direction: column;
         justify-content: space-between;
@@ -21,6 +29,15 @@
 
     #feat{
         margin-bottom: 7rem;
+
+        .leaf{
+            .main {
+                margin-bottom: 4rem;
+                .thumb{
+                    margin-bottom: 2rem;
+                }
+            }
+        }
     }
 }
 
