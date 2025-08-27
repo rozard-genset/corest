@@ -4,6 +4,7 @@
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $sectio := partial "lib/get-sectio.html" . -}}
 
+
 <!-- theming -->
 {{- $link_css := resources.Get "scripts/themes/default/item/main/css/head.scss" -}}
 {{- $link_jsx := resources.Get "scripts/themes/default/item/main/jsx/head.js"   -}}
@@ -18,8 +19,6 @@
 {{- $model_css := printf "scripts/themes/%s/item/%s/css/head.scss" $themes $layout -}}
 {{- $model_jsx := printf "scripts/themes/%s/item/%s/jsx/head.js"   $themes $layout -}}
 
-
-{{  $theme_css }}
 
 {{- range ( slice $based_css $theme_css $model_css  ) -}}
     {{- with resources.Get . -}}{{- $link_css = . -}}{{- end -}}

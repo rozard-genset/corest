@@ -60,3 +60,9 @@ module:
 
     - source: "typhos/model"
       target: "static/assets/typho"
+
+    - source: "format/model"
+      target: "layouts/partials/format"
+    
+    - source: "format/script"
+      target: "assets/scripts/format"

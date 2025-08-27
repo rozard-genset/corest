@@ -6,8 +6,8 @@
 
 
 <!-- fallback -->
-{{- $link_css := printf "scripts/format/article/head/css/head.scss" -}}
-{{- $link_jsx := printf "scripts/format/article/head/jsx/head.js"   -}}
+{{- $link_css := printf "scripts/format/text/main/css/head.scss" -}}
+{{- $link_jsx := printf "scripts/format/text/main/jsx/head.js"   -}}
 
 
 {{- if .Page.Params.Format.Model -}}
@@ -38,7 +38,6 @@
     {{- end -}}
 
 {{- end -}}
-
 
 
 {{- .Store.Add "head_css" $link_css -}}

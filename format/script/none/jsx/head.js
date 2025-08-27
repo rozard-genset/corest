@@ -1,1 +1,0 @@
-console.log('Format : none | shift : critical | scope : core | source : default | type : script | status : loaded')

@@ -1,45 +1,23 @@
-{{- $theming := "default" -}}
-{{- with .Site.Params.System.Themes -}}{{- $theming = ( . | urlize ) -}}{{- end -}}
-
-{{- $format := "article" -}}
-{{- with .Page.Params.Format.Model -}}{{- $format = . -}}{{- end -}}
-
-{{- $models := "main" -}}
-{{- with .Page.Params.Format.Theme -}}{{- $models = . -}}{{- end -}}
-
-{{- $format_paths := "" -}}
-{{- $format_cores :=  printf "format/article/main/render.html" -}}
-{{- $format_based :=  printf "format/%s/%s/render.html" $format $models  -}}
-{{- $format_modul :=  printf "module/%s/format/%s/%s/render.html" .Section $format $models -}}
-{{- $format_theme :=  printf "themes/%s/format/%s/%s/render.html" $theming $format $models -}}
-{{- $format_skins :=  printf "themes/%s/module/%s/format/%s/%s/render.html" $theming .Section $format $models -}}
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $module := partial "lib/get-module.html" . -}}
+{{- $format := partial "lib/get-format.html" . -}}
+{{- $models := partial "lib/get-models.html" . -}}
 
 
-{{- if templates.Exists ( printf "partials/%s" $format_cores ) -}}
-    {{- $format_paths = $format_cores -}}
-{{- end -}}
-
- 
-{{- if templates.Exists ( printf "partials/%s" $format_based ) -}}
-    {{- $format_paths = $format_based -}}
-{{- end -}}
+{{- $paths := "" -}}
+{{- $cores :=  printf "format/text/main/render.html" -}}
+{{- $based :=  printf "format/%s/%s/render.html" $format $models  -}}
+{{- $modul :=  printf "format/%s/%s/%s/render.html" $module $format $models -}}
+{{- $theme :=  printf "themes/%s/format/%s/%s/render.html" $themes $format $models -}}
 
 
-{{- if templates.Exists ( printf "partials/%s" $format_modul ) -}}
-    {{- $format_paths = $format_modul -}}
-{{- end -}}
 
 
-{{- if templates.Exists ( printf "partials/%s" $format_theme ) -}}
-    {{- $format_paths = $format_theme -}}
-{{- end -}}
+{{ range ( slice $cores $based $modul $theme )  }}
+    {{- if templates.Exists ( printf "partials/%s" . ) -}}{{- $paths = . -}}{{- end -}}
+{{ end }}
 
 
-{{- if templates.Exists ( printf "partials/%s" $format_skins ) -}}
-    {{- $format_paths = $format_skins -}}
-{{- end -}}
-
-
-{{- if templates.Exists ( printf "partials/%s" $format_paths ) -}}
-    {{- partial $format_paths . -}}
+{{- if templates.Exists ( printf "partials/%s" $paths ) -}}
+    {{- partial $paths . -}}
 {{- end -}}
