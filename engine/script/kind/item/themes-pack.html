@@ -2,18 +2,18 @@
 {{- $themes := partial "lib/get-themes.html" . -}}
 {{- $module := partial "lib/get-module.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
-
+{{- $sectio := partial "lib/get-sectio.html" . -}}
 
 <!-- theming -->
 {{- $link_css := resources.Get "scripts/themes/default/item/main/css/pack.scss" -}}
 {{- $link_jsx := resources.Get "scripts/themes/default/item/main/jsx/pack.js"   -}}
 
 
-{{- $based_css := printf "scripts/themes/default/item/%s/css/pack.scss" $layout -}}
-{{- $based_jsx := printf "scripts/themes/default/item/%s/jsx/pack.js"   $layout -}}
+{{- $based_css := printf "scripts/themes/default/%s/%s/css/pack.scss" $sectio $layout  -}}
+{{- $based_jsx := printf "scripts/themes/default/%s/%s/jsx/pack.js"   $sectio $layout  -}}
 
-{{- $theme_css := printf "scripts/themes/%s/item/main/css/pack.scss" $themes -}}
-{{- $theme_jsx := printf "scripts/themes/%s/item/main/jsx/pack.js"   $themes -}}
+{{- $theme_css := printf "scripts/themes/%s/%s/main/css/pack.scss" $themes $sectio -}}
+{{- $theme_jsx := printf "scripts/themes/%s/%s/main/jsx/pack.js"   $themes $sectio -}}
 
 {{- $model_css := printf "scripts/themes/%s/item/%s/css/pack.scss" $themes $layout -}}
 {{- $model_jsx := printf "scripts/themes/%s/item/%s/jsx/pack.js"   $themes $layout -}}
@@ -26,6 +26,8 @@
 {{- range ( slice $based_jsx $theme_jsx $model_jsx ) -}}
     {{- with resources.Get . -}}{{- $link_jsx = . -}}{{- end  -}}
 {{- end -}}
+
+{{ $link_css }}
 
 
 {{- .Store.Add "pack_css" $link_css -}}

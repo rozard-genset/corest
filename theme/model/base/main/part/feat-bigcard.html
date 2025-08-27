@@ -1,0 +1,15 @@
+{{- $feat := "themes/default/base/main/part/thumb-feature.html" -}}
+
+<a href="{{ .RelPermalink }}" class="card grid col-6-4">
+    <div class="thumb">{{- partial $feat . -}}</div>
+    <div class="flex space">
+        <div class="head">
+            <h2 class="text-4xl mb-60 mt-00">{{ .Title }}</h2>
+            <p class="text-xl mb-30">{{- .Page.Params.Description -}}</p>
+        </div>
+        <div class="author flex center-x">
+            <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-42.html" . -}}</div>
+            <h2 class="text-lg mt-00 mb-00 ml-20 mr-20">{{- .Page.Params.Metadata.Author -}}</h2>
+        </div>
+    </div>
+</a>

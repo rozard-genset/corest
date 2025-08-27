@@ -1,5 +1,29 @@
-{{- if eq ( partial "themes/default/base/main/data/get-paginate.html" . ).PageNumber 1 -}}
-    {{- partial "themes/default/base/main/view/page.html" . -}}
-{{ else }}
-    {{- partial "themes/default/base/main/view/item.html" . -}}
+{{- $part := "themes/default/base/main/view/" -}}
+{{- $lead := printf "%s/lead.html" $part -}}{{- $hero := printf "%s/hero.html" $part -}}
+{{- $feat := printf "%s/feat.html" $part -}}{{- $list := printf "%s/list.html" $part -}}
+{{- $read := printf "%s/read.html" $part -}}{{- $pick := printf "%s/pick.html" $part -}}
+{{- $book := printf "%s/book.html" $part -}}
+
+
+{{- if ( partial "lib/pageds/get-landing.html" . ) -}}
+
+    <main id="base" class="story page">
+        <div class="wrap">
+            {{- partial $hero . -}}{{- partial $feat . -}}
+            <div class="grid col-5-4">
+                <div class="main">{{- partial $list . -}}</div>
+                <div class="side">{{- partial $read . -}}{{- partial $pick . -}}{{- partial $book . -}}</div>
+            </div>
+        </div>
+    </main>
+
+{{- else -}}
+
+    <main id="base" class="story item">
+        <div class="wrap item row">
+            <div class="col col-xs-12 col-lg-4">{{- partial $lead . -}}{{- partial $read . -}}{{- partial $pick . -}}{{- partial $book . -}}</div>
+            <div class="col col-xs-12 col-lg-6 ml-a">{{- partial $list . -}}</div>
+        </div>
+    </main>
+
 {{ end }}

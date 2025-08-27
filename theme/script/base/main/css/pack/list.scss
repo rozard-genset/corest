@@ -1,0 +1,48 @@
+#list {
+    .thumb{
+        width: 100px;
+        height: 100px;
+    }
+    .author img{
+        width: 28px;
+        height: 28px;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 480px) {
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+    #list {
+
+        .head{
+            margin-bottom: 5.5rem;
+        }
+
+        .thumb{
+            width: 120px;
+            height: 120px;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1280px) {
+
+}
+
+
+@media only screen and (min-width: 1536px) {
+
+}

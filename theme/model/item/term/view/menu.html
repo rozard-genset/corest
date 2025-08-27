@@ -1,0 +1,17 @@
+<div id="menu" class="mb-60">
+    <div class="top flex center-x mb-25">
+        <div class="icon md border-all rounded-full">
+            {{ partial "icon/line/arrow-right.svg" }}
+        </div>
+        <h2 class="text-sm uppercase font-bold">Exploration</h2>
+    </div>
+    <div class="low">
+        <div class="flex">
+        {{- range .Parent.Pages -}}{{- if ne .IsPage true -}}
+            <a href="{{ .RelPermalink }}" class="snip border-all rounded-full">
+            {{- .Title -}}
+            </a>
+        {{- end -}}{{- end -}}
+        </div>
+    </div>
+</div>

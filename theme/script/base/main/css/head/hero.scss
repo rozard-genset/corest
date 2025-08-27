@@ -1,0 +1,67 @@
+#hero{
+
+    margin-top: 5rem;
+
+    .lead{
+        text-align: center; 
+        .icon{
+            color: orangered;
+            border-color: orangered;
+        }
+
+        a { 
+            justify-content: center;
+        }
+
+    }
+
+
+    .term {
+        align-items: baseline;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        a{
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: var(--background-02);
+        }
+    }
+}
+
+
+
+@media only screen and (min-width: 480px) {
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+    #hero{
+        margin-top: 0rem;
+        min-height: 70vh;
+        .lead{
+            text-align: left; 
+            
+            a { 
+                justify-content: start;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1280px) {
+
+}
+
+
+@media only screen and (min-width: 1536px) {
+
+}

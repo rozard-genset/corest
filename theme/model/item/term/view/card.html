@@ -1,12 +1,14 @@
 {{- $ctx  := . -}}{{- $site := $ -}}
+{{ $list := partial "lib/queries/term-page.html" . }}
 
-{{- range .Paginator.Pages -}}
+
+{{- range ( .Paginate ($list) 2 ).Pages -}}
 <div class="card rounded-xl border-all mb-60">
     <div class="top flex center-x">
-        <div class="author flex center-x">
-            {{ partial "parted/avatar/user-32.html" . }}
-            <h2 class="text-sm font-bold mt-00 mb-00 ml-20 mr-20">{{- .Page.Params.Metadata.Author -}} </h2>
-        </div>
+        {{- with .Page.Params.Metadata.Author -}}
+           {{- $cover := partial "themes/default/item/main/part/thumb-authors.html" (dict  "ctx" $ctx "site" $site "name" . )  -}}
+            <div class="author flex center-x">{{ $cover }}</div><h2 class="text-sm font-bold mt-00 mb-00 ml-20 mr-20">{{- . -}} </h2>
+        {{- end -}}
         <div class="flex center-x ml-a">
             <div class="flex center-x mr-10">
                 <div class="icon md la-01 rounded-full">{{ partial "icon/line/bookmark.svg" }}</div>

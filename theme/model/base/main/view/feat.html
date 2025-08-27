@@ -1,0 +1,18 @@
+{{- $feat := "themes/default/base/main/part/thumb-feature.html" -}}
+{{- $auth := "themes/default/base/main/part/thumb-authors.html" -}}
+
+<div id="feat" class="mb-60">
+    <div class="head flex center-x mb-50">
+        <h2 class="text-3xl border-right">Latest Stories</h2><hr>
+    </div>
+    <div class="leaf">
+        <div class="top mb-60">
+        {{- range first 1 .RegularPagesRecursive -}}
+            {{- partial "themes/default/base/main/part/feat-bigcard.html" . -}}
+        {{- end -}}
+        </div>
+        <div class="grid col-4">
+            {{- partial "themes/default/base/main/part/feat-midcard.html" . -}}
+        </div>
+    </div>
+</div>

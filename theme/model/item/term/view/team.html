@@ -11,7 +11,7 @@
             <div class="box border-all rounded-xl flex center-x">
             {{ range .Pages }}
                 {{- with .Page.Params.Metadata.Author -}}
-                    {{- $cover := partial "themes/default/item/main/part/thumb-authors.html" (dict  "ctx" $ctx "site" $site "name" . )  -}}
+                    {{- $cover := partial "stories/library/author.html" (dict  "ctx" $ctx "site" $site "name" . )  -}}
                     <div class="author flex center-x mr-15">{{ $cover }}</div>
                 {{- end -}}
             {{ end }}

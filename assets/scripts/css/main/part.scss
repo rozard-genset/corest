@@ -51,6 +51,11 @@ nav ul li{
 	list-style: none;
 }
 
+/** OVERFLOW **/
+
+.overflow-hidden{
+    overflow: hidden;
+}
 
 /**  IMAGES **/
 img{
@@ -164,4 +169,17 @@ p code{
     font-size: .935rem;
     padding: 3px 7px;
     border-radius: 4px; 
+}
+
+
+/** AVATAR **/
+
+.avatar-42{
+    width: 42px;
+    height: 42px;
+}
+
+.avatar-62{
+    width: 62px;
+    height: 62px;
 }
