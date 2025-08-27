@@ -1,6 +1,4 @@
-{{- if .Site.Params.System.Models }}
-    {{- .Site.Params.System.Models -}}
-{{- else if .IsHome -}}
+{{- if .IsHome -}}
     home
 {{- else if .IsSection -}}
 
@@ -14,7 +12,9 @@
 
     {{- else -}}
 
-      {{- partial "lib/slug.html" . -}}
+        {{- $slug := replace .Page.RelPermalink  "/page/" "" -}}
+        {{- $slug = replace $slug  "/" ""  -}}
+        {{- $slug | urlize | safe.HTMLAttr -}}
 
     {{- end -}}
 

@@ -3,33 +3,29 @@
 {{- $module := partial "lib/get-module.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
+{{- $sectio := partial "lib/get-sectio.html" . -}}
 
 
 
 <!-- store -->
-{{- $render := printf "themes/default/item/main/render.html" -}}
+{{- $render := printf "themes/default/%s/main/render.html" $sectio -}}
 
 
-<!-- model -->
-{{- $based := printf "themes/%s/item/%s/render.html" $themes $layout -}}
-{{- $modul := printf "%s/module/item/%s/render.html" $module $layout -}}
-{{- $model := printf "themes/%s/module/%s/layout/item/%s/render.html" $themes $module $layout -}}
+<!-- modul -->
+{{- $cores := printf "%s/module/%s/main/render.html" $module $sectio -}}
+{{- $based := printf "themes/%s/%s/%s/render.html" $themes $sectio $layout -}}
+{{- $modul := printf "%s/module/%s/%s/render.html" $module $sectio $layout -}}
+{{- $model := printf "themes/%s/module/%s/layout/%s/%s/render.html" $themes $module $sectio $layout -}}
 
-
-<!-- homer -->
-{{- if eq .Parent.Kind "home" -}}
-    {{- $based = printf "themes/%s/base/main/render.html" $themes -}}
-    {{- $modul = printf "%s/module/base/%s/render.html" $module $layout -}}
-    {{- $model = printf "themes/%s/module/%s/base/%s/render.html" $themes $module $layout -}}
-{{- end -}}
 
 
 <!-- block -->
 {{- if .Page.Params.Blocks -}}{{- $render = printf "lib/blocks.html" -}}{{- end -}}
 
 
-<!-- module -->
-{{- range (slice $based $modul $model ) -}}
+
+<!-- chekcs -->
+{{- range (slice $based $cores $modul $model ) -}}
     {{- if templates.Exists ( printf "partials/%s" . ) -}}{{- $render = . -}}{{- end -}}
 {{- end -}}
 

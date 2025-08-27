@@ -19,6 +19,18 @@ module:
     - source: "assets"
       target: "assets"
 
+    - source: "blocks/general/model"
+      target: "layouts/partials/blocks/general"
+
+    - source: "blocks/general/script"
+      target: "assets/scripts/blocks/general"
+
+    - source: "blocks/default/model"
+      target: "layouts/partials/blocks/default"
+
+    - source: "blocks/default/script"
+      target: "assets/scripts/blocks/default"
+
     - source: "parted/model"
       target: "layouts/partials/parted"
 
@@ -48,21 +60,3 @@ module:
 
     - source: "typhos/model"
       target: "static/assets/typho"
-
-    - source: "stories/blocks/model"
-      target: "layouts/partials/stories/blocks"
-
-    - source: "stories/blocks/script"
-      target: "assets/scripts/stories/blocks"
-
-    - source: "stories/library"
-      target: "layouts/partials/stories/library"
-
-    - source: "stories/engine/model"
-      target: "layouts/partials/stories/module"
-
-    - source: "stories/engine/script"
-      target: "assets/scripts/stories/module"
-
-    - source: "stories/render"
-      target: "layouts/stories/_markup"

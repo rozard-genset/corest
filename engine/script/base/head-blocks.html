@@ -13,17 +13,17 @@
 
 
     <!-- modeling -->
-    {{- $based_css := printf "scripts/blocks/%s/%s/css/head.scss" .scope .model -}}
-    {{- $based_jsx := printf "scripts/blocks/%s/%s/jsx/head.js"   .scope .model -}}
+    {{- $based_css := printf "scripts/blocks/%s/%s/%s/css/head.scss" .render.type .render.pool .render.name -}}
+    {{- $based_jsx := printf "scripts/blocks/%s/%s/%s/jsx/head.js"   .render.type .render.pool .render.name -}}
 
-    {{- $theme_css := printf "scripts/themes/%s/blocks/%s/%s/css/head.scss" $themes .scope .model -}}
-    {{- $theme_jsx := printf "scripts/themes/%s/blocks/%s/%s/jsx/head.js"   $themes .scope .model -}}
+    {{- $theme_css := printf "scripts/themes/%s/blocks/%s/%s/%s/css/head.scss" $themes .render.type .render.pool .render.name -}}
+    {{- $theme_jsx := printf "scripts/themes/%s/blocks/%s/%s/%s/jsx/head.js"   $themes .render.type .render.pool .render.name -}}
 
-    {{- $modul_css := printf "scripts/module/%s/blocks/%s/%s/css/head.scss" $module .scope .model -}}
-    {{- $modul_jsx := printf "scripts/module/%s/blocks/%s/%s/jsx/head.js"   $module .scope .model -}}
+    {{- $modul_css := printf "scripts/module/%s/blocks/%s/%s/%s/css/head.scss" $module .render.type .render.pool .render.name -}}
+    {{- $modul_jsx := printf "scripts/module/%s/blocks/%s/%s/%s/jsx/head.js"   $module .render.type .render.pool .render.name -}}
 
-    {{- $skins_css := printf "scripts/themes/%s/module/%s/blocks/%s/%s/css/head.scss" $themes $module .scope .model -}}
-    {{- $skins_jsx := printf "scripts/themes/%s/module/%s/blocks/%s/%s/jsx/head.js"   $themes $module .scope .model -}}
+    {{- $skins_css := printf "scripts/themes/%s/module/%s/blocks/%s/%s/css/head.scss" $themes $module .scope .render -}}
+    {{- $skins_jsx := printf "scripts/themes/%s/module/%s/blocks/%s/%s/jsx/head.js"   $themes $module .scope .render -}}
     
 
     <!-- appended -->

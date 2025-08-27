@@ -1,0 +1,3 @@
+{{- $base := "list" -}}
+{{- with eq .Parent.Kind "home" -}}{{ $base = "base" }}{{ end }}
+{{- return $base -}}

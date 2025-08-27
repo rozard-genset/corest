@@ -8,22 +8,21 @@
 {{- $link_jsx := .Store.Get "pack_jsx" -}}
 
 
-
 {{- if .Page.Params.Blocks -}}{{- range .Page.Params.Blocks -}}
 
 
     <!-- modeling -->
-    {{- $based_css := printf "scripts/blocks/%s/%s/css/pack.scss" .scope .model -}}
-    {{- $based_jsx := printf "scripts/blocks/%s/%s/jsx/pack.js"   .scope .model -}}
+    {{- $based_css := printf "scripts/blocks/%s/%s/%s/css/pack.scss" .render.type .render.pool .render.name -}}
+    {{- $based_jsx := printf "scripts/blocks/%s/%s/%s/jsx/pack.js"   .render.type .render.pool .render.name -}}
 
-    {{- $theme_css := printf "scripts/themes/%s/blocks/%s/%s/css/pack.scss" $themes .scope .model -}}
-    {{- $theme_jsx := printf "scripts/themes/%s/blocks/%s/%s/jsx/pack.js"   $themes .scope .model -}}
+    {{- $theme_css := printf "scripts/themes/%s/blocks/%s/%s/%s/css/pack.scss" $themes .render.type .render.pool .render.name -}}
+    {{- $theme_jsx := printf "scripts/themes/%s/blocks/%s/%s/%s/jsx/pack.js"   $themes .render.type .render.pool .render.name -}}
 
-    {{- $modul_css := printf "scripts/module/%s/blocks/%s/%s/css/pack.scss" $module .scope .model -}}
-    {{- $modul_jsx := printf "scripts/module/%s/blocks/%s/%s/jsx/pack.js"   $module .scope .model -}}
+    {{- $modul_css := printf "scripts/module/%s/blocks/%s/%s/%s/css/pack.scss" $module .render.type .render.pool .render.name -}}
+    {{- $modul_jsx := printf "scripts/module/%s/blocks/%s/%s/%s/jsx/pack.js"   $module .render.type .render.pool .render.name -}}
 
-    {{- $skins_css := printf "scripts/themes/%s/module/%s/blocks/%s/%s/css/pack.scss" $themes $module .scope .model -}}
-    {{- $skins_jsx := printf "scripts/themes/%s/module/%s/blocks/%s/%s/jsx/pack.js"   $themes $module .scope .model -}}
+    {{- $skins_css := printf "scripts/themes/%s/module/%s/blocks/%s/%s/%s/css/pack.scss" $themes $module .render.type .render.pool .render.name -}}
+    {{- $skins_jsx := printf "scripts/themes/%s/module/%s/blocks/%s/%s/%s/jsx/pack.js"   $themes $module .render.type .render.pool .render.name -}}
 
     
     <!-- appended -->

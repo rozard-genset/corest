@@ -1,9 +1,0 @@
-{{- $ctx  := . -}}{{- $site := $ -}}
-<div class="meta flex center-x">
-    {{- with .Page.Params.Metadata.Author -}}
-        {{- $names := partial "lib/profile/person-name.html" (dict  "ctx" $ctx "site" $site "name" . )  -}}
-        {{- $cover := partial "stories/library/author.html"      (dict  "ctx" $ctx "site" $site "name" . )  -}}
-        <div class="author flex center-x">{{ $cover }}</div><h2 class="text-sm font-bold mt-00 mb-00 ml-20 mr-20">{{- $names -}} </h2>|
-    {{- end -}}
-    <div class="update text-sm flex center-x mt-00 mb-00 ml-10">Last updated on {{ .Lastmod | time.Format "1 January 2006"  }}</div>
-</div>

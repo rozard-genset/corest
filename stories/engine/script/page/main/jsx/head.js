@@ -1,1 +1,0 @@
-console.log("<b>Module : </b> critical default page loaded");
