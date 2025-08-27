@@ -11,6 +11,6 @@
 
 {{- if $image -}}
     {{ $actual := .Page.Resources.GetMatch $image }}
-    {{ $resize := $actual.Fill "120x120 webp q100" }}
+    {{ $resize := $actual.Fill "160x160 webp q100" }}
     <img src="{{ $resize.RelPermalink }}" fetchpriority="high"  class="rounded-lg thumb" width="{{ $actual.Width }}" height="{{ $actual.Height }}" alt="article feature image" loading="lazy">
 {{- end -}}

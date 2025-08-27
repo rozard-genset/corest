@@ -11,7 +11,9 @@
 @import "../../../../../css/wrap/p-15.scss";
 
 @import "../../../../../css/grid/col-6-4.scss";
+@import "../../../../../css/grid/col-3-6.scss";
 @import "../../../../../css/grid/col-5-4.scss";
+@import "../../../../../css/grid/col-4-5.scss";
 @import "../../../../../css/grid/col-4.scss";
 @import "../../../../../css/grid/col-6.scss";
 
@@ -20,7 +22,9 @@
 @import "head/hero.scss";
 
 
-
+#item{
+    margin-top: 6rem;
+}
 
 .head{
     h2 {
