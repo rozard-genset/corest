@@ -2,7 +2,6 @@
 {{- with .Site.Params.System.Themes -}}{{- $theming = ( . | urlize ) -}}{{- end -}}
 
 {{- $scope := .type -}}
-
 {{- $model := .model -}}
 
 
@@ -16,6 +15,7 @@
 {{- if templates.Exists ( printf "partials/%s" $widget_based ) -}}
     {{- $widget_paths = $widget_based -}}
 {{- end -}}
+
 
 {{- if templates.Exists ( printf "partials/%s" $widget_modul ) -}}
     {{- $widget_paths = $widget_modul -}}

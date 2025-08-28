@@ -11,8 +11,6 @@
 {{- $theme :=  printf "themes/%s/format/%s/%s/render.html" $themes $format $models -}}
 
 
-
-
 {{ range ( slice $cores $based $modul $theme )  }}
     {{- if templates.Exists ( printf "partials/%s" . ) -}}{{- $paths = . -}}{{- end -}}
 {{ end }}
