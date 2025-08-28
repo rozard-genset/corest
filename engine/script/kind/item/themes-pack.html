@@ -27,8 +27,6 @@
     {{- with resources.Get . -}}{{- $link_jsx = . -}}{{- end  -}}
 {{- end -}}
 
-{{ $link_css }}
-
 
 {{- .Store.Add "pack_css" $link_css -}}
 {{- .Store.Add "pack_jsx" $link_jsx -}}

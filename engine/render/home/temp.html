@@ -1,0 +1,33 @@
+<!-- variable -->
+{{- $render := "" -}}
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $module := partial "lib/get-module.html" . -}}
+{{- $layout := partial "lib/get-layout.html" . -}}
+{{- $models := partial "lib/get-models.html" . -}}
+
+
+
+<!-- models -->
+{{- $based_basic := printf "themes/default/home/main/protos.html" -}}
+{{- $based_theme := printf "themes/%s/home/main/protos.html" $themes -}}
+{{- $based_model := printf "themes/%s/home/%s/protos.html"   $themes $layout -}}
+
+
+<!-- module -->
+{{- range ( slice $based_basic $based_theme $based_model ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . ) -}}
+        {{- $render = . -}}
+    {{- end -}}
+{{- end -}}
+
+
+<!-- blocks -->
+{{- if .Page.Params.Blocks -}}
+    {{- $render = printf "lib/blocks.html" -}}
+{{- end -}}
+
+
+<!-- render -->
+{{- if templates.Exists ( printf "partials/%s" $render ) -}}
+    {{- partial $render . -}}
+{{- end -}}

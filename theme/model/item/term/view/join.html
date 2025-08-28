@@ -1,14 +1,3 @@
-<div id="join" class="mb-60">
-    <div class="top flex center-x mb-15 border-bottom">
-        <div class="icon md">
-            {{- partial "icon/line/user-plus.svg" -}}
-        </div>
-        <h2 class="text-sm uppercase font-bold border-left pl-15 pb-10 mb-00">Being Apart</h2>
-    </div>
-    <div class="bot">
-        <p class="text-sm mb-30">Daftarkan repository git dan publikasikan artikel di yuros langsung dari gitrepo anda.</p>
-        <div class="action">
-            <a href="/page/register" class="button outline">Register</a>
-        </div>
-    </div>
+<div id="join" class="mb-60 proto" data-target="proto-join">
+    {{- partial "parted/loader/main/render.html" ( dict "line" 2 ) -}}
 </div>

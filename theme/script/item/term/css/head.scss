@@ -11,7 +11,7 @@
 @import "../../../../../css/wrap/p-05.scss";
 @import "../../../../../css/wrap/p-10.scss";
 @import "../../../../../css/wrap/p-15.scss";
-
+@import "../../../../../css/load/main.scss";
 
 @import "head/list.scss";
 
@@ -26,7 +26,6 @@ main{
 }
 
 main{
-
     .rows{
         grid-template-columns: 22.5% 40% 22.5%;
         grid-gap: 7.5%;

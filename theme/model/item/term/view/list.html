@@ -2,8 +2,8 @@
 {{- $list := partial "lib/queries/page-list-in-term.html" .    -}}
 {{- $icon := slice "bookmark" "heart" "share-2" -}}
 
-<div id="list" class="">
-    <div class="head">
+<div id="list">
+    <div class="head mb-20">
         <div class="flex center-x">
             <h1 class="text-xl uppercase font-bold mb-30 mt-00">{{ .Title }}</h1>
             <h1 class="text-lg mb-30 mt-00 ml-a">Page {{ ( .Paginate ($list) 2 ).PageNumber }}</h1>
