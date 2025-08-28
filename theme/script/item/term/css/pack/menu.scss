@@ -1,0 +1,17 @@
+#menu{
+
+    .snip{
+        color: var(--color-01);
+        background-color: var(--background-02);
+        padding: 7px 20px;
+    }
+
+    .low .flex{
+        flex-wrap: wrap;
+    }
+
+    .low a{
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+}

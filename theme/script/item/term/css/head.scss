@@ -1,3 +1,20 @@
+@import "../../../../../css/wrap/m-00.scss";
+@import "../../../../../css/wrap/m-10.scss";
+@import "../../../../../css/wrap/m-15.scss";
+@import "../../../../../css/wrap/m-20.scss";
+@import "../../../../../css/wrap/m-25.scss";
+@import "../../../../../css/wrap/m-30.scss";
+@import "../../../../../css/wrap/m-40.scss";
+@import "../../../../../css/wrap/m-50.scss";
+@import "../../../../../css/wrap/m-60.scss";
+@import "../../../../../css/wrap/m-70.scss";
+@import "../../../../../css/wrap/p-05.scss";
+@import "../../../../../css/wrap/p-10.scss";
+@import "../../../../../css/wrap/p-15.scss";
+
+
+@import "head/list.scss";
+
 @import "../../../../../css/flexs/_init.scss";
 @import "../../../../../css/flexs/col-12.scss";
 @import "../../../../../css/flexs/col-03.scss";
@@ -8,92 +25,10 @@ main{
     margin-top: 3rem;
 }
 
-img{
-    width: 100%;
-    height: 100%;
-}
+main{
 
-#team {
-    .box{
-        position: relative;
-        background-color: var(--background-02);
-        padding: 10px 20px;
-    }
-}
-
-#menu{
-
-    .snip{
-        color: var(--color-01);
-        background-color: var(--background-02);
-        padding: 7px 20px;
-    }
-
-    .low .flex{
-        flex-wrap: wrap;
-    }
-
-    .low a{
-        margin-bottom: 10px;
-        margin-right: 10px;
-    }
-}
-
-#lead, .card {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.card{
-    background-color: var(--background-02);
-
-    .top, .low {
-        padding: 15px 20px;
-    }
-
-    .mid img{
-        width: 100%;
-        border-radius: 0;
-    }
-}
-
-#lead {
-    hr{
-        width: 130px;
-    }
-}
-
-.author img{
-    width: 32px;
-    height: 32px;
-}
-
-#side{
-    display: none;
-}
-
-.paginate ul{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    li{ margin: 0 10px; }
-}
-
-@media only screen and (min-width: 480px) {
-    #lead, .card{
-        width: 460px;
-    }
-}
-
-@media only screen and( min-width: 720px ) {
-     #lead, .card{
-        width: 480px;
-    }
-}
-
-@media only screen and( min-width: 1080px ) {
-    #side{
-        display: block;
+    .rows{
+        grid-template-columns: 22.5% 40% 22.5%;
+        grid-gap: 7.5%;
     }
 }

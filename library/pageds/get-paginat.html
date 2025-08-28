@@ -1,0 +1,4 @@
+{{- $stat := false -}}
+{{- $page := .Paginate ( where site.RegularPages "Type" .Section ).ByDate 10 -}}
+{{- with eq $page.PageNumber 1 -}}{{- $stat = true -}}{{- end -}}
+{{- return $stat -}}

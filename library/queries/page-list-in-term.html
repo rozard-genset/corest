@@ -1,0 +1,8 @@
+{{- $term_now := slice ( .Title | urlize ) -}}
+{{- $term_all := slice -}}
+{{- range where .Site.RegularPages "Type" .Section -}}
+    {{- if collections.Intersect $term_now .Page.Params.terms -}}
+        {{- $term_all = $term_all | append . -}}
+    {{- end -}}
+{{- end -}}
+{{- return $term_all -}}

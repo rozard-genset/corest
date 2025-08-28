@@ -1,0 +1,37 @@
+{{- $thum := "themes/default/item/term/part/thumb-square.html" -}}
+{{- $list := partial "lib/queries/page-list-in-term.html" .    -}}
+{{- $icon := slice "bookmark" "heart" "share-2" -}}
+
+<div id="list" class="">
+    <div class="head">
+        <div class="flex center-x">
+            <h1 class="text-xl uppercase font-bold mb-30 mt-00">{{ .Title }}</h1>
+            <h1 class="text-lg mb-30 mt-00 ml-a">Page {{ ( .Paginate ($list) 2 ).PageNumber }}</h1>
+        </div>
+    </div>
+    <div class="leaf">
+        {{- range ( .Paginate ($list) 2 ).Pages -}}
+        <div class="card rounded-lg border-all mb-60">
+            <div class="top flex center-x pa-05">
+                <div class="author flex center-x">
+                    <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-32.html" . -}}</div>
+                    <h2 class="text-sm font-bold mt-00 mb-00 ml-20 mr-20">{{- .Page.Params.Metadata.Author -}} </h2>
+                </div>
+                <div class="flex center-x ml-a">
+                    {{- range $icon -}}<div class="action icon md mr-15">{{ partial ( printf "icon/line/%s.svg" . ) }}</div>{{- end -}}
+                </div>
+            </div>
+            <a class="thumb" href="{{ .RelPermalink }}">{{- partial $thum . -}}</a>
+            <a href="{{ .RelPermalink }}" class="meta flex center-x pa-10">
+                <h2 class="text-lg font-bold mb-00 mt-00">{{ .Title }}</h2>
+                <div class="icon md ml-a">{{ partial "icon/line/arrow-right.svg" }}</div>
+            </a>
+        </div>
+        {{ end }}
+        <div class="paginate">
+            {{- partial "pagination.html" . -}}
+        </div>
+    </div>
+</div>
+
+
