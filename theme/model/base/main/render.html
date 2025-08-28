@@ -7,7 +7,7 @@
 
 {{- if ( partial "lib/pageds/get-landing.html" . ) -}}
 
-    <main id="base" class="story page">
+    <main id="page" class="story page">
         <div class="wrap">
             {{- partial $hero . -}}{{- partial $feat . -}}
             <div class="grid col-5-4">
@@ -21,8 +21,8 @@
 
     <main id="item" class="story item">
         <div class="wrap grid col-3-6">
-            <div class="col col-xs-12 col-lg-4">{{- partial $lead . -}}{{- partial $read . -}}{{- partial $pick . -}}{{- partial $book . -}}</div>
-            <div class="col col-xs-12 col-lg-6 ml-a">{{- partial $list . -}}</div>
+            <div id="div1">{{- partial $lead . -}}{{- partial $list . -}}</div>
+            <div id="div2">{{- partial $read . -}}{{- partial $pick . -}}{{- partial $book . -}}</div> 
         </div>
     </main>
 
