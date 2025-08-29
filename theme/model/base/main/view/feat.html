@@ -2,17 +2,12 @@
 {{- $auth := "themes/default/base/main/part/thumb-authors.html" -}}
 
 <div id="feat" class="mb-60">
-    <div class="head flex center-x mb-40">
-        <h2 class="text-3xl border-right">Latest Stories</h2><hr>
+    <div class="head flex center-x mb-50">
+        <h2 class="text-4xl border-right">Explore The Ideas</h2>
+        <h2 class="text-4xl border-right">Stories Timeline</h2>
     </div>
     <div class="leaf">
-        <div class="main mb-60">
-        {{- range first 1 .RegularPagesRecursive -}}
-            {{- partial "themes/default/base/main/part/feat-bigcard.html" . -}}
-        {{- end -}}
-        </div>
-        <div class="grid col-4">
-            {{- partial "themes/default/base/main/part/feat-midcard.html" . -}}
+        <div class="col-3 grid main mb-60">
         </div>
     </div>
 </div>

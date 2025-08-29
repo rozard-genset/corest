@@ -1,22 +1,11 @@
-{{- $page := partial "lib/queries/first-page.html" . -}}
 {{- $feat := "themes/default/base/main/part/thumb-feature.html" -}}
 {{- $auth := "themes/default/base/main/part/thumb-authors.html" -}}
 
-
-{{- range first 3 ( .RegularPagesRecursive.ByDate ) -}}{{- if ne . $page -}}
-
-<a href="{{ .RelPermalink }}" class="card">
-    <div class="top">{{- partial $feat . -}}</div>
-    <div class="mid mb-25">
-        <h2 class="text-2xl">{{- .Title -}}</h2>
-        <p class="text-lg">{{- .Page.Params.Description -}}</p>
-    </div>
-    <div class="low">
-        <div class="author flex center-x">
-            <div class="rounded-full overflow-hidden">{{ partial "parted/avatar/user-36.html" . }}</div>
-            <h2 class="text-md mt-00 mb-00 ml-20 mr-20">{{- .Page.Params.Metadata.Author -}} </h2>
-        </div>
-    </div>   
+<a href="{{ .RelPermalink }}" class="card text">
+    <div class="thumb">{{- partial $feat . -}}</div>
+    <div class="metas mb-25">
+        <h2 class="text-xl font-bold mb-20 mt-00">{{- .Title -}}</h2>
+        <p class="text-sm">{{- .Page.Params.Description -}}</p>
+    </div> 
 </a>
 
-{{- end -}}{{- end -}}

@@ -44,7 +44,13 @@
 
     #hero{
         margin-top: 0rem;
-        min-height: 72vh;
+        min-height: 89vh;
+
+        .rows{
+            grid-template-columns: calc( 61% - 4rem) 39% ;
+            justify-content: space-between;
+        }
+        
         .lead{
             text-align: left; 
             
