@@ -32,23 +32,17 @@ hr{
 .boxs-list{
 
     .card.list{
-        padding: 1rem 0;
-        display: grid;
+        padding: 1.95rem 0;
         grid-template-columns: calc( 100% - 1rem );
-        grid-gap: 1rem;
-
-        img{
-            width: 100%;
-            height: 100%;
+        grid-gap: 2rem;
+        .thumb{
             display: none;
         }
     }
 
     .list-1{
         .card.list{
-            grid-template-columns: 100%;
-
-            img{
+            .thumb{
                 display: block;
             }
         }
@@ -87,12 +81,10 @@ hr{
        }
     }
 
-    
+
     .boxs-rows{
         grid-template-columns: repeat( 3, calc( 33.333% - 3% ));
         justify-content: space-between;
         grid-gap: 3%;
     }
-
- 
 }
