@@ -8,7 +8,7 @@
         </div>
         <ul class="leaf grid boxs-list">
             {{- range $index, $value := first 5 .page -}}
-                <li class="item list-{{ math.Sum $index 1 }}">{{- partial "themes/default/base/main/part/term-cardlist.html" . -}}</li>
+                <li class="item list-{{ math.Sum $index 1 }}">{{- partial "themes/default/base/main/part/cardlist.html" . -}}</li>
             {{- end -}}
         </ul>
     </div>

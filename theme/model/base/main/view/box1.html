@@ -13,7 +13,7 @@
                 </div>
                 <ul class="leaf grid">
                     {{- range first 4 .page -}}
-                        <li class="item list-{{ math.Sum $index 1 }}">{{- partial "themes/default/base/main/part/term-cardbox.html" . -}}</li>
+                        <li class="item list-{{ math.Sum $index 1 }}">{{- partial "themes/default/base/main/part/cardbox.html" . -}}</li>
                     {{- end -}}
                 </ul>
             </div>
