@@ -1,7 +1,4 @@
-{{- if eq .Page.Params.Module.Layout "none" -}}
-    <meta http-equiv="refresh" content="0; url={{ .Parent.RelPermalink }}" />
-{{- else -}}
-    {{- partial "corest/metas/based/title.html"       . -}}
-    {{- partial "corest/metas/based/description.html" . -}}
-    {{- partial "corest/metas/based/canonical.html"   . -}}
-{{- end -}}
+{{- partial "corest/metas/based/valid.html"       . -}}
+{{- partial "corest/metas/based/title.html"       . -}}
+{{- partial "corest/metas/based/description.html" . -}}
+{{- partial "corest/metas/based/canonical.html"   . -}}

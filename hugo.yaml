@@ -66,3 +66,6 @@ module:
     
     - source: "format/script"
       target: "assets/scripts/format"
+
+    - source: "folders"
+      target: "content"
