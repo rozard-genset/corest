@@ -27,8 +27,8 @@
 {{- else -}}
 
     <main id="item" class="story item">
-        <div class="wrap grid col-3-6">
-            <div id="div1">{{- partial $lead . -}}{{- partial $list . -}}</div>
+        <div class="wrap grid rows">
+            <div id="div1">{{- partial $list . -}}</div>
             <div id="div2">{{- partial $read . -}}{{- partial $pick . -}}{{- partial $book . -}}</div> 
         </div>
     </main>

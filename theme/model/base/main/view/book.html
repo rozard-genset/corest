@@ -1,16 +1,12 @@
 <div id="book" class="mb-60 side">
-    <div class="head mb-30">
-        <div class="flex center-x mb-30">
-            <h2 class="text-md border-right mt-00 mb-00 uppercase font-bold">Subcribe</h2><hr>
+    <div class="head flex center-x border-bottom mb-30">
+        <div class="icon md">
+            {{ partial "icon/line/mail.svg" }}
         </div>
+        <h2 class="text-sm uppercase font-bold border-left pl-15 pb-10 mb-00">Subcribe</h2>
     </div>
-    <div class="leaf flex">
-        <div class="icon lg mr-15">
-            <div class="overlay">{{- partial "icon/line/mail.svg" -}}</div>
-        </div>
-        <div class="text ml-15">
-            <h3 class="text-xl mb-10 mt-00">Get the best of {{ .Site.Title }} delivered to you daily.</h3>
-            <a class="text-lg" href="/stories/register">Subscribe</a>
-        </div>
+    <div class="leaf">
+        <p>Get the best of {{ .Site.Title }} delivered to you daily.</p>
+        <a class="text-md" href="/stories/register">Subscribe</a>
     </div>
 </div>

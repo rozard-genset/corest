@@ -8,15 +8,12 @@
 @import "../../../../../css/wrap/m-50.scss";
 @import "../../../../../css/wrap/m-60.scss";
 @import "../../../../../css/wrap/m-70.scss";
+@import "../../../../../css/wrap/p-10.scss";
 @import "../../../../../css/wrap/p-15.scss";
 
 
-@import "../../../../../css/grid/col-6.scss";
-
-
-
 @import "head/hero.scss";
-
+@import "head/lead.scss";
 
 
 #item{
@@ -29,10 +26,7 @@ ul, li{
 
 
 .head{
-    h2 {
-        text-wrap: nowrap;
-        padding: 0 1.5rem 0 0;
-    }
+
     hr{ width: 100%; }
 }
 
@@ -84,9 +78,19 @@ ul, li{
 
 
     #item {
+
+        .rows{
+            grid-template-columns: 28% 62%;
+            justify-content: space-between;
+        }
+
         #div1{
             grid-column: 2;
             grid-row: 1;
+
+            h2{
+                text-wrap: nowrap;
+            }
         }
         #div2{
             grid-column: 1;

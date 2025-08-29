@@ -2,6 +2,7 @@
 {{- $read := printf "%s/read.html" $part -}}
 {{- $pick := printf "%s/pick.html" $part -}}
 {{- $book := printf "%s/book.html" $part -}}
+{{- $term := printf "%s/term.html" $part -}}
 
 <div id="box-1" class="mb-60">
     <div class="leaf grid">
@@ -20,7 +21,7 @@
             {{- end -}}{{- end -}}
         </div>
         <div class="side">
-            {{ partial $read . }}{{ partial $pick . }}{{ partial $book . }}
+            {{ partial $term . }}{{ partial $book . }}{{ partial $pick . }}
         </div>
     </div>
 </div>
