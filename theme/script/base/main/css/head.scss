@@ -24,10 +24,8 @@ ul, li{
     list-style: none;
 }
 
-
-.head{
-
-    hr{ width: 100%; }
+hr{ 
+    width: 100%; 
 }
 
 
@@ -68,15 +66,6 @@ ul, li{
 
 @media only screen and( min-width: 1080px ) {
 
-
-    .boxs-rows{
-        grid-template-columns: repeat( 3, calc( 33.333% - 3% ));
-        justify-content: space-between;
-        grid-gap: 3%;
-    }
-
-
-
     #item {
 
         .rows{
@@ -97,4 +86,13 @@ ul, li{
             grid-row: 1;
        }
     }
+
+    
+    .boxs-rows{
+        grid-template-columns: repeat( 3, calc( 33.333% - 3% ));
+        justify-content: space-between;
+        grid-gap: 3%;
+    }
+
+ 
 }
