@@ -2,12 +2,12 @@
     .box{
         position: relative;
         background-color: var(--background-02);
-        padding: 10px 20px;
     }
-}
 
-
-.author img{
-    width: 32px;
-    height: 32px;
+    .author {
+        img{
+            width: 32px;
+            height: 32px;
+        }
+    }
 }

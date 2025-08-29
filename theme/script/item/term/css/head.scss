@@ -16,11 +16,6 @@
 
 @import "head/list.scss";
 
-@import "../../../../../css/flexs/_init.scss";
-@import "../../../../../css/flexs/col-12.scss";
-@import "../../../../../css/flexs/col-03.scss";
-@import "../../../../../css/flexs/col-08.scss";
-
 
 main{
     margin-top: 3rem;
@@ -41,8 +36,8 @@ main{
 
     main{
         .rows{
-            grid-template-columns: 30% 55%;
-            grid-gap:  0% 15%;
+            grid-template-columns: 30% 65%;
+            grid-gap: 0% 5%;
         }
 
         #div3{
