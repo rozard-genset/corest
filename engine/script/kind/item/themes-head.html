@@ -6,8 +6,8 @@
 
 
 <!-- theming -->
-{{- $link_css := resources.Get "scripts/themes/default/item/main/css/head.scss" -}}
-{{- $link_jsx := resources.Get "scripts/themes/default/item/main/jsx/head.js"   -}}
+{{- $link_css := resources.Get "scripts/themes/default/user/main/css/head.scss" -}}
+{{- $link_jsx := resources.Get "scripts/themes/default/user/main/jsx/head.js"   -}}
 
 
 {{- $based_css := printf "scripts/themes/default/%s/%s/css/head.scss" $sectio $layout  -}}
@@ -16,8 +16,8 @@
 {{- $theme_css := printf "scripts/themes/%s/%s/main/css/head.scss" $themes $sectio -}}
 {{- $theme_jsx := printf "scripts/themes/%s/%s/main/jsx/head.js"   $themes $sectio -}}
 
-{{- $model_css := printf "scripts/themes/%s/item/%s/css/head.scss" $themes $layout -}}
-{{- $model_jsx := printf "scripts/themes/%s/item/%s/jsx/head.js"   $themes $layout -}}
+{{- $model_css := printf "scripts/themes/%s/%s/%s/css/head.scss" $themes $sectio $layout -}}
+{{- $model_jsx := printf "scripts/themes/%s/%s/%s/jsx/head.js"   $themes $sectio $layout -}}
 
 
 {{- range ( slice $based_css $theme_css $model_css  ) -}}
@@ -27,7 +27,6 @@
 {{- range ( slice $based_jsx $theme_jsx $model_jsx ) -}}
     {{- with resources.Get . -}}{{- $link_jsx = . -}}{{- end  -}}
 {{- end -}}
-
 
 
 

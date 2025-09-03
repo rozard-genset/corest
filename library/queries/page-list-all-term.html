@@ -1,26 +1,29 @@
 <!-- populate term -->
-{{- $term_all := slice -}}{{- $list_all := slice -}} 
-{{- $taxo_all := where .Site.Pages "Type" .Section -}}
-{{- $page_all := where .Site.RegularPages "Type" .Section -}}
+{{- $get_term := slice -}}
+{{- $set_term := .Site.GetPage ( printf "%s/terms" .Section ) -}}
+{{- $set_page := where .Site.RegularPages "Type" .Section -}}
 
-{{- range $taxo_all -}}
+{{- range $set_term.Pages -}}
     {{- if eq .Page.Params.Module.Layout "term" -}}
-        {{- $term_all = $term_all | append . -}}
+        {{- $get_term = $get_term | append . -}}
     {{- end -}}
 {{- end -}}
 
-{{- $term_all = $term_all | uniq -}}
 
-{{- range $term_all -}}
+<!-- populate page -->
+{{- $all_term := $get_term | uniq -}}
+{{- $all_page := slice -}} 
+
+{{- range $all_term -}}
     {{- $page_now := .Title -}}
     {{- $term_now := slice ( .Title | urlize ) -}}
     {{- $page_map := slice   -}}
-    {{- range $page_all -}}
+    {{- range $set_page -}}
         {{- if collections.Intersect $term_now .Page.Params.terms -}}
             {{- $page_map = $page_map | append . -}}
         {{- end -}}
     {{- end -}}
-   {{ $list_all = $list_all | append ( dict "name" $page_now  "page" . "list" $page_map ) }}
+    {{- $all_page = $all_page | append ( dict "name" $page_now  "page" . "list" $page_map ) -}}
 {{- end -}}
 
-{{- return $list_all -}}
+{{- return $all_page -}}

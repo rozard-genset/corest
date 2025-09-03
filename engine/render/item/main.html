@@ -18,16 +18,17 @@
 {{- $model := printf "themes/%s/module/%s/layout/%s/%s/render.html" $themes $module $sectio $layout -}}
 
 
+<!-- chekcs -->
+{{- range (slice $based $cores $modul $model ) -}}
+    {{- if templates.Exists ( printf "partials/%s" . ) -}}{{- $render = . -}}{{- end -}}
+{{- end -}}
+
 
 <!-- block -->
 {{- if .Page.Params.Blocks -}}{{- $render = printf "lib/blocks.html" -}}{{- end -}}
 
 
 
-<!-- chekcs -->
-{{- range (slice $based $cores $modul $model ) -}}
-    {{- if templates.Exists ( printf "partials/%s" . ) -}}{{- $render = . -}}{{- end -}}
-{{- end -}}
 
 
 <!-- render -->

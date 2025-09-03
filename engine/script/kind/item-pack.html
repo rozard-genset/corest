@@ -2,6 +2,7 @@
 {{- $themes := partial "lib/get-themes.html" . -}}
 {{- $module := partial "lib/get-module.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
+{{- $sectio := partial "lib/get-sectio.html" . -}}
 
 <!-- general -->
 {{- partial "corest/script/help/load-pack.html" . -}}
@@ -10,8 +11,8 @@
 
 
 <!-- targets -->
-{{- .Store.Set "dest_css" ( printf "assets/scripts/%s/item/%s/main.css" $module $layout ) -}}
-{{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/item/%s/main.js"  $module $layout ) -}}
+{{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/%s/main.css" $module $sectio $layout ) -}}
+{{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/%s/main.js"  $module $sectio $layout ) -}}
 
 
 <!-- compile -->

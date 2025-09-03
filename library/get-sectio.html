@@ -1,3 +1,22 @@
-{{- $base := "item" -}}
-{{- with eq .Parent.Kind "home" -}}{{ $base = "base" }}{{ end }}
-{{- return $base -}}
+{{- $item := "item" -}}
+{{- $link := .Page.RelPermalink -}}
+{{- $path := split $link "/" -}}
+
+
+<!-- filter -->
+{{- if eq .Parent.Kind "home" -}}
+    {{- $item = "base" -}}
+{{- else if eq ( len $path ) 4 -}}
+    {{- $item = "user" -}}
+{{- else if strings.Contains $link ( printf "%s/terms" .Section ) -}}
+    {{- $item = "navi" -}}
+{{- else if strings.Contains $link ( printf "%s/guide" .Section ) -}}
+    {{- $item = "info" -}}
+{{- else if strings.Contains $link ( printf "%s/tools" .Section ) -}}
+    {{- $item = "apps" -}}
+{{- else if eq ( len $path ) 5 -}}
+    {{- $item = "navi" -}}
+{{- end -}} 
+
+
+{{- return  $item -}}

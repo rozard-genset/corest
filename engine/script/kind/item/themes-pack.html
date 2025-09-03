@@ -5,8 +5,8 @@
 {{- $sectio := partial "lib/get-sectio.html" . -}}
 
 <!-- theming -->
-{{- $link_css := resources.Get "scripts/themes/default/item/main/css/pack.scss" -}}
-{{- $link_jsx := resources.Get "scripts/themes/default/item/main/jsx/pack.js"   -}}
+{{- $link_css := resources.Get "scripts/themes/default/user/main/css/pack.scss" -}}
+{{- $link_jsx := resources.Get "scripts/themes/default/user/main/jsx/pack.js"   -}}
 
 
 {{- $based_css := printf "scripts/themes/default/%s/%s/css/pack.scss" $sectio $layout  -}}
@@ -15,8 +15,8 @@
 {{- $theme_css := printf "scripts/themes/%s/%s/main/css/pack.scss" $themes $sectio -}}
 {{- $theme_jsx := printf "scripts/themes/%s/%s/main/jsx/pack.js"   $themes $sectio -}}
 
-{{- $model_css := printf "scripts/themes/%s/item/%s/css/pack.scss" $themes $layout -}}
-{{- $model_jsx := printf "scripts/themes/%s/item/%s/jsx/pack.js"   $themes $layout -}}
+{{- $model_css := printf "scripts/themes/%s/%s/%s/css/pack.scss" $themes $sectio $layout -}}
+{{- $model_jsx := printf "scripts/themes/%s/%s/%s/jsx/pack.js"   $themes $sectio $layout -}}
 
 
 {{- range ( slice $based_css $theme_css $model_css  ) -}}
