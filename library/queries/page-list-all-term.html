@@ -5,21 +5,22 @@
 
 {{- range $taxo_all -}}
     {{- if eq .Page.Params.Module.Layout "term" -}}
-        {{- $term_all = $term_all | append ( .Title | urlize ) -}}
+        {{- $term_all = $term_all | append . -}}
     {{- end -}}
 {{- end -}}
 
 {{- $term_all = $term_all | uniq -}}
 
 {{- range $term_all -}}
-    {{- $term_now := slice . -}}
-    {{- $page_tax := slice   -}}
+    {{- $page_now := .Title -}}
+    {{- $term_now := slice ( .Title | urlize ) -}}
+    {{- $page_map := slice   -}}
     {{- range $page_all -}}
         {{- if collections.Intersect $term_now .Page.Params.terms -}}
-            {{- $page_tax = $page_tax | append . -}}
+            {{- $page_map = $page_map | append . -}}
         {{- end -}}
     {{- end -}}
-   {{ $list_all = $list_all | append ( dict "name" . "page" $page_tax ) }}
+   {{ $list_all = $list_all | append ( dict "name" $page_now  "page" . "list" $page_map ) }}
 {{- end -}}
 
 {{- return $list_all -}}

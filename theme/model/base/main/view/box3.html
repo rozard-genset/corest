@@ -5,7 +5,7 @@
             <h2 class="text-2xl border-right">{{ .name }}</h2><hr>
         </div>
         <ul class="leaf grid boxs-rows">
-            {{- range $index, $value := first 5 .page -}}
+            {{- range $index, $value := first 5 .list -}}
                 <li class="item list-{{ math.Sum $index 1 }}">{{- partial "themes/default/base/main/part/cardbox.html" . -}}</li>
             {{- end -}}
         </ul>
