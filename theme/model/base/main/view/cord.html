@@ -18,7 +18,7 @@
                     <h2 class="text-xl font-bold mb-20 mt-00">{{- .Title -}}</h2>
                     <p class="text-sm mb-25">{{- .Page.Params.Description -}}</p>
                     <div class="flex center-x">
-                         <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-28.html" . -}}</div>
+                         <div class="avatar rounded-full overflow-hidden">{{- partial "parted/avatar/user-28.html" . -}}</div>
                         <div class="font-bold text-sm mb-00 mt-05 ml-20">{{ .Lastmod | time.Format ":date_medium" }}</div>
                         <div class="capitalize text-sm border-left mb-00 mt-00 ml-10 pl-10">reading time:<span class="font-bold ml-10">{{ printf "%d min" .ReadingTime }}</span></div>
                     </div>
@@ -33,7 +33,7 @@
                         <h2 class="text-lg font-bold mb-20 mt-00">{{- .Title -}}</h2>
                         <p class="text-sm mb-25">{{- .Page.Params.Description -}}</p>
                         <div class="flex center-x">
-                            <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-28.html" . -}}</div>
+                            <div class="avatar rounded-full overflow-hidden">{{- partial "parted/avatar/user-28.html" . -}}</div>
                             <div class="font-bold text-sm mb-00 mt-05 ml-20">{{ .Lastmod | time.Format ":date_medium" }}</div>
                             <div class="capitalize text-sm border-left mb-00 mt-00 ml-10 pl-10">reading time:<span class="font-bold ml-10">{{ printf "%d min" .ReadingTime }}</span></div>
                         </div>
@@ -43,7 +43,7 @@
             {{- end -}}{{- end -}}
             <hr class="mb-25">
             <a href="{{ .page.RelPermalink }}" class="more flex center-x capitalize text-sm font-bold ml-a">
-                More {{ .page.Title }} article
+               More Stories
                 <div class="icon sm border-all rounded-full ml-15">{{ partial "icon/line/arrow-right" }}</div>
             </a>
         </div>

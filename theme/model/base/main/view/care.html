@@ -18,7 +18,7 @@
                         <p class="text-sm mb-10">{{- .Page.Params.Description -}}</p>
                     </div>
                     <div class="flex center-x">
-                        <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-32.html" . -}}</div>
+                        <div class="avatar rounded-full overflow-hidden">{{- partial "parted/avatar/user-32.html" . -}}</div>
                         <h2 class="text-sm mt-00 mb-00 ml-20 mr-20">{{- .Page.Params.Metadata.Author -}}</h2>
                         <div class="capitalize mb-00 mt-00 ml-a text-sm">reading time:<span class="font-bold ml-10">{{ printf "%d min" .ReadingTime }}</span></div>
                     </div>
@@ -29,7 +29,7 @@
     </ul>
     <hr class="mb-25 mt-00">
     <a href="{{ .page.RelPermalink }}" class="flex center-x capitalize text-sm font-bold ml-a">
-        More {{ .page.Title }} article
+        More Stories
         <div class="icon sm border-all rounded-full ml-15">{{ partial "icon/line/arrow-right" }}</div>
     </a>
 </div>
