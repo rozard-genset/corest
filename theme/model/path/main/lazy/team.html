@@ -1,4 +1,4 @@
-{{- $path := "themes/default/base/main/part" -}}
+{{- $path := "themes/default/path/main/part" -}}
 {{- $ctx  := . -}}{{- $site := $ -}}
 
 <template id="proto-team">
@@ -7,16 +7,16 @@
             <div class="icon md">
                 {{ partial "icon/line/shield.svg" }}
             </div>
-            {{- with .Page.Params.Chairman.lead -}}
+            {{- with .Parent.Page.Params.Chairman.lead -}}
             <h2 class="text-sm uppercase font-bold border-left pl-15 pb-10 mb-00">{{ . }}</h2>
             {{- end -}}
         </div>
-        {{- with .Page.Params.Chairman.desc -}}
+        {{- with .Parent.Page.Params.Chairman.desc -}}
             <p class="text-sm mt-00">{{- . -}}</p>
         {{- end -}}
     </div>
     <div class="leaf grid">
-    {{- range .Page.Params.Chairman.list -}}
+    {{- range .Parent.Page.Params.Chairman.list -}}
         <div class="flex center-x">
             <div class="icon lg">
                 {{- partial ( printf "%s/thumb-team.html" $path ) (dict  "ctx" $ctx "site" $site "name" .name )  -}}
