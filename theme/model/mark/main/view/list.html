@@ -5,7 +5,7 @@
 <div id="list">
     <div class="head mb-20">
         <div class="flex center-x">
-            <h1 class="text-2xl mb-30 mt-00">{{ .Title }} Article</h1>
+            <h1 class="text-2xl mb-30 mt-00">{{ .Title }} {{ .Section }}</h1>
             <h1 class="text-md mb-30 mt-00 ml-a">Page {{ ( .Paginate ($list) 2 ).PageNumber }}</h1>
         </div>
     </div>
