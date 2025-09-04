@@ -1,23 +1,13 @@
 <!-- variable -->
-{{- $part := "themes/default/term/main/view/" -}}
-{{- $hero := printf "%s/hero.html" $part -}}
-{{- $list := printf "%s/list.html" $part -}}
-{{- $team := printf "%s/team.html" $part -}}
-{{- $menu := printf "%s/menu.html" $part -}}
-{{- $feat := printf "%s/feat.html" $part -}}
-{{- $join := printf "%s/join.html" $part -}}
+{{- $skels := "themes/default/navi/main/skel/" -}}
+{{- $main1 := printf "%s/main-1.html" $skels -}}
+{{- $main2 := printf "%s/main-2.html" $skels -}}
+{{- $main3 := printf "%s/main-3.html" $skels -}}
 
-
-<main id="item" class="story">
+<main id="navi" class="main">
     <div class="rows wrap grid">
-        <div id="div1">
-            {{- partial $hero . -}}{{- partial $menu . -}}{{- partial $feat . -}}
-        </div>
-        <div id="div2">
-            {{- partial $list . -}}
-        </div>
-        <div id="div3">
-           {{- partial $team . -}}{{- partial $join . -}}
-        </div>
+        {{- partial $main1 . -}}
+        {{- partial $main2 . -}}
+        {{- partial $main3 . -}}
     </div>
 </main> 

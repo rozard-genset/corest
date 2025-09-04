@@ -10,7 +10,7 @@
 
 {{- if $image -}}
     <picture>
-        {{- $xl := $image.Resize "470x320 webp q100" -}}
+        {{- $xl := $image.Resize "574x380 webp q100" -}}
         <img src="{{ $xl.RelPermalink }}" alt="{{ .Title }}" class="thumb-square" width="{{ $xl.Width }}" height="{{ $xl.Height }}" title="{{ .Title }} feature image" fetchpriority="high"/>
     </picture>
 {{- end -}}

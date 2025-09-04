@@ -4,6 +4,10 @@
         overflow: hidden;
         background-color: var(--background-02);
 
+        picture{
+            height: 100%;
+        }
+
         .linker{
             display: grid;
         }
@@ -34,26 +38,28 @@
 
 
 @media only screen and (min-width: 480px) {
-}
-
-
-@media only screen and (min-width: 768px) {
 
      #list{
 
         .card{
 
             .linker{
-                grid-template-columns: 40% 60%;
-                align-items: flex-start;
-            }
-
-            .icon{
-                display: none;
+                padding: 1rem;
+                grid-template-columns: 40% calc( 60% - 3% );
+                grid-gap: 3%;
             }
 
             .meta {
                 padding: 10px 15px;
+
+                .icon{
+                    display: none;
+                }
+            }
+
+            .thumb{
+                border-radius: .5rem;
+                overflow: hidden;
             }
 
             .descs{
@@ -62,11 +68,41 @@
             }
         }
     } 
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    #list{
+
+        .leaf{
+            display: grid;
+            grid-template-columns: repeat(2, calc( 50% - 1rem ));
+            justify-content: space-between;
+        }
+
+        .card{
+            .linker{
+                padding: 0rem;
+                grid-template-columns: 100%;
+                grid-gap: 3%;
+            }
+        }
+    }
 }
 
 
 @media only screen and (min-width: 1024px) {
 
+    #list{
+        width: 480px;
+        margin: auto;
+
+        .leaf{
+            grid-template-columns: 100%;
+        }
+    }    
 }
 
 

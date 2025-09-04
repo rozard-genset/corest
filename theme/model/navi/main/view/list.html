@@ -1,18 +1,18 @@
-{{- $thum := "themes/default/term/main/part/thumb-square.html" -}}
+{{- $thum := "themes/default/navi/main/part/thumb-square.html" -}}
 {{- $list := partial "lib/queries/page-list-in-term.html" . -}}
 {{- $icon := slice "bookmark" "heart" "share-2" -}}
 
 <div id="list">
     <div class="head mb-20">
         <div class="flex center-x">
-            <h1 class="text-xl uppercase font-bold mb-30 mt-00">{{ .Title }}</h1>
-            <h1 class="text-lg mb-30 mt-00 ml-a">Page {{ ( .Paginate ($list) 2 ).PageNumber }}</h1>
+            <h1 class="text-xl mb-30 mt-00">{{ .Title }}</h1>
+            <h1 class="text-md mb-30 mt-00 ml-a">Page {{ ( .Paginate ($list) 2 ).PageNumber }}</h1>
         </div>
     </div>
     <div class="leaf">
-        {{- range ( .Paginate ($list) 2 ).Pages -}}
+        {{- range ( .Paginate $list 5 ).Pages -}}
         <div class="card grid rounded-lg border-all mb-60">
-            <div class="action flex center-x pa-05">
+            <div class="action flex center-x pa-10">
                 <div class="author flex center-x">
                     <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-32.html" . -}}</div>
                     <h2 class="text-sm font-bold mt-00 mb-00 ml-20 mr-20">{{- .Page.Params.Metadata.Author -}} </h2>
@@ -23,13 +23,13 @@
             </div>
             <div class="linker">
                 <a class="thumb" href="{{ .RelPermalink }}">{{- partial $thum . -}}</a>
-                <a href="{{ .RelPermalink }}" class="meta flex center-x pa-10">
-                    <div class="content mr-a">
-                        <h2 class="title text-lg font-bold mb-00 mt-00">{{ .Title }}</h2>
-                        <p class="descs text-md mb-00 mt-00">{{ .Page.Params.Description }}</p>
-                    </div>
-                    <div class="icon md">{{ partial "icon/line/arrow-right.svg" }}</div>
-                </a>
+                <div class="meta pa-15 mb-05">
+                    <a href="{{ .RelPermalink }}" class="flex">
+                        <h2 class="title text-lg font-bold mb-10 mt-00">{{ .Title }}</h2>
+                        <div class="icon md ml-a">{{ partial "icon/line/arrow-right.svg" }}</div>
+                    </a>
+                    <p class="descs text-sm mb-00 mt-00">{{ .Page.Params.Description }}</p>
+                </div>
             </div>
         </div>
         {{ end }}
