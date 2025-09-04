@@ -49,10 +49,10 @@ module:
     - source: "widget/script"
       target: "assets/scripts/widget"
 
-    - source: "iconia/model"
+    - source: "iconiac/model"
       target: "layouts/partials/icon"
 
-    - source: "iconia/script"
+    - source: "iconiac/script"
       target: "assets/scripts/icon"
 
     - source: "typhos/script"
@@ -66,6 +66,9 @@ module:
     
     - source: "format/script"
       target: "assets/scripts/format"
+
+    - source: "profile/engine"
+      target: "layouts/partials/profile/module"
 
     - source: "folders"
       target: "content"

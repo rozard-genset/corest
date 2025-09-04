@@ -5,6 +5,7 @@
 {{- $models := partial "lib/get-models.html" . -}}
 {{- $sectio := partial "lib/get-sectio.html" . -}}
 
+
 <!-- store -->
 {{- $render := printf "themes/default/%s/main/render.html" $sectio -}}
 
@@ -27,9 +28,8 @@
 
 
 
-
-
 <!-- render -->
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
     {{- partial $render . -}}
 {{- end -}}
+

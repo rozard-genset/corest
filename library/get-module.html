@@ -7,5 +7,10 @@
     {{- $module = "course" -}}
 {{ end }}
 
+<!-- courses -->
+{{ if or ( in .Site.Params.Module.Profile.Section .Section ) ( in ( slice "person" "profile" ) .Section  ) }}
+    {{- $module = "profile" -}}
+{{ end }}
+
 
 {{- return $module -}}

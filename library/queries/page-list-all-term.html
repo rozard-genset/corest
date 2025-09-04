@@ -1,6 +1,6 @@
 <!-- populate term -->
 {{- $get_term := slice -}}
-{{- $set_term := .Site.GetPage ( printf "%s/terms" .Section ) -}}
+{{- $set_term := .Site.GetPage ( printf "%s/path" .Section ) -}}
 {{- $set_page := where .Site.RegularPages "Type" .Section -}}
 
 {{- range $set_term.Pages -}}

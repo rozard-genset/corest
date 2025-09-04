@@ -16,8 +16,6 @@
     {{- $item = "info" -}}
 {{- else if strings.Contains $link ( printf "%s/tool" .Section ) -}}
     {{- $item = "tool" -}}
-{{- else if eq ( len $path ) 4 -}}
-    {{- $item = "user" -}}
 {{- end -}} 
 
 
