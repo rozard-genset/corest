@@ -1,0 +1,10 @@
+{{- $user := slice -}}
+{{- $page := slice -}}
+{{- range where site.RegularPages "Type" .Section -}}
+    {{- if and ( .Page.Params.Metadata.Author ) ( not ( in $user .Page.Params.Metadata.Author ) ) -}}
+        {{- $user = $user | append .Page.Params.Metadata.Author -}}
+        {{- $page = $page | append . -}}       
+    {{- end -}}
+{{- end -}}
+{{- return $page -}}
+
