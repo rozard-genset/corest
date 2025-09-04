@@ -27,4 +27,9 @@
         </li>
         {{- end -}}
     </ul>
+    <hr class="mb-25 mt-00">
+    <a href="{{ .page.RelPermalink }}" class="flex center-x capitalize text-sm font-bold ml-a">
+        More {{ .page.Title }} article
+        <div class="icon sm border-all rounded-full ml-15">{{ partial "icon/line/arrow-right" }}</div>
+    </a>
 </div>

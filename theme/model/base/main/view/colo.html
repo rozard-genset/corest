@@ -21,7 +21,11 @@
                             <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-28.html" . -}}</div>
                             <h2 class="text-lg font-bold mb-10 mt-00 ml-15">{{- .Title -}}</h2>
                         </div>
-                        <p class="text-sm mb-00">{{- .Page.Params.Description -}}</p>
+                        <p class="text-sm mb-25">{{- .Page.Params.Description -}}</p>
+                        <div class="flex center-x">
+                            <div class="font-bold text-sm mb-00 mt-05">{{ .Lastmod | time.Format ":date_medium" }}</div>
+                            <div class="capitalize text-sm border-left mb-00 mt-00 ml-10 pl-10">reading time:<span class="font-bold ml-10">{{ printf "%d min" .ReadingTime }}</span></div>
+                        </div>
                     </div>
                     {{ if gt $index 0 }}
                     <div class="r-thumb">{{- partial $card . -}}</div>
@@ -30,8 +34,8 @@
             </li>
         {{- end -}}
     </ul>
-    <hr class="mb-15">
-    <a href="{{ .page.RelPermalink }}" class="flex center-x capitalize text-sm font-bold">
+    <hr class="mb-25 mt-00">
+    <a href="{{ .page.RelPermalink }}" class="flex center-x capitalize text-sm font-bold ml-a">
         More {{ .page.Title }} article
         <div class="icon sm border-all rounded-full ml-15">{{ partial "icon/line/arrow-right" }}</div>
     </a>

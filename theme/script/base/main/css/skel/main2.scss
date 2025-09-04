@@ -19,11 +19,6 @@
 
 @media only screen and (min-width: 768px) {
 
-    #main-2{
-        .main{
-            margin-bottom: 3rem;
-        }
-    }
 }
 
 
@@ -36,17 +31,8 @@
 
     #main-2{
         .rows{
-            grid-template-columns: 62% 28%;
+            grid-template-columns: 65% 28%;
             justify-content: space-between;
-        }
-
-        .main{
-            margin-bottom: 0rem;
-            .leaf{
-                grid-template-columns: repeat(2, calc( 50% - 1.5rem) );
-                justify-content: space-between;
-                grid-gap: 3rem;
-            }
         }
     }
 }

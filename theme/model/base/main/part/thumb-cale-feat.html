@@ -9,7 +9,7 @@
 {{- if $image -}}
     <picture>
 
-        {{- $xx := $image.Resize "420x webp q100" -}}
+        {{- $xx := $image.Resize "460x webp q100" -}}
         <source media="(width > 1360px)" srcset="{{ $xx.RelPermalink }}"/>
 
         {{- $xl := $image.Resize "360x webp q100" -}}

@@ -1,14 +1,37 @@
 .cord{
     .leaf{
-        grid-template-columns: calc( 50% - 2rem ) calc( 50% - 2rem );
+        grid-template-columns: 100%;
         justify-content: space-between;
+        grid-gap: 0;
     }
+
 
     .rside{
         .grid{
-            grid-template-columns: calc( 100% - 120px - 2rem ) 120px;
+            grid-template-columns: 100%;
             justify-content: space-between;
         }
+
+        .card{
+            padding: 1.95rem 0;
+            border-top: 1px solid var(--line-01);
+        }
+
+        .thumb{
+            display: none;
+        }
+    }
+
+    .lside{
+        .grid{
+            grid-template-columns: 100%;
+            justify-content: space-between;
+        }
+    }
+
+
+    .more{
+        float: right;
     }
 }
 
@@ -16,16 +39,73 @@
 
 @media only screen and (min-width: 480px) {
 
+    .cord{
+        .lside{
+            .grid{
+                grid-template-columns: 140px calc(100% - 140px - 2rem);
+            }
+        }
+
+        .rside{
+            .grid{
+                grid-template-columns: calc( 100% - 120px - 2rem ) 120px;
+            }
+
+            .thumb{
+                display: block;
+            }
+        }
+    }
 }
 
 
 @media only screen and (min-width: 768px) {
 
+     .cord{
+        .lside{
+            .grid{
+                grid-template-columns: 240px calc(100% - 240px - 2rem);
+            }
+        }
+
+        .rside{
+            .grid{
+                grid-template-columns: calc( 100% - 200px - 2rem ) 200px;
+            }
+        }
+    }
 }
 
 
 @media only screen and (min-width: 1024px) {
 
+    .cord{
+        .leaf{
+            grid-template-columns: calc( 50% - 2rem ) calc( 50% - 2rem );
+            grid-gap: 2rem;
+        }
+
+        .lside{
+            .grid{
+                grid-template-columns: 100%;
+            }
+        }
+
+        .rside{
+            .grid{
+                grid-template-columns: 100%;
+            }
+
+            .thumb{
+                display: none;
+            }
+
+            .card{
+                padding: 0rem 0 2.75rem 0;
+                border-top: 0;
+            }
+        }
+    }
 }
 
 
@@ -39,6 +119,10 @@
         .rside{
             .grid{
                 grid-template-columns: calc( 100% - 120px - 2rem ) 120px;
+            }
+
+            .thumb{
+                display: block;
             }
         }
     }
