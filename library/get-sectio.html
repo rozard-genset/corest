@@ -6,14 +6,16 @@
 <!-- filter -->
 {{- if eq .Parent.Kind "home" -}}
     {{- $item = "base" -}}
-{{- else if eq ( len $path ) 4 -}}
-    {{- $item = "user" -}}
 {{- else if strings.Contains $link ( printf "%s/terms" .Section ) -}}
     {{- $item = "navi" -}}
+{{- else if strings.Contains $link ( printf "%s/timer" .Section ) -}}
+    {{- $item = "time" -}}
 {{- else if strings.Contains $link ( printf "%s/guide" .Section ) -}}
     {{- $item = "info" -}}
 {{- else if strings.Contains $link ( printf "%s/tools" .Section ) -}}
     {{- $item = "apps" -}}
+{{- else if eq ( len $path ) 4 -}}
+    {{- $item = "user" -}}
 {{- else if eq ( len $path ) 5 -}}
     {{- $item = "navi" -}}
 {{- end -}} 

@@ -1,0 +1,38 @@
+{{- $feat := "themes/default/base/main/part/thumb-colo-feat.html" -}}
+{{- $card := "themes/default/base/main/part/thumb-colo-card.html" -}}
+
+
+<div id="{{ .name | urlize }}" class="colo grid mb-70">
+    <div class="head mb-20">
+        <div class="flex center-x ">
+            <h2 class="text-2xl border-right">{{ .name }}</h2><hr>
+        </div>
+        <p class="">{{ .page.Params.Module.Desc }}</p>
+    </div>
+    <ul class="leaf grid">
+        {{- range $index, $value := first 5 .list -}}
+            <li class="item list-{{ math.Sum $index 1 }}">
+                <a href="{{ .RelPermalink }}" class="card list grid">
+                    {{ if eq $index 0 }}
+                    <div class="l-thumb">{{- partial $feat . -}}</div>
+                    {{ end }}
+                    <div class="metas">
+                        <div class="flex">
+                            <div class="rounded-full overflow-hidden">{{- partial "parted/avatar/user-28.html" . -}}</div>
+                            <h2 class="text-lg font-bold mb-10 mt-00 ml-15">{{- .Title -}}</h2>
+                        </div>
+                        <p class="text-sm mb-00">{{- .Page.Params.Description -}}</p>
+                    </div>
+                    {{ if gt $index 0 }}
+                    <div class="r-thumb">{{- partial $card . -}}</div>
+                    {{ end }}
+                </a>
+            </li>
+        {{- end -}}
+    </ul>
+    <hr class="mb-15">
+    <a href="{{ .page.RelPermalink }}" class="flex center-x capitalize text-sm font-bold">
+        More {{ .page.Title }} article
+        <div class="icon sm border-all rounded-full ml-15">{{ partial "icon/line/arrow-right" }}</div>
+    </a>
+</div>

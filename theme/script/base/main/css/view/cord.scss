@@ -1,0 +1,60 @@
+.cord{
+    .leaf{
+        grid-template-columns: calc( 50% - 2rem ) calc( 50% - 2rem );
+        justify-content: space-between;
+    }
+
+    .rside{
+        .grid{
+            grid-template-columns: calc( 100% - 120px - 2rem ) 120px;
+            justify-content: space-between;
+        }
+    }
+}
+
+
+
+@media only screen and (min-width: 480px) {
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+}
+
+
+@media only screen and (min-width: 1280px) {
+
+    .cord{
+        .leaf{
+            grid-template-columns: calc( 50% - 2rem ) calc( 50% - 2rem );
+        }
+
+        .rside{
+            .grid{
+                grid-template-columns: calc( 100% - 120px - 2rem ) 120px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1536px) {
+    .cord{
+        .leaf{
+            grid-template-columns: calc( 50% - 2rem ) calc( 50% - 2rem );
+        }
+
+        .rside{
+            .grid{
+                grid-template-columns: calc( 100% - 180px - 2rem ) 180px;
+            }
+        }
+    }
+}
