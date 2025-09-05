@@ -1,9 +1,0 @@
-{{- $part := "themes/default/base/main/view/" -}}
-{{- $card := printf "%s/colo.html" $part  -}}
-<div id="main-5" class="mb-60">
-    <div class="grid rows">
-        {{- range $index, $value := partial "lib/queries/page-list-all-term" . -}}{{- if and ( ge $index 5 ) ( le $index 7 ) -}}
-            {{- partial $card  . -}}
-        {{- end -}}{{- end -}}
-    </div>
-</div>

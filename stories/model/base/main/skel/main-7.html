@@ -1,0 +1,9 @@
+{{- $part := "stories/module/base/main/view/" -}}
+{{- $card := printf "%s/cord.html" $part  -}}
+<div id="main-7" class="mb-60">
+    <div class="grid rows">
+        {{- range $index, $value := partial "lib/queries/page-list-all-term" . -}}{{- if ge $index 9  -}}
+            {{- partial $card  . -}}
+        {{- end -}}{{- end -}}
+    </div>
+</div>

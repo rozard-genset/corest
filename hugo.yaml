@@ -70,5 +70,11 @@ module:
     - source: "profile/engine"
       target: "layouts/partials/profile/module"
 
+    - source: "stories/model"
+      target: "layouts/partials/stories/module"
+
+    - source: "stories/script"
+      target: "assets/scripts/stories/module"
+
     - source: "folders"
       target: "content"

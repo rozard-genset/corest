@@ -1,0 +1,11 @@
+{{- $part := "stories/module/base/main/view/" -}}
+{{- $card := printf "%s/care.html" $part -}}
+
+
+<div id="main-4" class="mb-60">
+    <div class="grid">
+        {{ range $index, $value := partial "lib/queries/page-list-all-term" . }}{{ if eq $index 4  }}
+            {{- partial $card  . -}}
+        {{- end -}}{{- end -}}
+    </div>
+</div>

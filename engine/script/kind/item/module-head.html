@@ -34,6 +34,9 @@
 {{- end -}}
 
 
+{{ $link_css }}
+
+
 <!-- storing -->
-{{ if resources.Get $link_css }}{{- .Store.Add "head_css" $link_css -}}{{ end }}
-{{ if resources.Get $link_jsx }}{{- .Store.Add "head_jsx" $link_jsx -}}{{ end }}
+{{- .Store.Add "head_css" $link_css -}}
+{{- .Store.Add "head_jsx" $link_jsx -}}
