@@ -1,7 +1,8 @@
 {{- $view := "themes/default/page/main/view/" -}}
-{{- $list := printf "%s/none.html" $view -}}
+{{- $term := printf "%s/term.html" $view -}}
 
 <div id="main-3">
-    <div class="wrap grid">
+    <div class="grid">
+        {{- partial $term  . -}}
     </div>
 </div>

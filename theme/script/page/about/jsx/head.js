@@ -1,1 +1,0 @@
-console.log('critical theme about page engine loaded');
