@@ -24,12 +24,12 @@
 
 
     h1{
-        font-size: 1.6rem;
+        font-size: 1.55rem;
     }
 
 
     h2{
-        font-size: 1.45rem;
+        font-size: 1.4rem;
     }
 
 
@@ -181,6 +181,14 @@
 
     #format-article {
 
+        h1.title{
+            font-size: 2.35rem;
+        }
+
+        .author{
+            display: block;
+        }
+
         h1,h2,h3,h4,h5,h6{
             margin: 2.75rem 0;
         }
@@ -198,9 +206,7 @@
     
     #format-article {
 
-        h1.title{
-            font-size: 2.1rem;
-        }
+       
 
         h1,h2,h3,h4,h5,h6{
             margin: 2.95rem 0;
@@ -238,7 +244,7 @@
     #format-article {
 
         h1.title{
-            font-size: 2.25rem;
+            font-size: 2.5rem;
         }
 
         h1{
