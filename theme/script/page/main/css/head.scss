@@ -1,124 +1,18 @@
-@import "../../../../..//css/flexs/_init.scss";
-@import "../../../../..//css/flexs/col-12.scss";
-@import "../../../../..//css/flexs/col-04.scss";
-@import "../../../../..//css/flexs/col-07.scss";
+@import "../../../../../css/wrap/m-00.scss";
+@import "../../../../../css/wrap/m-10.scss";
+@import "../../../../../css/wrap/m-15.scss";
+@import "../../../../../css/wrap/m-20.scss";
+@import "../../../../../css/wrap/m-25.scss";
+@import "../../../../../css/wrap/m-30.scss";
+@import "../../../../../css/wrap/m-40.scss";
+@import "../../../../../css/wrap/m-50.scss";
+@import "../../../../../css/wrap/m-60.scss";
+@import "../../../../../css/wrap/m-70.scss";
+@import "../../../../../css/wrap/p-10.scss";
+@import "../../../../../css/wrap/p-15.scss";
+@import "../../../../../css/load/core.scss";
+@import "../../../../../css/load/main.scss";
 
-#feat{
-    background-color: var(--background-02);
-    padding: 2.5rem 0;
-    .popon{
-        display: grid;
-        .info, .bot{ width: 100%; }
-    }
-    .image{ 
-        img{ height: auto; }
-    }
-    .breadcumb{
-        list-style: none;
-        margin-block-start: 0;
-        padding-inline-start: 0;
-        a { font-size: 90%; }
-    }
-    .metabox{
-        display: flex;
-        align-items: end;
-    }
-}
-
-#tocs{
-    width: 85%;
-    padding: 1.25rem;
-    background-color: var(--background-02);
-    border: 1px solid var(--line-01);
-    ul{
-        margin-bottom: 0;
-    }
-    nav li {
-        margin-bottom: 10px;
-        font-size: .95rem;
-    }
-    nav li:nth-last-child(1) {
-        margin-bottom: 0;
-    }
-}
-
-#share .icon{
-    padding: 7px;
-    border: 1px solid var(--line-01);
-    background-color: var(--background-02);
-}
-
-#page #format-article h1{
-    display: none;
-}
-
-#rels{
-    ul{
-        list-style: none;
-    }
-    img{
-        height: 100%;
-    }
-    .info, .bot{
-        width: 100%;
-    }
-}
-
-img{
-    width: 100%;
-}
-
-.meta .author img{
-    width: 32px;
-    height: 32px;
-}
-
-
-@media only screen and(max-width: 1080px) {
-
-    #feat{
-        .image, .popon{
-            width: 50%;
-        }
-        .image{ 
-            margin-left: 0; 
-            width: 50%;
-        }
-    }   
-}
-
-@media only screen and(max-width: 720px) {
-    
-    #feat{
-        .image, .popon{
-            width: 100%;
-        }
-        .image{ 
-            margin-top: 3rem; 
-            margin-left: 0; 
-            width: 100%;
-        }
-    }
-    #main{ 
-        margin-bottom: 3rem; 
-        margin-left: 0;
-    }
-    #side #tocs{ display: none; }
-}
-
-@media only screen and(min-width: 1080px) {
-
-    #feat{
-        .image{ 
-            img{
-                width: 480px;
-            }
-        }
-    }
-    #plan{
-        -ms-flex-direction: row-reverse;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: reverse;
-        flex-direction: row-reverse;
-    }
-}
+@import "skel/based.scss";
+@import "skel/main1.scss";
+@import "view/page.scss";

@@ -1,15 +1,22 @@
-<div id="article-menu" class="flex center-x">
-    <div class="time flex center-x">
-        <div class=""><span class="desktop">Estimated</span> Reading Time :</div>
-        <div class="font-bold ml-10">{{ printf "%d min" .ReadingTime }}</div>
-    </div>
-    <div class="acts flex center-x center-y ml-a">
-        <div class="icon sm la-01 border-all rounded-full">{{ partial "icon/line/bookmark.svg" }}</div>
-        <div class="icon sm la-01 border-all rounded-full">{{ partial "icon/line/headphones.svg" }}</div>
-        <div class="icon sm la-01 border-all rounded-full">{{ partial "icon/line/share-2.svg" }}</div>
-    </div>
-</div>
-<hr class="mb-60">
-<div id="format-article">
+<article id="format-article">
+    <header class="mb-50">
+        <h1 class="title mb-00 font-bold">{{ .Title }}</h1>
+        <div class="meta flex center-x mb-40">
+            <div class="lside flex center-x">
+                <div class="avatar rounded-full overflow-hidden">{{- partial "parted/avatar/user-32.html" . -}}</div>
+                <div class="author text-sm mt-00 mb-00 ml-20">{{- .Page.Params.Metadata.Author -}}</div>
+                <div class="readtime text-sm ml-20">{{ printf "%d min red" .ReadingTime }}</div>
+                <div class="lastmods text-sm ml-10">{{ .Lastmod | time.Format "January 02, 2006" }} </div>
+            </div>
+            <div class="rside flex center-x ml-a">
+                <div class="icon sm la-01 border-all rounded-full">{{ partial "icon/line/bookmark.svg" }}</div>
+                <div class="icon sm la-01 border-all rounded-full">{{ partial "icon/line/headphones.svg" }}</div>
+                <div class="icon sm la-01 border-all rounded-full">{{ partial "icon/line/share-2.svg" }}</div>
+            </div>
+        </div>
+        <div class="thum">
+            {{ partial "format/text/main/part/thumb-feat.html" . }}
+        </div>
+    </header>
     {{- .Content -}}
-</div>
+</article>

@@ -1,15 +1,22 @@
-#article-menu{
-    .time{
-        margin-right: auto;
+#format-article {
+
+    .author{
+        display: none;
+    }
+
+    .avatar{
+        img{
+            margin:0;
+        }
     }
 
     .icon{
         padding: .35rem;
     }
-}
 
-
-#format-article {
+    h1.title{
+        font-size: 2rem;
+    }
 
     h1, h2{
         font-weight: bold;
@@ -17,12 +24,12 @@
 
 
     h1{
-        font-size: 1.7rem;
+        font-size: 1.6rem;
     }
 
 
     h2{
-        font-size: 1.5rem;
+        font-size: 1.45rem;
     }
 
 
@@ -48,7 +55,8 @@
 
     p{
         margin: 1rem 0;
-        font-size: 1.03rem;
+        font-size: 1.09rem;
+        line-height: 1.6;
     }
 
 
@@ -128,30 +136,6 @@
 
     #format-article {
 
-        h1{
-            font-size: 1.8rem;
-        }
-
-        h2{
-            font-size: 1.6rem;
-        }
-
-        h3{
-            font-size: 1.35rem;
-        }
-
-        h4{
-            font-size: 1.3rem;
-        }
-
-        h5{
-            font-size: 1.2rem;
-        }
-
-        h6{
-            font-size: 1.1rem;
-        }
-
 
         ol{
             padding-inline-start: 40px;
@@ -166,13 +150,18 @@
             margin: 2rem 0;
         }
 
+        p{
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
         ul{
             margin-block-start: 1rem;
             padding-inline-start: 40px;
         }
 
         h1,h2,h3,h4,h5,h6{
-            margin: 2.25rem 0;
+            margin: 2.5rem 0;
         }
         
         .footnotes{
@@ -191,11 +180,17 @@
 @media only screen and (min-width: 768px) {
 
     #format-article {
+
+        h1,h2,h3,h4,h5,h6{
+            margin: 2.75rem 0;
+        }
+
         p{
-            font-size: 1.1rem;
+            margin: 1.7rem 0;
+            font-size: 1.15rem;
+            line-height: 1.65;
         }
     }
-    
 }
 
 
@@ -203,33 +198,36 @@
     
     #format-article {
 
+        h1.title{
+            font-size: 2.1rem;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            margin: 2.95rem 0;
+        }
+
         h1{
-            font-size: 2rem;
+            font-size: 1.7rem;
         }
 
         h2{
-            font-size: 1.8rem;
-        }
-
-        h3{
             font-size: 1.5rem;
         }
 
-        h4{
+        h3{
             font-size: 1.4rem;
         }
 
-        h5{
+        h4{
             font-size: 1.3rem;
         }
 
-        h6{
+        h5{
             font-size: 1.2rem;
         }
 
-        p{
-            margin: 1.5rem 0;
-            font-size: 1.125rem;
+        h6{
+            font-size: 1.25rem;
         }
     }
 }
@@ -239,12 +237,16 @@
     
     #format-article {
 
+        h1.title{
+            font-size: 2.25rem;
+        }
+
         h1{
-            font-size: 2.2rem;
+            font-size: 1.8rem;
         }
 
         h2{
-            font-size: 2rem;
+            font-size: 1.6rem;
         }
     }
 }
