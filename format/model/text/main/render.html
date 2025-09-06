@@ -1,5 +1,5 @@
 <article id="format-article">
-    <header class="mb-50">
+    <div class="mb-50">
         <h1 class="title mb-00 font-bold">{{ .Title }}</h1>
         <div class="meta flex center-x mb-40">
             <div class="lside flex center-x">
@@ -17,6 +17,6 @@
         <div class="thum">
             {{ partial "format/text/main/part/thumb-feat.html" . }}
         </div>
-    </header>
+    </div>
     {{- .Content -}}
 </article>
