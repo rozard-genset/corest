@@ -1,7 +1,7 @@
 <!-- populate term -->
 {{- $get_term := slice -}}
 {{- $set_term := .Site.GetPage ( printf "%s/path" .Section ) -}}
-{{- $set_page := where .Site.RegularPages "Type" .Section -}}
+{{- $set_page := where .Site.Pages "Type" .Section -}}
 
 {{- range $set_term.Pages -}}
     {{- if eq .Page.Params.Module.Layout "term" -}}
@@ -19,11 +19,22 @@
     {{- $term_now := slice ( .Title | urlize ) -}}
     {{- $page_map := slice   -}}
     {{- range $set_page -}}
-        {{- if collections.Intersect $term_now .Page.Params.terms -}}
+
+        {{- $terms := slice -}}
+
+        {{- range .Page.Params.terms -}}E
+            {{- $terms = $terms | append ( . | urlize ) -}}
+        {{- end -}}
+
+        {{- if collections.Intersect $term_now $terms -}}
             {{- $page_map = $page_map | append . -}}
         {{- end -}}
+
     {{- end -}}
-    {{- $all_page = $all_page | append ( dict "name" $page_now  "page" . "list" $page_map ) -}}
+    
+    {{- if gt ( len $page_map ) 0 -}}
+        {{- $all_page = $all_page | append ( dict "name" $page_now  "page" . "list" $page_map ) -}}
+    {{- end -}}
 {{- end -}}
 
 {{- return $all_page -}}
