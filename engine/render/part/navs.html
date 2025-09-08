@@ -5,6 +5,7 @@
 {{- $models := partial "lib/get-models.html" . -}}
 {{- $kinder := partial "lib/get-kinder.html" . -}}
 
+
 <!-- conditional -->
 {{- $render := printf "parted/header/%s/render.html" $models -}}
 
@@ -25,6 +26,7 @@
 {{ end }}
 
 
+<!-- rendering -->
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
     {{- partial $render . -}}
 {{- end -}}
