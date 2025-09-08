@@ -1,5 +1,5 @@
 <!-- default -->
-{{- $module := "stories" -}}
+{{- $module := "none" -}}
 
 
 <!-- courses -->
@@ -11,6 +11,12 @@
 <!-- profile -->
 {{ if or ( in .Site.Params.Module.Profile.Section .Section ) ( in ( slice "person" "profile" ) .Section  ) }}
     {{- $module = "profile" -}}
+{{ end }}
+
+
+<!-- profile -->
+{{ if or ( in .Site.Params.Module.Stories.Section .Section ) ( in ( slice "stories" "article" ) .Section  ) }}
+    {{- $module = "stories" -}}
 {{ end }}
 
 

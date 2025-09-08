@@ -6,8 +6,12 @@
 
 <!-- general -->
 {{- partial "corest/script/help/load-head.html" . -}}
-{{- partial "corest/script/kind/item/themes-head.html" . -}}
-{{- partial "corest/script/kind/item/module-head.html" . -}}
+
+{{- if eq $sected "none" -}}
+    {{- partial "corest/script/kind/item/themes-head.html" . -}}
+{{- else -}}
+    {{- partial "corest/script/kind/item/module-head.html" . -}}
+{{- end -}}
 
 
 <!-- targets -->
