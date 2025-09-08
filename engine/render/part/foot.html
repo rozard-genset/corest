@@ -1,39 +1,31 @@
 <!-- variable -->
-{{- $render := "" -}}
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $module := partial "lib/get-module.html" . -}}
+{{- $layout := partial "lib/get-layout.html" . -}}
+{{- $models := partial "lib/get-models.html" . -}}
+{{- $kinder := partial "lib/get-kinder.html" . -}}
 
-{{- $theme := "default" -}}
-{{- with .Site.Params.System.Themes -}}{{- $theme = ( . | urlize ) -}}{{- end -}}
-
-{{- $model := "main" -}}
-{{- with .Page.Params.Module.Layout -}}{{- $model = ( . | urlize ) -}}{{- end -}}
-
-{{- $modul := "" -}}
-{{- with .Section -}}{{- $modul = ( . | urlize ) -}}{{- end -}}
-
-{{- $paged := partial "lib/type.html" . -}}
 
 
 <!-- conditional -->
-{{- $based_basic := printf "parted/footer/main/render.html"      -}}
-{{- $based_model := printf "parted/footer/%s/render.html" $model -}}
+{{- $render := printf "parted/footer/%s/render.html" $models -}}
 
-{{- $theme_based := printf "themes/default/parted/footer/main/render.html"          -}}
-{{- $theme_basic := printf "themes/%s/parted/footer/main/render.html" $theme        -}}
-{{- $theme_model := printf "themes/%s/parted/footer/main/render.html" $theme $model -}}
-{{- $theme_paged := printf "themes/%s/%s/%s/footer.html" $theme $paged $model       -}}
+{{- $theme_based := printf "themes/%s/parted/footer/main/render.html"   $themes -}}
+{{- $theme_model := printf "themes/%s/parted/footer/%s/render.html"     $themes $models -}}
+{{- $theme_paged := printf "themes/%s/%s/%s/footer.html"                $themes $kinder $models  -}} 
 
-{{- $modul_based := printf "module/default/parted/footer/main/render.html" $modul -}}
-{{- $modul_basic := printf "module/%s/parted/footer/main/render.html"      $modul -}}
-{{- $modul_model := printf "module/%s/parted/footer/%s/render.html"        $modul $model -}}
-{{- $modul_paged := printf "module/%s/%s/%s/footer.html"                   $modul $paged $model -}}
+{{- $modul_based := printf "%s/module/parted/footer/main/render.html"   $module -}}
+{{- $modul_model := printf "%s/module/parted/footer/%s/render.html"     $module $models -}}
+{{- $modul_paged := printf "%s/module/%s/%s/footer.html"                $module $kinder $layout -}}
 
 
 <!-- validation -->
-{{ range ( slice $based_basic $based_model $theme_based $theme_basic $theme_model $theme_paged $modul_based $modul_basic $modul_model $modul_paged ) }}
+{{ range ( slice $theme_based $theme_model $theme_paged $modul_based $modul_model $modul_paged ) }}
     {{- if templates.Exists ( printf "partials/%s" . )  -}}
         {{- $render = . -}}
     {{- end -}}
 {{ end }}
+
 
 
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
