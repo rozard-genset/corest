@@ -2,7 +2,7 @@
 {{- $card := printf "%s/care.html" $part  -}}
 <div id="main-6" class="mb-60">
     <div class="grid rows">
-        {{- range $index, $value := partial "lib/queries/page-list-all-term" . -}}{{- if eq $index 8  -}}
+        {{- range $index, $value := partial "lib/queries/pool-item-all-term" . -}}{{- if eq $index 8  -}}
             {{- partial $card  . -}}
         {{- end -}}{{- end -}}
     </div>

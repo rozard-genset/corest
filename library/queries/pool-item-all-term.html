@@ -1,28 +1,24 @@
 <!-- populate term -->
-{{- $get_term := slice -}}
+{{- $all_term := slice -}}
+{{- $all_page := slice -}} 
 {{- $set_term := .Site.GetPage ( printf "%s/path" .Section ) -}}
-{{- $set_page := where .Site.Pages "Type" .Section -}}
 
 {{- range $set_term.Pages -}}
-    {{- if eq .Page.Params.Module.Layout "term" -}}
-        {{- $get_term = $get_term | append . -}}
-    {{- end -}}
+    {{ if gt ( len .Title ) 0 }}
+        {{ $all_term = $all_term | append . }}
+    {{ end }}
 {{- end -}}
 
-
-<!-- populate page -->
-{{- $all_term := $get_term | uniq -}}
-{{- $all_page := slice -}} 
 
 {{- range $all_term -}}
     {{- $page_now := .Title -}}
     {{- $term_now := slice ( .Title | urlize ) -}}
     {{- $page_map := slice   -}}
-    {{- range $set_page -}}
+    {{- range where .Site.Pages "Type" .Section -}}
 
         {{- $terms := slice -}}
 
-        {{- range .Page.Params.terms -}}E
+        {{- range .Page.Params.terms -}}
             {{- $terms = $terms | append ( . | urlize ) -}}
         {{- end -}}
 

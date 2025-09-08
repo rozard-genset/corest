@@ -2,15 +2,8 @@
 {{- $path := split ($link) "/" -}}
 {{- $name := delimit ( last 2 $path ) "" }} 
 
-
-<!-- redirect to main page -->
-{{- if and ( eq ( len $path ) 4 ) ( strings.Contains $link ( printf "%s/user" .Section ) ) -}}
-    <meta http-equiv="refresh" content="0; url={{ .Parent.RelPermalink }}" />
-{{- end -}} 
-
-
 <!-- redirect to user page -->
-{{- if and ( eq ( len $path ) 5 ) ( strings.Contains $link ( printf "%s/user" .Section ) ) -}}
+{{- if and ( eq ( len $path ) 5 ) ( strings.Contains $link ( printf "%s/pool" .Section ) ) -}}
     {{- with $name -}}
         {{- $path := printf "/%s/%s" "profile" ( . | urlize ) -}}
         {{- with $.Site.GetPage $path -}}

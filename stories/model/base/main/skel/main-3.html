@@ -3,7 +3,7 @@
 
 <div id="main-3" class="mb-60">
     <div class="grid rows">
-    {{ range $index, $value := partial "lib/queries/page-list-all-term" . }}{{ if and ( gt $index 0 ) ( le $index 3 ) }}
+    {{ range $index, $value := partial "lib/queries/pool-item-all-term" . }}{{ if and ( gt $index 0 ) ( le $index 3 ) }}
         {{- partial $card  . -}}
     {{- end -}}{{- end -}}
     </div>
