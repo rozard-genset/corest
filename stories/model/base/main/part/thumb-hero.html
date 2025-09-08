@@ -19,7 +19,10 @@
         <source media="(width > 480px)" srcset="{{ $sm.RelPermalink }}"/>
               
         {{- $xs := $image.Resize "280x webp q100" -}}
-        <img src="{{ $xs.RelPermalink }}" alt="{{ .Title }}" width="{{ $xs.Width }}" height="{{ $xs.Height }}" title="{{ .Title }}" fetchpriority="high"/>
+        <source media="(width > 100px)" srcset="{{ $xs.RelPermalink }}"/>
+
+
+        <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" width="{{ $image.Width }}" height="{{ $image.Height }}" title="{{ .Title }}" fetchpriority="high"/>
 
     </picture>
 {{- end -}}

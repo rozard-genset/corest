@@ -35,9 +35,10 @@
     .thum{
         margin-bottom: 3rem;
 
-        picture{
+        picture, img{
             width: 280px;
             margin: auto;
+            height: auto;
         }
     }
 }
@@ -64,7 +65,7 @@
         .thum{
             margin-bottom: 5rem;
 
-            picture{
+            picture, img{
                 width: 380px;
             }
         }
@@ -92,7 +93,7 @@
         .thum{
             margin-bottom: 5rem;
 
-            picture{
+            picture, img{
                 width: 480px;
                 margin: auto;
             }
@@ -133,7 +134,7 @@
         .thum{
             margin-bottom: 0rem;
 
-            picture{
+            picture, img{
                 width: 420px;
             }
         }
@@ -153,7 +154,7 @@
         }
 
         .thum{
-            picture{
+            picture, img{
                 width: 520px;
             }
         }
@@ -182,7 +183,7 @@
         }
 
         .thum{
-            picture{
+            picture, img{
                 width: 580px;
             }
         }
