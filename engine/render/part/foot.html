@@ -27,7 +27,6 @@
 {{ end }}
 
 
-
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
     {{- partial $render . -}}
 {{- end -}}
