@@ -14,7 +14,7 @@
 {{ end }}
 
 
-<!-- profile -->
+<!-- stories -->
 {{ if or ( in .Site.Params.Module.Stories.Section .Section ) ( in ( slice "stories" "article" ) .Section  ) }}
     {{- $module = "stories" -}}
 {{ end }}
