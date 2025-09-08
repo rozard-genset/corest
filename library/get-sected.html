@@ -7,6 +7,7 @@
     {{- $module = "course" -}}
 {{ end }}
 
+
 <!-- profile -->
 {{ if or ( in .Site.Params.Module.Profile.Section .Section ) ( in ( slice "person" "profile" ) .Section  ) }}
     {{- $module = "profile" -}}

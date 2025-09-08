@@ -4,14 +4,13 @@
 {{- $models := partial "lib/get-models.html" . -}}
 
 
-{{- $paths := "" -}}
-{{- $cores :=  printf "format/text/main/render.html" -}}
-{{- $based :=  printf "format/%s/%s/render.html" $format $models  -}}
-{{- $modul :=  printf "%s/format/%s/%s/render.html" $sected $format $models -}}
+
+{{- $paths :=  printf "format/%s/%s/render.html"           $format $models  -}}
+{{- $modul :=  printf "%s/format/%s/%s/render.html"        $sected $format $models -}}
 {{- $theme :=  printf "themes/%s/format/%s/%s/render.html" $themes $format $models -}}
 
 
-{{ range ( slice $cores $based $modul $theme )  }}
+{{ range ( slice $paths $modul $theme )  }}
     {{- if templates.Exists ( printf "partials/%s" . ) -}}{{- $paths = . -}}{{- end -}}
 {{ end }}
 

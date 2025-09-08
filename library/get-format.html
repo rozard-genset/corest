@@ -1,4 +1,12 @@
 <!-- get format -->
-{{- $format := "article" }}
-{{- with .Page.Params.Format.Model -}}{{- $format = .  -}}{{- end -}}
+{{- $format := "text" -}}
+{{- $models := partial "lib/get-models.html" . -}}
+
+{{- with .Page.Params.Format.Model -}}
+    {{- if templates.Exists ( printf "partials/format/%s/%s/render.html" . $models ) -}}
+        {{- $format = . -}}
+    {{- end -}}
+{{- end -}}
+
+
 {{- return $format -}}
