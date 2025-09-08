@@ -106,7 +106,7 @@
 
     #hero{
         
-        min-height: 62vh;
+        min-height: 72vh;
 
         .rows{
             grid-template-columns: 420px calc( 100% - 420px - 4rem);
@@ -147,7 +147,7 @@
      #hero{
         width: 90%;
         margin: auto;
-        min-height: 76vh;
+        min-height: 82vh;
 
         .rows{
             grid-template-columns: 520px calc( 100% - 520px - 4rem);

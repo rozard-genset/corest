@@ -8,7 +8,7 @@
     {{- $path := printf "/%s/%s" "profile" . -}}
     {{- with $site.Site.GetPage $path -}}
         {{ $link = .Page.Resources.GetMatch .Page.Params.Thumb }}
-        {{ $link = $link.Fill "62x62 webp q100" }}
+        {{ $link = $link.Fill "48x48 webp q100" }}
         <img src="{{ $link.RelPermalink }}" class="rounded-full" width="{{ $link.Width }}" height="{{ $link.Height }}" alt="{{ $name }} administrator image" fetchpriority="high">
      {{- end -}}
 {{- end -}}

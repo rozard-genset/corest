@@ -25,19 +25,23 @@
         }
     }
 
+
     .item{
         border-bottom: 1px solid var(--line-01);
     }
+
 
     .item:nth-last-child(1){
         border-bottom: 0px;
     }
 
+
     .avatar{
         height: 32px;
     }
 
-     .icon {
+    
+    .icon {
         color: #ff4500;
         border-color: #ff4500;
     }
