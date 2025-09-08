@@ -3,19 +3,19 @@
 {{- $module := partial "lib/get-module.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
-{{- $sectio := partial "lib/get-sectio.html" . -}}
+{{- $kinder := partial "lib/get-kinder.html" . -}}
 
 
 
 <!-- store -->
-{{- $render := printf "themes/default/%s/main/protos.html" $sectio -}}
+{{- $render := printf "themes/default/%s/main/protos.html" $kinder -}}
 
 
 <!-- modul -->
-{{- $cores := printf "%s/module/%s/main/protos.html" $module $sectio -}}
-{{- $based := printf "themes/%s/%s/%s/protos.html" $themes $sectio $layout -}}
-{{- $modul := printf "%s/module/%s/%s/protos.html" $module $sectio $layout -}}
-{{- $model := printf "themes/%s/module/%s/layout/%s/%s/protos.html" $themes $module $sectio $layout -}}
+{{- $cores := printf "%s/module/%s/main/protos.html" $module $kinder -}}
+{{- $based := printf "themes/%s/%s/%s/protos.html" $themes $kinder $layout -}}
+{{- $modul := printf "%s/module/%s/%s/protos.html" $module $kinder $layout -}}
+{{- $model := printf "themes/%s/module/%s/layout/%s/%s/protos.html" $themes $module $kinder $layout -}}
 
 
 

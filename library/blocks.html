@@ -2,7 +2,7 @@
 {{- $module := partial "lib/get-module.html" . -}}
 {{- $format := partial "lib/get-format.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
-{{- $pageid :=  partial "lib/uniq.html" .  -}}
+{{- $pageid := partial "lib/get-pageid.html" . -}}
 {{- $contex := . -}}
 
 <main id="blocks-{{ $pageid }}">

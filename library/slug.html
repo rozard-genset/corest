@@ -1,3 +1,0 @@
-{{- $slug := replace .Page.RelPermalink  "/page/" "" -}}
-{{- $slug = replace $slug  "/" ""  -}}
-{{- $slug | urlize | safe.HTMLAttr -}}

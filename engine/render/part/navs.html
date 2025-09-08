@@ -3,7 +3,9 @@
 {{- $module := partial "lib/get-module.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
-{{- $kinder := partial "lib/get-kinder.html" . -}}
+{{- $routes := partial "lib/get-kinder.html" . -}}
+
+
 
 
 <!-- conditional -->
@@ -11,11 +13,11 @@
 
 {{- $theme_based := printf "themes/%s/parted/header/main/render.html"   $themes -}}
 {{- $theme_model := printf "themes/%s/parted/header/%s/render.html"     $themes $models -}}
-{{- $theme_paged := printf "themes/%s/%s/%s/header.html"                $themes $kinder $models  -}} 
+{{- $theme_paged := printf "themes/%s/%s/%s/header.html"                $themes $routes $models  -}} 
 
 {{- $modul_based := printf "%s/module/parted/header/main/render.html"   $module -}}
 {{- $modul_model := printf "%s/module/parted/header/%s/render.html"     $module $models -}}
-{{- $modul_paged := printf "%s/module/%s/%s/header.html"                $module $kinder $layout -}}
+{{- $modul_paged := printf "%s/module/%s/%s/header.html"                $module $routes $layout -}}
 
 
 <!-- validation -->
