@@ -21,8 +21,8 @@
     {{- $themes_css := printf "scripts/themes/%s/format/%s/%s/css/head.scss" $themes $format $models -}}
     {{- $themes_jsx := printf "scripts/themes/%s/format/%s/%s/jsx/head.js"   $themes $format $models -}}
 
-    {{- $module_css := printf "scripts/sected/%s/format/%s/%s/css/head.scss" $sected $format $models -}}
-    {{- $module_jsx := printf "scripts/sected/%s/format/%s/%s/jsx/head.js"   $sected $format $models -}}
+    {{- $module_css := printf "scripts/%s/format/%s/%s/css/head.scss" $sected $format $models -}}
+    {{- $module_jsx := printf "scripts/%s/format/%s/%s/jsx/head.js"   $sected $format $models -}}
 
     {{- $models_css := printf "scripts/themes/%s/sected/%s/format/%s/%s/css/head.scss" $themes $sected $format $models -}}
     {{- $models_jsx := printf "scripts/themes/%s/sected/%s/format/%s/%s/jsx/head.js"   $themes $sected $format $models -}}

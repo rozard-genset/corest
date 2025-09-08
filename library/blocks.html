@@ -8,9 +8,10 @@
 <main id="blocks-{{ $pageid }}">
 {{- range $index, $block := .Page.Params.Blocks -}}
 
-    {{- $based := printf "blocks/%s/%s/%s/render.html" .render.type .render.pool .render.name   -}}
+    {{- $based := printf "blocks/%s/%s/%s/render.html"          .render.type .render.pool .render.name          -}}
+    {{- $modul := printf "%s/blocks/%s/%s/%s/render.html"        $sected .render.type .render.pool .render.name -}}
     {{- $theme := printf "themes/%s/blocks/%s/%s/%s/render.html" $themes .render.type .render.pool .render.name -}}
-    {{- $modul := printf "module/%s/blocks/%s/%s/%s/render.html" $sected .render.type .render.pool .render.name -}}
+   
     {{- $datum := . -}}
 
     {{- range ( slice $based $theme $modul ) -}}

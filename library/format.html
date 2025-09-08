@@ -7,7 +7,7 @@
 {{- $paths := "" -}}
 {{- $cores :=  printf "format/text/main/render.html" -}}
 {{- $based :=  printf "format/%s/%s/render.html" $format $models  -}}
-{{- $modul :=  printf "format/%s/%s/%s/render.html" $sected $format $models -}}
+{{- $modul :=  printf "%s/format/%s/%s/render.html" $sected $format $models -}}
 {{- $theme :=  printf "themes/%s/format/%s/%s/render.html" $themes $format $models -}}
 
 

@@ -29,9 +29,7 @@
 {{- if .Page.Params.Blocks -}}{{- $render = printf "lib/blocks.html" -}}{{- end -}}
 
 
-
 <!-- render -->
 {{- if templates.Exists ( printf "partials/%s" $render )  -}}
     {{- partial $render . -}}
 {{- end -}}
-
