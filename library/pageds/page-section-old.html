@@ -1,3 +1,0 @@
-{{- $page := .Paginate ( where site.RegularPages "Type" .Section ).ByDate 10 -}}
-{{- $page = $page.Pages -}}
-{{- return $page -}}

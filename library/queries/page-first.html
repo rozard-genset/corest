@@ -1,5 +1,0 @@
-{{ $first_page := "" }}
-{{- range first 1 .RegularPagesRecursive -}}
-    {{- $first_page = . -}}
-{{- end -}}
-{{ return $first_page }}
