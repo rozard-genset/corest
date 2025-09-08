@@ -1,6 +1,6 @@
 <!-- globvar -->
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $layout := "main" -}}{{- with .Site.Params.System.Parted.Footer -}}{{- $layout  = . -}}{{- end -}}
 
 
@@ -19,11 +19,11 @@
 {{- $themes_model_css := printf "scripts/themes/%s/parted/footer/%s/css/pack.scss"  $themes $layout  -}}
 {{- $themes_model_jsx := printf "scripts/themes/%s/parted/footer/%s/jsx/pack.js"    $themes $layout  -}}
 
-{{- $module_based_css := printf "scripts/module/%s/footer/main/css/pack.scss" $module  -}}
-{{- $module_based_jsx := printf "scripts/module/%s/footer/main/jsx/pack.js"   $module  -}}
+{{- $module_based_css := printf "scripts/sected/%s/footer/main/css/pack.scss" $sected  -}}
+{{- $module_based_jsx := printf "scripts/sected/%s/footer/main/jsx/pack.js"   $sected  -}}
 
-{{- $module_model_css := printf "scripts/module/%s/footer/%s/css/pack.scss"  $module  $layout  -}}
-{{- $module_model_jsx := printf "scripts/module/%s/footer/%s/jsx/pack.js"    $module  $layout  -}}
+{{- $module_model_css := printf "scripts/sected/%s/footer/%s/css/pack.scss"  $sected  $layout  -}}
+{{- $module_model_jsx := printf "scripts/sected/%s/footer/%s/jsx/pack.js"    $sected  $layout  -}}
 
 
 <!-- appended -->

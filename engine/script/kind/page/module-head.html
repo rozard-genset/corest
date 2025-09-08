@@ -1,6 +1,6 @@
 <!-- variable -->
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 
 
@@ -11,14 +11,14 @@
 
 
 <!-- modeling -->
-{{- $based_css := printf "scripts/%s/module/page/%s/css/head.scss" $module $layout -}}
-{{- $based_jsx := printf "scripts/%s/module/page/%s/jsx/head.js"   $module $layout -}}
+{{- $based_css := printf "scripts/%s/module/page/%s/css/head.scss" $sected $layout -}}
+{{- $based_jsx := printf "scripts/%s/module/page/%s/jsx/head.js"   $sected $layout -}}
 
-{{- $theme_css := printf "scripts/theme/module/%s/page/main/css/head.scss" $themes $module -}}
-{{- $theme_jsx := printf "scripts/theme/module/%s/page/main/jsx/head.js"   $themes $module -}}
+{{- $theme_css := printf "scripts/theme/module/%s/page/main/css/head.scss" $themes $sected -}}
+{{- $theme_jsx := printf "scripts/theme/module/%s/page/main/jsx/head.js"   $themes $sected -}}
 
-{{- $model_css := printf "scripts/theme/%s/module/%s/layout/page/%s/css/head.scss" $themes $module $layout -}}
-{{- $model_jsx := printf "scripts/theme/%s/module/%s/layout/page/%s/jsx/head.js"   $themes $module $layout -}}
+{{- $model_css := printf "scripts/theme/%s/module/%s/layout/page/%s/css/head.scss" $themes $sected $layout -}}
+{{- $model_jsx := printf "scripts/theme/%s/module/%s/layout/page/%s/jsx/head.js"   $themes $sected $layout -}}
 
 
 <!-- apending -->

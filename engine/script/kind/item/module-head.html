@@ -1,6 +1,6 @@
 <!-- variable -->
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $kinder := partial "lib/get-kinder.html" . -}}
 
@@ -11,17 +11,17 @@
 
 
 <!-- modeling -->
-{{- $cores_css := printf "scripts/%s/module/%s/main/css/head.scss" $module $kinder -}}
-{{- $cores_jsx := printf "scripts/%s/module/%s/main/jsx/head.js"   $module $kinder -}}
+{{- $cores_css := printf "scripts/%s/module/%s/main/css/head.scss" $sected $kinder -}}
+{{- $cores_jsx := printf "scripts/%s/module/%s/main/jsx/head.js"   $sected $kinder -}}
 
-{{- $based_css := printf "scripts/%s/module/%s/%s/css/head.scss" $module $kinder $layout -}}
-{{- $based_jsx := printf "scripts/%s/module/%s/%s/jsx/head.js"   $module $kinder $layout -}}
+{{- $based_css := printf "scripts/%s/module/%s/%s/css/head.scss" $sected $kinder $layout -}}
+{{- $based_jsx := printf "scripts/%s/module/%s/%s/jsx/head.js"   $sected $kinder $layout -}}
 
-{{- $theme_css := printf "scripts/theme/%s/module/%s/%s/main/css/head.scss" $themes $module $kinder -}}
-{{- $theme_jsx := printf "scripts/theme/%s/module/%s/%s/main/jsx/head.js"   $themes $module $kinder -}}
+{{- $theme_css := printf "scripts/theme/%s/module/%s/%s/main/css/head.scss" $themes $sected $kinder -}}
+{{- $theme_jsx := printf "scripts/theme/%s/module/%s/%s/main/jsx/head.js"   $themes $sected $kinder -}}
 
-{{- $model_css := printf "scripts/theme/%s/module/%s/layout/%s/%s/css/head.scss" $themes $module $kinder $layout -}}
-{{- $model_jsx := printf "scripts/theme/%s/module/%s/layout/%s/%s/jsx/head.js"   $themes $module $kinder $layout -}}
+{{- $model_css := printf "scripts/theme/%s/module/%s/layout/%s/%s/css/head.scss" $themes $sected $kinder $layout -}}
+{{- $model_jsx := printf "scripts/theme/%s/module/%s/layout/%s/%s/jsx/head.js"   $themes $sected $kinder $layout -}}
 
 
 <!-- apending -->

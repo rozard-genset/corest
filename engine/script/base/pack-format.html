@@ -1,6 +1,6 @@
 <!-- globvar -->
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $format := partial "lib/get-format.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
 
@@ -21,11 +21,11 @@
     {{- $themes_css := printf "scripts/themes/%s/format/%s/%s/css/pack.scss" $themes $format $models -}}
     {{- $themes_jsx := printf "scripts/themes/%s/format/%s/%s/jsx/pack.js"   $themes $format $models -}}
 
-    {{- $module_css := printf "scripts/module/%s/format/%s/%s/css/pack.scss" $module $format $models -}}
-    {{- $module_jsx := printf "scripts/module/%s/format/%s/%s/jsx/pack.js"   $module $format $models -}}
+    {{- $module_css := printf "scripts/sected/%s/format/%s/%s/css/pack.scss" $sected $format $models -}}
+    {{- $module_jsx := printf "scripts/sected/%s/format/%s/%s/jsx/pack.js"   $sected $format $models -}}
 
-    {{- $models_css := printf "scripts/themes/%s/module/%s/format/%s/%s/css/pack.scss" $themes $module $format $models -}}
-    {{- $models_jsx := printf "scripts/themes/%s/module/%s/format/%s/%s/jsx/pack.js"   $themes $module $format $models -}}
+    {{- $models_css := printf "scripts/themes/%s/sected/%s/format/%s/%s/css/pack.scss" $themes $sected $format $models -}}
+    {{- $models_jsx := printf "scripts/themes/%s/sected/%s/format/%s/%s/jsx/pack.js"   $themes $sected $format $models -}}
     
     
     <!-- appended -->

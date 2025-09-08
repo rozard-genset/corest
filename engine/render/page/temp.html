@@ -1,6 +1,6 @@
 <!-- variable -->
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
 
@@ -11,8 +11,8 @@
 
 <!-- model -->
 {{- $based := printf "themes/%s/page/%s/protos.html" $themes $layout -}}
-{{- $modul := printf "%s/module/page/%s/protos.html" $module $layout -}}
-{{- $model := printf "themes/%s/module/%s/layout/page/%s/render.html" $themes $module $layout -}}
+{{- $modul := printf "%s/module/page/%s/protos.html" $sected $layout -}}
+{{- $model := printf "themes/%s/module/%s/layout/page/%s/render.html" $themes $sected $layout -}}
 
 
 

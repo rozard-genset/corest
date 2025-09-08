@@ -1,10 +1,9 @@
 <!-- variable -->
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
 {{- $kinder := partial "lib/get-kinder.html" . -}}
-
 
 <!-- conditional -->
 {{- $render := printf "parted/footer/%s/render.html" $models -}}
@@ -13,9 +12,9 @@
 {{- $theme_model := printf "themes/%s/parted/footer/%s/render.html"     $themes $models -}}
 {{- $theme_paged := printf "themes/%s/%s/%s/footer.html"                $themes $kinder $models  -}} 
 
-{{- $modul_based := printf "%s/module/parted/footer/main/render.html"   $module -}}
-{{- $modul_model := printf "%s/module/parted/footer/%s/render.html"     $module $models -}}
-{{- $modul_paged := printf "%s/module/%s/%s/footer.html"                $module $kinder $layout -}}
+{{- $modul_based := printf "%s/module/parted/footer/main/render.html"   $sected -}}
+{{- $modul_model := printf "%s/module/parted/footer/%s/render.html"     $sected $models -}}
+{{- $modul_paged := printf "%s/module/%s/%s/footer.html"                $sected $kinder $layout -}}
 
 
 <!-- validation -->

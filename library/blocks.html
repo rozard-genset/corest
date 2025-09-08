@@ -1,5 +1,5 @@
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $format := partial "lib/get-format.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
 {{- $pageid := partial "lib/get-pageid.html" . -}}
@@ -10,7 +10,7 @@
 
     {{- $based := printf "blocks/%s/%s/%s/render.html" .render.type .render.pool .render.name   -}}
     {{- $theme := printf "themes/%s/blocks/%s/%s/%s/render.html" $themes .render.type .render.pool .render.name -}}
-    {{- $modul := printf "module/%s/blocks/%s/%s/%s/render.html" $module .render.type .render.pool .render.name -}}
+    {{- $modul := printf "module/%s/blocks/%s/%s/%s/render.html" $sected .render.type .render.pool .render.name -}}
     {{- $datum := . -}}
 
     {{- range ( slice $based $theme $modul ) -}}

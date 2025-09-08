@@ -1,6 +1,6 @@
 <!-- globvar -->
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 
 
 <!-- storing -->
@@ -18,11 +18,11 @@
     {{- $theme_css := printf "scripts/themes/%s/blocks/%s/%s/%s/css/pack.scss" $themes .render.type .render.pool .render.name -}}
     {{- $theme_jsx := printf "scripts/themes/%s/blocks/%s/%s/%s/jsx/pack.js"   $themes .render.type .render.pool .render.name -}}
 
-    {{- $modul_css := printf "scripts/module/%s/blocks/%s/%s/%s/css/pack.scss" $module .render.type .render.pool .render.name -}}
-    {{- $modul_jsx := printf "scripts/module/%s/blocks/%s/%s/%s/jsx/pack.js"   $module .render.type .render.pool .render.name -}}
+    {{- $modul_css := printf "scripts/module/%s/blocks/%s/%s/%s/css/pack.scss" $sected .render.type .render.pool .render.name -}}
+    {{- $modul_jsx := printf "scripts/module/%s/blocks/%s/%s/%s/jsx/pack.js"   $sected .render.type .render.pool .render.name -}}
 
-    {{- $skins_css := printf "scripts/themes/%s/module/%s/blocks/%s/%s/%s/css/pack.scss" $themes $module .render.type .render.pool .render.name -}}
-    {{- $skins_jsx := printf "scripts/themes/%s/module/%s/blocks/%s/%s/%s/jsx/pack.js"   $themes $module .render.type .render.pool .render.name -}}
+    {{- $skins_css := printf "scripts/themes/%s/module/%s/blocks/%s/%s/%s/css/pack.scss" $themes $sected .render.type .render.pool .render.name -}}
+    {{- $skins_jsx := printf "scripts/themes/%s/module/%s/blocks/%s/%s/%s/jsx/pack.js"   $themes $sected .render.type .render.pool .render.name -}}
 
     
     <!-- appended -->

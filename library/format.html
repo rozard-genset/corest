@@ -1,5 +1,5 @@
 {{- $themes := partial "lib/get-themes.html" . -}}
-{{- $module := partial "lib/get-module.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
 {{- $format := partial "lib/get-format.html" . -}}
 {{- $models := partial "lib/get-models.html" . -}}
 
@@ -7,7 +7,7 @@
 {{- $paths := "" -}}
 {{- $cores :=  printf "format/text/main/render.html" -}}
 {{- $based :=  printf "format/%s/%s/render.html" $format $models  -}}
-{{- $modul :=  printf "format/%s/%s/%s/render.html" $module $format $models -}}
+{{- $modul :=  printf "format/%s/%s/%s/render.html" $sected $format $models -}}
 {{- $theme :=  printf "themes/%s/format/%s/%s/render.html" $themes $format $models -}}
 
 
