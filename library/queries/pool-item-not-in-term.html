@@ -4,15 +4,16 @@
 
     {{- if strings.Contains .Page.RelPermalink ( printf "%s/pool" .Section  ) -}}
 
-        {{ $terms := slice }}
+        {{- $terms := slice -}}
 
         {{- range .Page.Params.Terms -}}
             {{- $terms = $terms | append ( . | urlize ) -}}
         {{- end -}}
 
+        
         {{ if in $terms $term }}{{- else}}
             {{- $page = $page | append  . -}}
-        {{ end }}
+        {{- end -}}
 
     {{- end -}}
 

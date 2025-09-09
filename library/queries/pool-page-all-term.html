@@ -4,9 +4,9 @@
 {{- $set_term := .Site.GetPage ( printf "%s/path" .Section ) -}}
 
 {{- range $set_term.Pages -}}
-    {{ if gt ( len .Title ) 0 }}
-        {{ $all_term = $all_term | append . }}
-    {{ end }}
+    {{- if gt ( len .Title ) 0 -}}
+        {{- $all_term = $all_term | append . -}}
+    {{- end -}}
 {{- end -}}
 
 
