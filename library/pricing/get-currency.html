@@ -1,0 +1,7 @@
+{{- $currency := "rupiah" -}}
+
+{{- if eq .Site.Language.Lang "en" -}}
+  {{- $currency = "usd" -}}
+{{- end -}}
+
+{{- return $currency -}}
