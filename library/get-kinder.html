@@ -20,6 +20,12 @@
     {{- $path = "info" -}}
 {{- else if  and ( .IsSection ) ( strings.Contains $link ( printf "%s/tool" .Section ) ) -}}
     {{- $path = "tool" -}}
+{{- else if and ( .Section ) ( .IsPage ) ( strings.Contains $link "/task/" ) -}}
+    {{- $path = "task" -}}
+{{- else if and ( .Section ) ( .IsPage ) ( strings.Contains $link "/repo/" ) -}}
+    {{- $path = "repo" -}}
+{{- else if and ( .Section ) ( .IsPage ) ( .Parent.Page.Params.offers.price ) -}}
+    {{- $path = "paid" -}}
 {{- else if .IsSection  -}}
     {{- $path = "item" -}}
 {{- else if .IsNode -}}
