@@ -3,7 +3,7 @@
     {{- with $.Site.GetPage $path -}}
         {{ $link := .Page.Resources.GetMatch .Page.Params.Thumb }}
         {{ $link = $link.Resize "120x" }}
-        {{ $link = $link.Fill "62x62 webp q100" }}
-        <img src="{{ $link.RelPermalink }}" class="avatar-62" width="{{ $link.Width }}" height="{{ $link.Height }}" alt="{{ .Section }} {{ .Title }} user avater image" fetchpriority="high">
+        {{ $link = $link.Fill "64x64 webp q100" }}
+        <img src="{{ $link.RelPermalink }}" class="avatar-64" width="{{ $link.Width }}" height="{{ $link.Height }}" alt="{{ .Section }} {{ .Title }} user avater image" fetchpriority="high">
      {{- end -}}
 {{- end -}}
