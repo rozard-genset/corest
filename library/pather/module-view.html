@@ -1,0 +1,8 @@
+<!-- variable -->
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
+{{- $layout := partial "lib/get-layout.html" . -}}
+{{- $models := partial "lib/get-models.html" . -}}
+{{- $kinder := partial "lib/get-kinder.html" . -}}
+{{- $pather := printf "%s/module/%s/%s/view" $sected $kinder $layout  -}}
+{{- return $pather -}}
