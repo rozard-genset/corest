@@ -24,6 +24,8 @@
     {{- $path = "task" -}}
 {{- else if and ( .Section ) ( .IsPage ) ( strings.Contains $link "/repo/" ) -}}
     {{- $path = "repo" -}}
+{{- else if and ( .Section ) ( .IsPage ) ( strings.Contains $link "/test/" ) -}}
+    {{- $path = "test" -}}
 {{- else if and ( .Section ) ( .IsPage ) ( .Parent.Page.Params.offers.price ) -}}
     {{- $path = "paid" -}}
 {{- else if .IsSection  -}}
