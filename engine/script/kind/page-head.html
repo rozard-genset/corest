@@ -24,8 +24,8 @@
     {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/%s/head.css" $sected $layout $kinder ) -}}
     {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/%s/head.js"  $sected $layout $kinder ) -}}
 {{- else -}}
-    {{- .Store.Set "dest_css" ( printf "assets/scripts/page/%s/head.css" $layout ) -}}
-    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/page/%s/head.js"  $layout ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/head.css" $kinder $layout ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/head.js"  $kinder $layout ) -}}
 {{- end -}}
 
 

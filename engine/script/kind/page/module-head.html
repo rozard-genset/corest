@@ -19,7 +19,7 @@
 
 
 <!-- apending -->
-{{- range ( slice  $based_css $theme_css ) -}}
+{{- range ( slice $based_css $theme_css ) -}}
     {{- with resources.Get . -}}{{- $link_css = . -}}{{- end -}}
 {{- end -}}
 

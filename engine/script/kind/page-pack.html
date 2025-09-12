@@ -3,7 +3,7 @@
 {{- $sected := partial "lib/get-sected.html" . -}}
 {{- $layout := partial "lib/get-layout.html" . -}}
 {{- $format := partial "lib/get-format.html" . -}}
-
+{{- $kinder := partial "lib/get-kinder.html" . -}}
 
 <!-- general -->
 {{- partial "corest/script/help/load-pack.html" . -}}
@@ -18,14 +18,14 @@
 
 <!-- targets -->
 {{- if and ( ne $format "" ) ( .Section ) -}}
-    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/page/%s/main.css" $sected $format ) -}}
-    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/page/%s/main.js"  $sected $format ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/%s/main.css" $sected $kinder $format ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/%s/main.js"  $sected $kinder $format ) -}}
 {{- else if .Section -}}
-    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/page/%s/main.css" $sected $layout ) -}}
-    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/page/%s/main.js"  $sected $layout ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/%s/main.css" $sected $layout $kinder ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/%s/main.js"  $sected $layout $kinder ) -}}
 {{- else -}}
-    {{- .Store.Set "dest_css" ( printf "assets/scripts/page/%s/main.css" $layout ) -}}
-    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/page/%s/main.js"  $layout ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/main.css" $kinder $layout ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/main.js"  $kinder $layout ) -}}
 {{- end -}}
 
 
