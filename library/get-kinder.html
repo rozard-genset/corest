@@ -28,7 +28,7 @@
     {{- $path = "test" -}}
 {{- else if and ( .Section ) ( .IsPage ) ( .Parent.Page.Params.offers.price ) -}}
     {{- $path = "paid" -}}
-{{- else if .IsSection  -}}
+{{- else if .IsSection -}}
     {{- $path = "item" -}}
 {{- else if .IsNode -}}
     {{- $path = "term" -}}
