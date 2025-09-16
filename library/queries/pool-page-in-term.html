@@ -10,9 +10,9 @@
             {{- $terms = $terms | append ( . | urlize ) -}}
         {{- end -}}
 
-        {{ if in $terms $term }}
+        {{- if in $terms $term -}}
             {{- $page = $page | append  . -}}
-        {{ end }}
+        {{- end -}}
 
     {{- end -}}
  
