@@ -1,10 +1,8 @@
 <!-- variable -->
-{{- $themes := partial "lib/system/themes.html" . -}}
 {{- $sected := partial "lib/system/module.html" . -}}
 {{- $layout := partial "lib/system/layout.html" . -}}
-
 {{- $kinder := partial "lib/system/routes.html" . -}}
-{{- $models := partial "lib/format/models.html" . -}}
 
 {{- $pather := printf "%s/module/%s/%s/data" $sected $kinder $layout  -}}
+
 {{- return $pather -}}
