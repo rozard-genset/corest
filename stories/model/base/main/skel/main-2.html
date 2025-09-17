@@ -4,12 +4,12 @@
 {{- $book := printf "%s/book.html" $view -}}
 {{- $term := printf "%s/term.html" $view -}}
 {{- $card := printf "%s/cale.html" $view -}}
-
+{{- $data := partial "lib/stories/query/base-page-each-term.html" . -}}
 
 <div id="main-2" class="mb-60">
     <div class="grid rows">
         <div class="main">
-            {{ range $index, $value := partial "lib/queries/pool-item-all-term" . }}{{ if eq $index 0 }}
+            {{ range $index, $value := $data }}{{ if eq $index 0 }}
                 {{- partial $card  . -}}
             {{- end -}}{{- end -}}
         </div>
