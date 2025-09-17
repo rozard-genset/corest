@@ -18,6 +18,10 @@
     {{- $path = "tool" -}}
 {{- else if and ( .Section ) ( .IsPage ) ( .Parent.Page.Params.offers.price ) -}}
     {{- $path = "paid" -}}
+{{- else if .IsSection -}}
+    {{- $path = "item" -}}
+{{- else if .IsPage -}}
+    {{- $path = "page" -}}
 {{ end }}
 
 {{- return $path -}}
