@@ -37,11 +37,7 @@
 }
 
 
-.grid{
-	display: grid;
-}
-
-.grider{
+.leaf, .grid{
 	display: grid;
 	grid-template-columns: 100%;
 	justify-content: space-between;

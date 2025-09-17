@@ -1,11 +1,10 @@
 <!-- variable -->
-{{- $themes := partial "lib/get-themes.html" . -}}
-{{- $sected := partial "lib/get-sected.html" . -}}
-{{- $layout := partial "lib/get-layout.html" . -}}
-{{- $models := partial "lib/get-models.html" . -}}
-{{- $routes := partial "lib/get-kinder.html" . -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
+{{- $layout := partial "lib/system/layout.html" . -}}
+{{- $routes := partial "lib/system/kinder.html" . -}}
 
-
+{{- $models := partial "lib/format/models.html" . -}}
 
 
 <!-- conditional -->
@@ -17,7 +16,7 @@
 
 {{- $modul_based := printf "%s/module/parted/header/main/render.html"   $sected -}}
 {{- $modul_model := printf "%s/module/parted/header/%s/render.html"     $sected $models -}}
-{{- $modul_paged := printf "%s/module/%s/%s/skel/header.html"            $sected $routes $layout -}}
+{{- $modul_paged := printf "%s/module/%s/%s/skel/header.html"           $sected $routes $layout -}}
 
 
 <!-- validation -->

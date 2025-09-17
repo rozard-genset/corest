@@ -1,9 +1,10 @@
 <!-- variable -->
-{{- $themes := partial "lib/get-themes.html" . -}}
-{{- $sected := partial "lib/get-sected.html" . -}}
-{{- $layout := partial "lib/get-layout.html" . -}}
-{{- $models := partial "lib/get-models.html" . -}}
-{{- $kinder := partial "lib/get-kinder.html" . -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
+{{- $layout := partial "lib/system/layout.html" . -}}
+{{- $kinder := partial "lib/system/kinder.html" . -}}
+
+{{- $models := partial "lib/format/models.html" . -}}
 
 <!-- render -->
 {{- $render := printf "stories/module/item/page/render.html" -}}

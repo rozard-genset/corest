@@ -1,0 +1,26 @@
+<!-- get format -->
+{{- $format := "text" -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
+{{- $kinder := partial "lib/system/kinder.html" . -}}
+
+{{- $models := partial "lib/format/models.html" . -}}
+
+{{- $default := printf "partials/format/%s/%s/render.html" .Params.format.media $models -}}
+{{- $modules := printf "partials/%s/format/%s/%s/render.html" $sected .Params.format.media $models -}}
+{{- $theming := printf "partials/themes/%s/format/%s/%s/render.html" $themes .Params.format.media $models -}}
+
+
+{{- if and ( $default ) ( templates.Exists $default ) -}}
+    {{- $format = ( .Params.format.media | urlize ) -}}
+{{- end -}}
+
+{{- if and ( $modules ) ( templates.Exists $modules ) -}}
+    {{- $format = ( .Params.format.media | urlize ) -}}
+{{- end -}}
+
+{{- if and ( $theming ) ( templates.Exists $theming ) -}}
+    {{- $format = ( .Params.format.media | urlize ) -}}
+{{- end -}}
+
+{{- return $format -}}

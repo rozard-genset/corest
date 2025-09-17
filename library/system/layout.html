@@ -1,9 +1,9 @@
 <!-- get layout -->
 {{- $layout := "main" -}}
-{{- $themes := partial "lib/get-themes.html" . -}}
-{{- $sected := partial "lib/get-sected.html" . -}}
-{{- $models := partial "lib/get-models.html" . -}}
-{{- $kinder := partial "lib/get-kinder.html" . -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
+{{- $models := partial "lib/format/models.html" . -}}
+{{- $kinder := partial "lib/system/kinder.html" . -}}
 
 {{- $module := printf "partials/%s/module/%s/%s/render.html" $sected $kinder .Params.layout -}}
 {{- $themes := printf "partials/themes/%s/%s/%s/render.html" $sected $kinder .Params.layout -}}

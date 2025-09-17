@@ -1,7 +1,7 @@
-{{- $themes := partial "lib/get-themes.html" . -}}
-{{- $sected := partial "lib/get-sected.html" . -}}
-{{- $format := partial "lib/get-format.html" . -}}
-{{- $models := partial "lib/get-models.html" . -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
+{{- $format := partial "lib/format/medias.html" . -}}
+{{- $models := partial "lib/format/models.html" . -}}
 
 
 {{- $paths :=  printf "format/%s/%s/render.html"           $format $models  -}}

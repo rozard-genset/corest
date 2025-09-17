@@ -1,6 +1,6 @@
 <!-- globvar -->
-{{- $themes := partial "lib/get-themes.html" . -}}
-{{- $sected := partial "lib/get-sected.html" . -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
 {{- $layout := "main" -}}{{- with .Site.Params.System.Parted.Footer -}}{{- $layout  = . -}}{{- end -}}
 
 

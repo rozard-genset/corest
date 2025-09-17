@@ -1,9 +1,9 @@
 <!-- globvar -->
-{{- $themes := partial "lib/get-themes.html" . -}}
-{{- $sected := partial "lib/get-sected.html" . -}}
-{{- $format := partial "lib/get-format.html" . -}}
-{{- $models := partial "lib/get-models.html" . -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
 
+{{- $models := partial "lib/format/models.html" . -}}
+{{- $format := partial "lib/format/medias.html" . -}}
 
 <!-- fallback -->
 {{- $link_css := printf "scripts/format/text/main/css/head.scss" -}}

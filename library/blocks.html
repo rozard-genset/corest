@@ -1,11 +1,12 @@
-{{- $themes := partial "lib/get-themes.html" . -}}
-{{- $sected := partial "lib/get-sected.html" . -}}
-{{- $format := partial "lib/get-format.html" . -}}
-{{- $models := partial "lib/get-models.html" . -}}
-{{- $pageid := partial "lib/get-pageid.html" . -}}
+{{- $themes := partial "lib/system/themes.html" . -}}
+{{- $sected := partial "lib/system/sected.html" . -}}
+{{- $unique := partial "lib/system/unique.html" . -}}
+{{- $format := partial "lib/format/medias.html" . -}}
+{{- $models := partial "lib/format/models.html" . -}}
+
 {{- $contex := . -}}
 
-<main id="blocks-{{ $pageid }}">
+<main id="blocks-{{ $unique }}">
 {{- range $index, $block := .Page.Params.Blocks -}}
 
     {{- $based := printf "blocks/%s/%s/%s/render.html"          .render.type .render.pool .render.name          -}}
