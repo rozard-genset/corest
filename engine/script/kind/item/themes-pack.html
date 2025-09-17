@@ -1,8 +1,8 @@
 <!-- variable -->
 {{- $themes := partial "lib/system/themes.html" . -}}
-{{- $sected := partial "lib/system/sected.html" . -}}
+{{- $sected := partial "lib/system/module.html" . -}}
 {{- $layout := partial "lib/system/layout.html" . -}}
-{{- $kinder := partial "lib/system/kinder.html" . -}}
+{{- $kinder := partial "lib/system/routes.html" . -}}
 
 <!-- theming -->
 {{- $link_css := resources.Get "scripts/themes/default/user/main/css/pack.scss" -}}
