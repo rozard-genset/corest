@@ -3,11 +3,11 @@
 {{- $themes := partial "lib/system/themes.html" . -}}
 {{- $sected := partial "lib/system/module.html" . -}}
 {{- $models := partial "lib/format/models.html" . -}}
-{{- $kinder := partial "lib/system/routes.html" . -}}
+{{- $routes := partial "lib/system/routes.html" . -}}
 
-{{- $module := printf "partials/%s/module/%s/%s/render.html" $sected $kinder .Params.layout -}}
-{{- $themes := printf "partials/themes/%s/%s/%s/render.html" $sected $kinder .Params.layout -}}
-{{- $skiner := printf "partials/themes/%s/module/%s/%s/render.html" $sected $kinder .Params.layout -}}
+{{- $module := printf "partials/%s/module/%s/%s/render.html" $sected $routes .Params.layout -}}
+{{- $themes := printf "partials/themes/%s/%s/%s/render.html" $sected $routes .Params.layout -}}
+{{- $skiner := printf "partials/themes/%s/module/%s/%s/render.html" $sected $routes .Params.layout -}}
 
 
 {{- if and ( $themes ) ( templates.Exists $themes ) -}}

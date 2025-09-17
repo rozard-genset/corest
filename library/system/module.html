@@ -3,7 +3,7 @@
 
 
 <!-- courses -->
-{{ if or ( in .Site.Params.Module.Courses.Section .Section ) ( in ( slice "courses" "course" "classroom" ) .Section  ) }}
+{{ if or ( in .Site.Params.Module.Courses.Section .Section ) ( in ( slice "courses" "course" "classroom" ) .Section ) }}
     {{- $module = "course" -}}
 {{ end }}
 
