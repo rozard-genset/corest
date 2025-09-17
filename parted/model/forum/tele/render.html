@@ -1,8 +1,14 @@
-{{- $target := "" -}}
-{{- with .Site.Params.Profile.Forums.Telegram -}}{{- $target = . -}}{{- end -}}
-{{- with .Page.Params.Forums.Telegram.Data -}}{{- $target = . -}}{{- end -}}
-{{- with .Parent.Page.Params.forums.telegram.data -}}{{- $target = . -}}{{- end -}}
-{{- with .Page.Params.Module.Forums.Telegram -}}{{- $target = . -}}{{- end -}}
+{{- $target :=  .Site.Params.Profile.Forums.Telegram  -}}
+
+{{- with .Parent.Page.Params.forums.telegram -}}
+    {{- $target = . -}}
+{{- end -}}
+
+
+{{- with .Params.forums.telegram -}}
+    {{- $target = . -}}
+{{- end -}}
+
 
 {{- if $target -}}
     <div id="forum-telegram" class="forum" data-title="{{ .Title }}" data-uniqe="_-K1zvYW"></div>

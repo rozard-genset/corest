@@ -1,15 +1,11 @@
 
-{{- $target := "" -}}
+{{- $target := .Site.Params.Profile.Report.Github -}}
 
-{{- with .Site.Params.Profile.Report.Github -}}
+{{- with .Parent.Page.Params.report.github -}}
     {{- $target = . -}}
 {{- end -}}
 
-{{- with .Parent.Page.Params.Report.Github.Link -}}
-    {{- $target = . -}}
-{{- end -}}
-
-{{- with .Page.Params.Module.Report.Github -}}
+{{- with .Page.Params.report.github -}}
     {{- $target = . -}}
 {{- end -}}
 

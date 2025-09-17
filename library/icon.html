@@ -1,0 +1,8 @@
+{{ $path := printf "partials/icon/line/%s.svg" .  }}
+
+{{- if templates.Exists $path -}}
+    {{- partial ( printf "icon/line/%s.svg" . ) -}}
+{{- else -}}
+    {{- partial "icon/line/check-circle.svg" -}}
+{{ end }}
+
