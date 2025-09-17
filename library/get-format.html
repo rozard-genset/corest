@@ -1,12 +1,27 @@
 <!-- get format -->
 {{- $format := "text" -}}
 {{- $models := partial "lib/get-models.html" . -}}
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
+{{- $models := partial "lib/get-models.html" . -}}
+{{- $kinder := partial "lib/get-kinder.html" . -}}
 
-{{- with .Page.Params.Format.Model -}}
-    {{- if templates.Exists ( printf "partials/format/%s/%s/render.html" . $models ) -}}
-        {{- $format = . -}}
-    {{- end -}}
+
+{{- $default := printf "partials/format/%s/%s/render.html" .Page.Params.Format.Model $models -}}
+{{- $modules := printf "partials/%s/format/%s/%s/render.html" $sected .Page.Params.Format.Model $models -}}
+{{- $theming := printf "partials/themes/%s/format/%s/%s/render.html" $themes .Page.Params.Format.Model $models -}}
+
+
+{{- with and ( $default ) ( templates.Exists $default ) -}}
+    {{- $format = ( . | urlize ) -}}
 {{- end -}}
 
+{{- with and ( $modules ) ( templates.Exists $modules ) -}}
+    {{- $format = ( . | urlize ) -}}
+{{- end -}}
+
+{{- with and ( $theming ) ( templates.Exists $theming ) -}}
+    {{- $format = ( . | urlize ) -}}
+{{- end -}}
 
 {{- return $format -}}
