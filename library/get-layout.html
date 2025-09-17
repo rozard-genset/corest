@@ -5,21 +5,21 @@
 {{- $models := partial "lib/get-models.html" . -}}
 {{- $kinder := partial "lib/get-kinder.html" . -}}
 
-{{- $module := printf "%s/module/%s/%s/render.html" $sected $kinder .Page.Params.Module.Layout -}}
-{{- $themes := printf "themes/%s/%s/%s/render.html" $sected $kinder .Page.Params.Module.Layout -}}
-{{- $skiner := printf "themes/%s/module/%s/%s/render.html" $sected $kinder .Page.Params.Module.Layout -}}
+{{- $module := printf "partials/%s/module/%s/%s/render.html" $sected $kinder .Params.layout -}}
+{{- $themes := printf "partials/themes/%s/%s/%s/render.html" $sected $kinder .Params.layout -}}
+{{- $skiner := printf "partials/themes/%s/module/%s/%s/render.html" $sected $kinder .Params.layout -}}
 
 
-{{- with and ( $themes ) ( templates.Exists $themes ) -}}
-    {{- $layout = ( . | urlize ) -}}
+{{- if and ( $themes ) ( templates.Exists $themes ) -}}
+    {{- $layout = ( .Params.layout | urlize ) -}}
 {{- end -}}
 
-{{- with and ( $module ) ( templates.Exists $module ) -}}
-    {{- $layout = ( . | urlize ) -}}
+{{- if and ( $module ) ( templates.Exists $module ) -}}
+    {{- $layout = ( .Params.layout | urlize ) -}}
 {{- end -}}
 
-{{- with and ( $skiner ) ( templates.Exists $skiner ) -}}
-    {{- $layout = ( . | urlize ) -}}
+{{- if and ( $skiner ) ( templates.Exists $skiner ) -}}
+    {{- $layout = ( .Params.layout | urlize ) -}}
 {{- end -}}
 
 {{- return $layout -}}

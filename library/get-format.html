@@ -7,21 +7,21 @@
 {{- $kinder := partial "lib/get-kinder.html" . -}}
 
 
-{{- $default := printf "partials/format/%s/%s/render.html" .Page.Params.Format.Model $models -}}
-{{- $modules := printf "partials/%s/format/%s/%s/render.html" $sected .Page.Params.Format.Model $models -}}
-{{- $theming := printf "partials/themes/%s/format/%s/%s/render.html" $themes .Page.Params.Format.Model $models -}}
+{{- $default := printf "partials/format/%s/%s/render.html" .Params.format.model $models -}}
+{{- $modules := printf "partials/%s/format/%s/%s/render.html" $sected .Params.format.model $models -}}
+{{- $theming := printf "partials/themes/%s/format/%s/%s/render.html" $themes .Params.format.model $models -}}
 
 
-{{- with and ( $default ) ( templates.Exists $default ) -}}
-    {{- $format = ( . | urlize ) -}}
+{{- if and ( $default ) ( templates.Exists $default ) -}}
+    {{- $format = ( .Params.format.model | urlize ) -}}
 {{- end -}}
 
-{{- with and ( $modules ) ( templates.Exists $modules ) -}}
-    {{- $format = ( . | urlize ) -}}
+{{- if and ( $modules ) ( templates.Exists $modules ) -}}
+    {{- $format = ( .Params.format.model | urlize ) -}}
 {{- end -}}
 
-{{- with and ( $theming ) ( templates.Exists $theming ) -}}
-    {{- $format = ( . | urlize ) -}}
+{{- if and ( $theming ) ( templates.Exists $theming ) -}}
+    {{- $format = ( .Params.format.model | urlize ) -}}
 {{- end -}}
 
 {{- return $format -}}
