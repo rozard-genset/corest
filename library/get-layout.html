@@ -1,4 +1,25 @@
 <!-- get layout -->
 {{- $layout := "main" -}}
-{{- with .Page.Params.Module.Layout -}}{{- $layout = ( . | urlize ) -}}{{- end -}}
+{{- $themes := partial "lib/get-themes.html" . -}}
+{{- $sected := partial "lib/get-sected.html" . -}}
+{{- $models := partial "lib/get-models.html" . -}}
+{{- $kinder := partial "lib/get-kinder.html" . -}}
+
+{{- $module := printf "%s/module/%s/%s/render.html" $sected $kinder .Page.Params.Module.Layout -}}
+{{- $themes := printf "themes/%s/%s/%s/render.html" $sected $kinder .Page.Params.Module.Layout -}}
+{{- $skiner := printf "themes/%s/module/%s/%s/render.html" $sected $kinder .Page.Params.Module.Layout -}}
+
+
+{{- with and ( $themes ) ( templates.Exists $themes ) -}}
+    {{- $layout = ( . | urlize ) -}}
+{{- end -}}
+
+{{- with and ( $module ) ( templates.Exists $module ) -}}
+    {{- $layout = ( . | urlize ) -}}
+{{- end -}}
+
+{{- with and ( $skiner ) ( templates.Exists $skiner ) -}}
+    {{- $layout = ( . | urlize ) -}}
+{{- end -}}
+
 {{- return $layout -}}
