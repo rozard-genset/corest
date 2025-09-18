@@ -4,8 +4,6 @@ console.log('Format: google slide footer script loaded');
 
 window.addEventListener('load', ()=> {
 
-    alert('oks');
-
     let starter = document.getElementById('format-google-slide');
 
     let embed_google_slide_format = () => {
@@ -17,6 +15,7 @@ window.addEventListener('load', ()=> {
         button.addEventListener('click', ()=> {
             button.classList.add('hide');
             player.classList.remove('hide');
+            frames.src = player.getAttribute('data-uri');
         });
     }
 

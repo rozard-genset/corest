@@ -4,7 +4,7 @@
 {{- $layout := partial "lib/system/layout.html" . -}}
 {{- $kinder := partial "lib/system/routes.html" . -}}
 {{- $format := partial "lib/format/medias.html" . -}}
-
+{{- $models := partial "lib/format/models.html" . -}}
 
 <!-- general -->
 {{- partial "corest/script/help/load-pack.html" . -}}
@@ -19,8 +19,8 @@
 
 <!-- targets -->
 {{- if and ( ne $format "" ) ( .Section ) -}}
-    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/%s/main.css" $sected $kinder $format ) -}}
-    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/%s/main.js"  $sected $kinder $format ) -}}
+    {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/%s/%s/main.css" $sected $kinder $format $models ) -}}
+    {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/%s/%s/main.js"  $sected $kinder $format $models ) -}}
 {{- else if .Section -}}
     {{- .Store.Set "dest_css" ( printf "assets/scripts/%s/%s/%s/main.css" $sected $layout $kinder ) -}}
     {{- .Store.Set "dest_jsx" ( printf "assets/scripts/%s/%s/%s/main.js"  $sected $layout $kinder ) -}}

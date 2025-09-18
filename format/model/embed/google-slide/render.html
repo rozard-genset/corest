@@ -1,8 +1,15 @@
 <!-- format for general content  -->
+ <!-- format for youtube embed page -->
 <div id="format-google-slide" data-format="gslide">
     <div class="media mb-60">
-        <div id="player">
-            <iframe id="iframe" frameborder="0" src="{{ .Params.format.datum }}/pubembed?start=true&loop=true&delayms=3000" width="480" height="360"></iframe>
+        <div id="covers" class="overlay flex center-a">
+            {{ partial "format/embed/youtube/part/thumb.html" . }}
+            <div class="action flex center-a">
+                <div class="icon rounded-xl border-all mr-10">{{ partial "icon/line/play.svg" }}</div>
+            </div>
+        </div>
+        <div id="player" class="hide" data-uri="{{ .Params.format.datum }}/pubembed?start=true&loop=true&delayms=3000">
+            <iframe id="iframe" src=""title="{{ .Title }}" frameborder="0"></iframe>
         </div>
     </div>
     <div class="inform">

@@ -2,13 +2,13 @@
 <div id="format-vimeo" data-format="vimeo">
     <div class="media mb-60">
         <div id="covers" class="overlay flex center-a">
-            {{ partial "format/embed/youtube/part/thumb.html" . }}
+            {{ partial "format/embed/google-slide/part/thumb.html" . }}
             <div class="action flex center-a">
                 <div class="icon rounded-xl border-all mr-10">{{ partial "icon/line/play.svg" }}</div>
             </div>
         </div>
         <div id="player" class="hide" data-uri="https://player.vimeo.com/video/{{ .Params.format.datum }}?autoplay=1&controls=0&progress_bar=1&badge=0&autopause=0&player_id=0&app_id=58479">
-            <iframe id="iframe" title="vimeo-player" src="" width="" height="" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+            <iframe id="iframe" src="" title="{{ .Title }}" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
         </div>
     </div>
     <div class="inform">
