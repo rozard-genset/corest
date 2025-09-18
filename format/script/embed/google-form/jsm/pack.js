@@ -1,1 +1,1 @@
-console.log('Format library pack module loaded');
+console.log('Youtube footer module loaded');

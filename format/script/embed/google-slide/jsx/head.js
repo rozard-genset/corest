@@ -1,1 +1,2 @@
-console.log('Format library head script loaded');
+console.log('vimeo header script loaded');
+
