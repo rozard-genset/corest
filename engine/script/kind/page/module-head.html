@@ -2,7 +2,7 @@
 {{- $themes := partial "lib/system/themes.html" . -}}
 {{- $sected := partial "lib/system/module.html" . -}}
 {{- $layout := partial "lib/system/layout.html" . -}}
-{{- $kinder := partial "lib/system/routes.html" . -}}
+{{- $routes := partial "lib/system/routes.html" . -}}
 
 
 <!-- storing -->
@@ -11,11 +11,11 @@
 
 
 <!-- modeling -->
-{{- $based_css := printf "scripts/%s/module/%s/%s/css/head.scss" $sected $kinder $layout -}}
-{{- $based_jsx := printf "scripts/%s/module/%s/%s/jsx/head.js"   $sected $kinder $layout -}}
+{{- $based_css := printf "scripts/%s/module/%s/%s/css/head.scss" $sected $routes $layout -}}
+{{- $based_jsx := printf "scripts/%s/module/%s/%s/jsx/head.js"   $sected $routes $layout -}}
 
-{{- $theme_css := printf "scripts/theme/%s/module/%s/%s/%s/css/head.scss" $themes $sected $kinder $layout -}}
-{{- $theme_jsx := printf "scripts/theme/%s/module/%s/%s/%s/jsx/head.js"   $themes $sected $kinder $layout -}}
+{{- $theme_css := printf "scripts/theme/%s/module/%s/%s/%s/css/head.scss" $themes $sected $routes $layout -}}
+{{- $theme_jsx := printf "scripts/theme/%s/module/%s/%s/%s/jsx/head.js"   $themes $sected $routes $layout -}}
 
 
 <!-- apending -->
