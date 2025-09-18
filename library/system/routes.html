@@ -7,6 +7,8 @@
 <!-- filter -->
 {{- if and ( .IsSection ) ( ne $module "none" ) ( templates.Exists ( printf "partials/%s" $libres )  ) -}}
     {{- $routes = partial $libres . -}}
+{{- else if and ( .Section ) ( .IsPage ) ( templates.Exists ( printf "partials/%s" $libres )  ) -}}
+    {{- $routes = partial $libres . -}}
 {{- else if .IsHome -}}
     {{- $routes = "home" -}}
 {{- else if .IsSection -}}

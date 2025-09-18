@@ -2,8 +2,9 @@
 {{- $themes := partial "lib/system/themes.html" . -}}
 {{- $sected := partial "lib/system/module.html" . -}}
 {{- $layout := partial "lib/system/layout.html" . -}}
-{{- $kinder := partial "lib/system/routes.html" . -}}
+{{- $routes := partial "lib/system/routes.html" . -}}
 
+{{ $routes  }}
 {{- $models := partial "lib/format/models.html" . -}}
 
 <!-- render -->
@@ -11,9 +12,9 @@
 
 
 <!-- model -->
-{{- $based := printf "themes/%s/%s/%s/render.html"                  $themes $kinder $layout -}}
-{{- $modul := printf "%s/module/%s/%s/render.html"                  $sected $kinder $layout -}}
-{{- $model := printf "themes/%s/module/%s/layout/%s/%s/render.html" $themes $sected $kinder $layout -}}
+{{- $based := printf "themes/%s/%s/%s/render.html"                  $themes $routes $layout -}}
+{{- $modul := printf "%s/module/%s/%s/render.html"                  $sected $routes $layout -}}
+{{- $model := printf "themes/%s/module/%s/layout/%s/%s/render.html" $themes $sected $routes $layout -}}
 
 
 <!-- module -->
