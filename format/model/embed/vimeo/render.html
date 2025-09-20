@@ -4,7 +4,7 @@
         <div id="covers" class="overlay flex center-a">
             {{ partial "format/embed/google-slide/part/thumb.html" . }}
             <div class="action flex center-a">
-                <div class="icon rounded-xl border-all mr-10">{{ partial "icon/line/play.svg" }}</div>
+                <div class="icon rounded-xl border-all mr-10">{{ partial "lib/icon" "play" }}</div>
             </div>
         </div>
         <div id="player" class="hide" data-uri="https://player.vimeo.com/video/{{ .Params.format.datum }}?autoplay=1&controls=0&progress_bar=1&badge=0&autopause=0&player_id=0&app_id=58479">

@@ -4,7 +4,7 @@
         <div id="covers" class="overlay flex center-a">
             {{ partial "format/embed/youtube/part/thumb.html" . }}
             <div class="action flex center-a">
-                <div class="icon rounded-xl border-all mr-10">{{ partial "icon/line/play.svg" }}</div>
+                <div class="icon rounded-xl border-all mr-10">{{ partial "lib/icon" "play" }}</div>
             </div>
         </div>
         <div id="player" class="hide" data-uri="https://www.youtube.com/embed/{{ .Params.format.datum }}?autoplay=1&rel=0">

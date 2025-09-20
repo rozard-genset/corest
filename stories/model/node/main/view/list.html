@@ -19,7 +19,7 @@
                     <h2 class="text-sm font-bold mt-00 mb-00 ml-20 mr-20">{{- .Page.Params.Metadata.Author -}} </h2>
                 </div>
                 <div class="flex center-x ml-a">
-                    {{- range $icon -}}<div class="icon sm">{{ partial ( printf "icon/line/%s.svg" . ) }}</div>{{- end -}}
+                    {{- range $icon -}}<div class="icon sm">{{ partial "lib/icon" .  }}</div>{{- end -}}
                 </div>
             </div>
             <div class="linker">
