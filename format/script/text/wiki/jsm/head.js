@@ -1,1 +1,0 @@
-console.log('Format library head module loaded');
