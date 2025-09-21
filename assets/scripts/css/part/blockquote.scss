@@ -1,13 +1,16 @@
 blockquote{
 	font-size: 1.6em;
 	margin:2.5rem 0;
-	text-transform: capitalize;
 	color:var(--color-01);
 	padding:1.2em 30px 1.2em 75px;
 	border-left:3px solid var(--link-02-based) ;
 	line-height:1.6;
 	position: relative;
 	background:var(--background-02);
+
+	p{
+		margin-bottom: 0 !important;
+	}
 }
 
 blockquote::before{
